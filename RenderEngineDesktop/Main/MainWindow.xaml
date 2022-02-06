@@ -1,0 +1,36 @@
+﻿<Window x:Class="RenderEngineDesktop.Main.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:main="clr-namespace:RenderEngineDesktop.Main"
+        xmlns:listEnumeratedFonts="clr-namespace:RenderEngineDesktop.Views.ListEnumeratedFonts"
+        xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
+        xmlns:converters="clr-namespace:RenderEngineDesktop.Converters"
+        xmlns:options="clr-namespace:RenderEngineDesktop.Views.Options"
+        xmlns:renderOutputFiles="clr-namespace:RenderEngineDesktop.Views.RenderOutputFiles"
+        mc:Ignorable="d"
+        Title="Render Engine Desktop" Height="450" Width="800" 
+        Icon="/Resources/RenderEngine.ico">
+    <Window.DataContext>
+        <main:MainViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <converters:ViewTabsConverter x:Key="ViewTabsConverter"/>
+    </Window.Resources>
+    <TabControl TabStripPlacement="Left" SelectedIndex="{Binding Model.ActiveTab, Converter={StaticResource ViewTabsConverter}}">
+        <!-- Needs to be in the same order as defined in ViewTabs -->
+        <TabItem Header="Options">
+            <options:OptionsView DataContext="{Binding Options}"/>
+        </TabItem>
+        <TabItem Header="Render Preview">
+            <renderPreview:RenderPreviewView DataContext="{Binding RenderPreview}"/>
+        </TabItem>
+        <TabItem Header="Render Output Files">
+            <renderOutputFiles:RenderOutputFilesView DataContext="{Binding RenderOutputFiles}"/>
+        </TabItem>
+        <TabItem Header="List Enumerated Fonts">
+            <listEnumeratedFonts:ListEnumeratedFontsView DataContext="{Binding ListEnumeratedFonts}"/>
+        </TabItem>
+    </TabControl>
+</Window>

@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="RenderEngineDesktop.Views.RenderPreview.RenderPreviewFields"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="200" Background="White">
+    <UserControl.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="18"/>
+            <Setter Property="MinWidth" Value="30"/>
+        </Style>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <renderPreview:RenderPreviewViewModel/>
+    </UserControl.DataContext>
+    <StackPanel Orientation="Vertical" DataContext="{Binding Model}">
+        <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+            <Label>ClientId</Label>
+            <TextBox Text="{Binding ClientId}"/>
+        </StackPanel>
+        <StackPanel>
+            <Label Width="80">Instance</Label>
+            <TextBox Text="{Binding Instance}"/>
+        </StackPanel>
+        <StackPanel>
+            <Label Width="80">Environment</Label>
+            <TextBox Text="{Binding Environment}"/>
+        </StackPanel>
+        <StackPanel>
+            <Label Width="80">Key</Label>
+            <TextBox Text="{Binding Key}"/>
+        </StackPanel>
+        <Label Margin="0,10,0,0" FontWeight="Normal">Maximum (in pixels)</Label>
+        <StackPanel>
+            <Label Width="50">Height</Label>
+            <TextBox Text="{Binding MaximumHeightInPixels}"/>
+        </StackPanel>
+        <StackPanel>
+            <Label Width="50">Width</Label>
+            <TextBox Text="{Binding MaximumWidthInPixels}"/>
+        </StackPanel>
+        <Label Margin="0,10,0,0" FontWeight="Normal">Outline Color Components</Label>
+        <StackPanel>
+            <Label Width="45">Blue</Label>
+            <TextBox Text="{Binding OutlineColorBlueComponent}"/>
+        </StackPanel>
+        <StackPanel>
+            <Label Width="45">Green</Label>
+            <TextBox Text="{Binding OutlineColorGreenComponent}"/>
+        </StackPanel>
+        <StackPanel>
+            <Label Width="45">Red</Label>
+            <TextBox Text="{Binding OutlineColorRedComponent}"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

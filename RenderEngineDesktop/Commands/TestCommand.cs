@@ -1,0 +1,28 @@
+﻿using RenderEngineDesktop.Dialogs;
+using System;
+using System.IO;
+using RenderEngineDesktop.Support;
+
+namespace RenderEngineDesktop.Commands
+{
+    internal class TestCommand : BaseCommand
+    {
+        private readonly IDialogManager _dialog;
+        private readonly ISystemInformation _system;
+
+        public TestCommand(IDialogManager dialog, ISystemInformation system)
+        {
+            _dialog = dialog;
+            _system = system;
+        }
+
+        public override void Execute()
+        {
+            _dialog
+                .ShowPathError(
+                    new Exception("Invalid write permissions"),
+                    Path.Combine(_system.ApplicationLocalFolder(), "config.json"),
+                    "An error occurred while trying to save the file:");
+        }
+    }
+}
