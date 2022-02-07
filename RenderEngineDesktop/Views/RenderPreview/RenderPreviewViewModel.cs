@@ -1,10 +1,7 @@
 ﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Models;
-using RenderEngineDesktop.Service;
 using RenderEngineDesktop.Support;
-using System;
-using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -12,9 +9,6 @@ namespace RenderEngineDesktop.Views.RenderPreview
 {
     public class RenderPreviewViewModel : BaseViewModel
     {
-        private readonly IRenderEngine _re;
-        private readonly IBitmapTools _tools;
-
         public RenderPreviewModel Model { get; }
         public ICommand InvokeCommand { get; }
 
@@ -28,15 +22,13 @@ namespace RenderEngineDesktop.Views.RenderPreview
         #endregion
 
         [Ninject.Inject]
-        public RenderPreviewViewModel(ICommands commands, IRenderEngine re, IConfiguration configuration, IBitmapTools tools)
+        public RenderPreviewViewModel(ICommands commands, IConfiguration configuration, IBitmapTools tools)
         {
-            _re = re;
-            _tools = tools;
-
             Model = configuration.Model.RenderPreview;
-            InvokeCommand = commands.Action(Invoke);
+            
+            InvokeCommand = commands.RenderPreviewCommand(image => Image = image);
 
-            _image = _tools.CreateBlankImage(2, 2);
+            _image = tools.CreateBlankImage(2, 2);
         }
 
         private ImageSource _image;
@@ -50,29 +42,6 @@ namespace RenderEngineDesktop.Views.RenderPreview
                 _image = value;
                 OnPropertyChanged();
             }
-        }
-
-        private async void Invoke()
-        {
-            byte[] bmp;
-
-            try
-            {
-                bmp = await _re.RenderPreviewAsync(Model);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Unexpected connection failure");
-                return;
-            }
-
-            if (bmp == null || bmp.Length == 0)
-            {
-                MessageBox.Show("No image data returned");
-                return;
-            }
-
-            Image = _tools.ToBitmapImage(bmp);
         }
     }
 }

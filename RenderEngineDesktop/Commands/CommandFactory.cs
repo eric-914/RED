@@ -1,7 +1,9 @@
-﻿using System;
-using System.Security.RightsManagement;
+﻿using RenderEngineDesktop.Commands.Async;
 using RenderEngineDesktop.IoC;
+using RenderEngineDesktop.Processes;
+using System;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace RenderEngineDesktop.Commands
 {
@@ -10,6 +12,9 @@ namespace RenderEngineDesktop.Commands
         ICommand Action(Action action);
 
         ICommand Test { get; }
+
+        ICommand RenderPreviewCommand(Action<ImageSource> onComplete);
+        ICommand RenderOutputFilesCommand();
     }
 
     internal class CommandsFactory : ICommands
@@ -24,5 +29,20 @@ namespace RenderEngineDesktop.Commands
         public ICommand Action(Action action) => new ActionCommand(action);
 
         public ICommand Test => _factory.Get<TestCommand>();
+
+        public ICommand RenderPreviewCommand(Action<ImageSource> onComplete)
+        {
+            var process = _factory.Get<RenderPreviewProcess>();
+            process.OnComplete = onComplete;
+
+            return new AsyncFunctionCommand<byte[]?>(process);
+        }
+
+        public ICommand RenderOutputFilesCommand()
+        {
+            var process = _factory.Get<RenderOutputFilesProcess>();
+
+            return new AsyncActionCommand(process);
+        }
     }
 }

@@ -1,15 +1,12 @@
-﻿using System.Windows.Input;
-using RenderEngineDesktop.Commands;
+﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Models;
-using RenderEngineDesktop.Service;
+using System.Windows.Input;
 
 namespace RenderEngineDesktop.Views.RenderOutputFiles
 {
     public class RenderOutputFilesViewModel
     {
-        private readonly IRenderEngine _re;
-
         public RenderOutputFilesModel Model { get; }
         public ICommand InvokeCommand { get; }
 
@@ -23,17 +20,10 @@ namespace RenderEngineDesktop.Views.RenderOutputFiles
         #endregion
 
         [Ninject.Inject]
-        public RenderOutputFilesViewModel(ICommands commands, IRenderEngine re, IConfiguration configuration)
+        public RenderOutputFilesViewModel(ICommands commands, IConfiguration configuration)
         {
-            _re = re;
-
             Model = configuration.Model.RenderOutputFiles;
-            InvokeCommand = commands.Action(Invoke);
-        }
-
-        private async void Invoke()
-        {
-            await _re.RenderOutputFilesAsync(Model);
+            InvokeCommand = commands.RenderOutputFilesCommand();
         }
     }
 }
