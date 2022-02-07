@@ -66,7 +66,7 @@ namespace RenderEngineDesktop.Views.RenderPreview
                 return;
             }
 
-            if (bmp.Length == 0)
+            if (bmp == null || bmp.Length == 0)
             {
                 MessageBox.Show("No image data returned");
                 return;

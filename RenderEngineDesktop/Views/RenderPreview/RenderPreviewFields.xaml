@@ -4,6 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
+             xmlns:inputField="clr-namespace:RenderEngineDesktop.Controls.InputField"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200" Background="White">
     <UserControl.Resources>
@@ -23,39 +24,18 @@
             <Label>ClientId</Label>
             <TextBox Text="{Binding ClientId}"/>
         </StackPanel>
-        <StackPanel>
-            <Label Width="80">Instance</Label>
-            <TextBox Text="{Binding Instance}"/>
-        </StackPanel>
-        <StackPanel>
-            <Label Width="80">Environment</Label>
-            <TextBox Text="{Binding Environment}"/>
-        </StackPanel>
-        <StackPanel>
-            <Label Width="80">Key</Label>
-            <TextBox Text="{Binding Key}"/>
-        </StackPanel>
+
+        <inputField:InputFieldControl Label="Instance" Text="{Binding Instance}" LabelWidth="80" TextWidth="80"/>
+        <inputField:InputFieldControl Label="Environment" Text="{Binding Environment}" LabelWidth="80" TextWidth="80"/>
+        <inputField:InputFieldControl Label="Key" Text="{Binding Key}" LabelWidth="80" TextWidth="80"/>
+        
         <Label Margin="0,10,0,0" FontWeight="Normal">Maximum (in pixels)</Label>
-        <StackPanel>
-            <Label Width="50">Height</Label>
-            <TextBox Text="{Binding MaximumHeightInPixels}"/>
-        </StackPanel>
-        <StackPanel>
-            <Label Width="50">Width</Label>
-            <TextBox Text="{Binding MaximumWidthInPixels}"/>
-        </StackPanel>
+        <inputField:InputFieldControl Label="Height" Text="{Binding MaximumHeightInPixels}" LabelWidth="50"/>
+        <inputField:InputFieldControl Label="Width" Text="{Binding MaximumWidthInPixels}" LabelWidth="50"/>
+
         <Label Margin="0,10,0,0" FontWeight="Normal">Outline Color Components</Label>
-        <StackPanel>
-            <Label Width="45">Blue</Label>
-            <TextBox Text="{Binding OutlineColorBlueComponent}"/>
-        </StackPanel>
-        <StackPanel>
-            <Label Width="45">Green</Label>
-            <TextBox Text="{Binding OutlineColorGreenComponent}"/>
-        </StackPanel>
-        <StackPanel>
-            <Label Width="45">Red</Label>
-            <TextBox Text="{Binding OutlineColorRedComponent}"/>
-        </StackPanel>
+        <inputField:InputFieldControl Label="Blue" Text="{Binding OutlineColorBlueComponent}" LabelWidth="50"/>
+        <inputField:InputFieldControl Label="Green" Text="{Binding OutlineColorGreenComponent}" LabelWidth="50"/>
+        <inputField:InputFieldControl Label="Red" Text="{Binding OutlineColorRedComponent}" LabelWidth="50"/>
     </StackPanel>
 </UserControl>
