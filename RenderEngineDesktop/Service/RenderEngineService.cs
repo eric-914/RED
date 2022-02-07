@@ -461,11 +461,11 @@ namespace RenderEngineDesktop.Service
             invoke(client);
         }
 
-        private Task Invoke(Func<IRenderEngineService, Task> invoke)
+        private async Task Invoke(Func<IRenderEngineService, Task> invoke)
         {
             using var client = new RenderEngineServiceClient(Binding(), EndpointAddress());
 
-            return invoke(client);
+            await invoke(client);
         }
 
         private T Invoke<T>(Func<IRenderEngineService, T> invoke)
