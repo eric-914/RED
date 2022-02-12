@@ -11,10 +11,6 @@
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Horizontal"/>
         </Style>
-        <Style TargetType="TextBox">
-            <Setter Property="Height" Value="18"/>
-            <Setter Property="MinWidth" Value="30"/>
-        </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
         <renderPreview:RenderPreviewViewModel/>
@@ -23,18 +19,7 @@
     <StackPanel Orientation="Vertical" DataContext="{Binding Model}">
         <controls:SourceFields Context="{Binding Source}"/>
         <controls:TemplateFields Context="{Binding Template}"/>
-
-        <StackPanel Orientation="Vertical" DataContext="{Binding MaximumInPixels}">
-            <Label Margin="0,10,0,0" FontWeight="Normal">Maximum (in pixels)</Label>
-            <controls:InputField Text="{Binding Width}" Label="Width" LabelWidth="50"/>
-            <controls:InputField Text="{Binding Height}" Label="Height" LabelWidth="50"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Vertical" DataContext="{Binding OutlineColorComponent}">
-            <Label Margin="0,10,0,0" FontWeight="Normal">Outline Color Components</Label>
-            <controls:InputField Text="{Binding Red}" Label="Red" LabelWidth="50"/>
-            <controls:InputField Text="{Binding Green}" Label="Green" LabelWidth="50"/>
-            <controls:InputField Text="{Binding Blue}" Label="Blue" LabelWidth="50"/>
-        </StackPanel>
+        <controls:MaximumInPixelsFields Context="{Binding MaximumInPixels}"/>
+        <controls:OutlineColorComponentFields Context="{Binding OutlineColorComponent}"/>
     </StackPanel>
 </UserControl>

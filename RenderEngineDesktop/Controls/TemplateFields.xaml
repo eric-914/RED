@@ -15,6 +15,7 @@
     <UserControl.DataContext>
         <common:TemplateModel/>
     </UserControl.DataContext>
+
     <StackPanel>
         <Label>TemplateInstanceId</Label>
         <TextBox Text="{Binding InstanceId}"/>

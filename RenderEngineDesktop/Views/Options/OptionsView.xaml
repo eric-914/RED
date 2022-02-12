@@ -9,6 +9,7 @@
     <UserControl.DataContext>
         <options:OptionsViewModel/>
     </UserControl.DataContext>
+
     <DockPanel>
         <options:LogoView DockPanel.Dock="Right" Width="200"/>
         <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left">

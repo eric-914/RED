@@ -9,6 +9,7 @@
     <UserControl.DataContext>
         <renderPreview:RenderPreviewViewModel/>
     </UserControl.DataContext>
+
     <DockPanel>
         <StackPanel DockPanel.Dock="Left" Name="RpvFieldsStackPanel">
             <renderPreview:RenderPreviewFields DataContext="{Binding}"/>

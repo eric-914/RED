@@ -20,8 +20,14 @@
             <Setter Property="Height" Value="18"/>
             <Setter Property="MinWidth" Value="30"/>
         </Style>
+        <Style TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+            <Setter Property="Height" Value="24"/>
+            <Setter Property="Margin" Value="0"/>
+        </Style>
     </UserControl.Resources>
-    <StackPanel Name="StackPanelControl" Orientation="Horizontal" Height="24">
+
+    <StackPanel Name="StackPanelControl">
         <Label Name="LabelControl" Content="XyZ"/>
         <TextBox Name="TextBoxControl" Text="XyyZ"/>
     </StackPanel>

@@ -10,7 +10,7 @@
         xmlns:options="clr-namespace:RenderEngineDesktop.Views.Options"
         xmlns:renderOutputFiles="clr-namespace:RenderEngineDesktop.Views.RenderOutputFiles"
         mc:Ignorable="d"
-        Title="Render Engine Desktop" Height="450" Width="800" 
+        Title="Render Engine Desktop" Height="460" Width="770" 
         Icon="/Resources/RenderEngine.ico">
     <Window.DataContext>
         <main:MainViewModel/>

@@ -9,6 +9,7 @@
     <UserControl.DataContext>
         <local:RenderOutputFilesViewModel/>
     </UserControl.DataContext>
+
     <DockPanel>
         <StackPanel DockPanel.Dock="Left">
             <local:RenderOutputFilesFields DataContext="{Binding}"/>

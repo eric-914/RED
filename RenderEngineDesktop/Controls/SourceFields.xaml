@@ -15,6 +15,7 @@
             <Setter Property="Orientation" Value="Vertical"/>
         </Style>
     </UserControl.Resources>
+
     <StackPanel>
         <StackPanel Margin="0,0,0,10">
             <Label>ClientId</Label>

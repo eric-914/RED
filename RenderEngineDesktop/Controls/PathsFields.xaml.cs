@@ -2,9 +2,9 @@
 
 namespace RenderEngineDesktop.Controls
 {
-    public partial class MaximumInPixelsFields
+    public partial class PathsFields
     {
-        public MaximumInPixelsFields()
+        public PathsFields()
         {
             InitializeComponent();
         }

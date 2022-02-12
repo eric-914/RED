@@ -13,6 +13,7 @@
     <UserControl.Resources>
         <converters:SplitStringConverter x:Key="SplitStringConverter"/>
     </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>

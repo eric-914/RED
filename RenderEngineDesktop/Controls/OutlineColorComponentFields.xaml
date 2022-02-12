@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="RenderEngineDesktop.Controls.OutlineColorComponentFields"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
+             xmlns:common="clr-namespace:RenderEngineDesktop.Models.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="200">
+    <UserControl.DataContext>
+        <common:RgbModel/>
+    </UserControl.DataContext>
+
+    <StackPanel Orientation="Vertical">
+        <Label Margin="0,10,0,0" FontWeight="Normal">Outline Color Components</Label>
+        <local:InputField Text="{Binding Red}" Label="Red" LabelWidth="50"/>
+        <local:InputField Text="{Binding Green}" Label="Green" LabelWidth="50"/>
+        <local:InputField Text="{Binding Blue}" Label="Blue" LabelWidth="50"/>
+    </StackPanel>
+</UserControl>
