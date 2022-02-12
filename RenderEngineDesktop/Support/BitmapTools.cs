@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows.Media.Imaging;
 
@@ -6,10 +7,8 @@ namespace RenderEngineDesktop.Support
 {
     public interface IBitmapTools
     {
-        BitmapImage ToBitmapImage(Bitmap src);
         BitmapImage ToBitmapImage(byte[] data);
-        Bitmap ToBitmap(byte[] data);
-        BitmapImage CreateBlankImage(int width, int height);
+        BitmapImage NoImage();
     }
 
     internal class BitmapTools : IBitmapTools
@@ -48,5 +47,14 @@ namespace RenderEngineDesktop.Support
 
             return ToBitmapImage(bmp);
         }
+
+        public BitmapImage NoImage()
+        {
+            var source = new Uri(Resource("NoImage.png"));
+
+            return new BitmapImage(source);
+        }
+
+        public static string Resource(string filename) => Path.Join(AppDomain.CurrentDomain.BaseDirectory, "Resources", filename);
     }
 }

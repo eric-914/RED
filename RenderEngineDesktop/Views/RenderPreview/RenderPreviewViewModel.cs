@@ -31,7 +31,7 @@ namespace RenderEngineDesktop.Views.RenderPreview
             
             InvokeCommand = commands.RenderPreviewCommand(image => Image = image);
 
-            _image = tools.CreateBlankImage(2, 2);
+            _image = tools.NoImage();
         }
 
         private ImageSource _image;

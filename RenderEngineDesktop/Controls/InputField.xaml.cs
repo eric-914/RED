@@ -30,7 +30,7 @@ namespace RenderEngineDesktop.Controls
             set => StackPanelControl.Orientation = value;
         }
 
-        public Binding Field
+        public Binding Text
         {
             set => TextBoxControl.SetBinding(TextBox.TextProperty, value);
         }

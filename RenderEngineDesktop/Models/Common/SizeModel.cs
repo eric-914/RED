@@ -8,10 +8,13 @@
         public T Width { get; set; }
         public T Height { get; set; }
 
-        public SizeModel(T width, T height)
+        public SizeModel(T width = default!, T height = default!)
         {
             Width = width;
             Height = height;
         }
     }
+
+    //TODO: Figure out how to get XAML to accept SizeModel<int> for DataContext definition
+    public class SizeModel : SizeModel<int> { }
 }

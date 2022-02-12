@@ -6,7 +6,7 @@
              xmlns:converters="clr-namespace:RenderEngineDesktop.Converters"
              xmlns:listEnumeratedFonts="clr-namespace:RenderEngineDesktop.Views.ListEnumeratedFonts"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="200" Background="White">
+             d:DesignHeight="150" d:DesignWidth="200">
     <UserControl.DataContext>
         <listEnumeratedFonts:ListEnumeratedFontsViewModel/>
     </UserControl.DataContext>

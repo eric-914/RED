@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
+             d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <renderPreview:RenderPreviewViewModel/>
     </UserControl.DataContext>
