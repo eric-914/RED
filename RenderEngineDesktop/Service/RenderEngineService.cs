@@ -148,15 +148,7 @@ namespace RenderEngineDesktop.Service
             int maximumWidthInPixels,
             int maximumHeightInPixels,
             bool suppressMultimediaLinks)
-            => Invoke(x => x.RenderPreviewSwf(
-                clientId,
-                instance,
-                environment,
-                key,
-                templateInstanceId,
-                maximumWidthInPixels,
-                maximumHeightInPixels,
-                suppressMultimediaLinks));
+            => throw new Exception("Why Are You Trying To Use Swf?");
 
         public Task<byte[]> RenderPreviewSwfAsync(
             Guid clientId,
@@ -167,15 +159,7 @@ namespace RenderEngineDesktop.Service
             int maximumWidthInPixels,
             int maximumHeightInPixels,
             bool suppressMultimediaLinks)
-            => Invoke(x => x.RenderPreviewSwfAsync(
-                clientId,
-                instance,
-                environment,
-                key,
-                templateInstanceId,
-                maximumWidthInPixels,
-                maximumHeightInPixels,
-                suppressMultimediaLinks));
+            => throw new Exception("Why Are You Trying To Use Swf?");
 
         public byte[] RenderPreview(
             Guid clientId,
@@ -408,12 +392,7 @@ namespace RenderEngineDesktop.Service
             string environment,
             string key,
             string swfFileName)
-            => Invoke(x => x.PrepSwfForParse(
-                clientId,
-                instance,
-                environment,
-                key,
-                swfFileName));
+            => throw new Exception("Why Are You Trying To Use Swf?");
 
         public Task PrepSwfForParseAsync(
             Guid clientId,
@@ -421,12 +400,7 @@ namespace RenderEngineDesktop.Service
             string environment,
             string key,
             string swfFileName)
-            => Invoke(x => x.PrepSwfForParseAsync(
-                clientId,
-                instance,
-                environment,
-                key,
-                swfFileName));
+            => throw new Exception("Why Are You Trying To Use Swf?");
 
         public void PrepZipDirectoryForParse(
             Guid clientId,

@@ -3,8 +3,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
              xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
-             xmlns:inputField="clr-namespace:RenderEngineDesktop.Controls.InputField"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200" Background="White">
     <UserControl.Resources>
@@ -19,23 +19,35 @@
     <UserControl.DataContext>
         <renderPreview:RenderPreviewViewModel/>
     </UserControl.DataContext>
+
     <StackPanel Orientation="Vertical" DataContext="{Binding Model}">
-        <StackPanel Orientation="Vertical" Margin="0,0,0,10">
-            <Label>ClientId</Label>
-            <TextBox Text="{Binding ClientId}"/>
+        <StackPanel Orientation="Vertical" DataContext="{Binding Source}">
+            <StackPanel Orientation="Vertical" Margin="0,0,0,10">
+                <Label>ClientId</Label>
+                <TextBox Text="{Binding ClientId}"/>
+            </StackPanel>
+
+            <controls:InputField Field="{Binding Instance}" Label="Instance" LabelWidth="80" TextWidth="80"/>
+            <controls:InputField Field="{Binding Environment}" Label="Environment" LabelWidth="80" TextWidth="80"/>
+            <controls:InputField Field="{Binding Key}" Label="Key" LabelWidth="80" TextWidth="80"/>
         </StackPanel>
 
-        <inputField:InputFieldControl Label="Instance" Text="{Binding Instance}" LabelWidth="80" TextWidth="80"/>
-        <inputField:InputFieldControl Label="Environment" Text="{Binding Environment}" LabelWidth="80" TextWidth="80"/>
-        <inputField:InputFieldControl Label="Key" Text="{Binding Key}" LabelWidth="80" TextWidth="80"/>
-        
-        <Label Margin="0,10,0,0" FontWeight="Normal">Maximum (in pixels)</Label>
-        <inputField:InputFieldControl Label="Height" Text="{Binding MaximumHeightInPixels}" LabelWidth="50"/>
-        <inputField:InputFieldControl Label="Width" Text="{Binding MaximumWidthInPixels}" LabelWidth="50"/>
+        <StackPanel Orientation="Vertical" Margin="0,0,0,10" DataContext="{Binding Template}">
+            <Label>TemplateInstanceId</Label>
+            <TextBox Text="{Binding InstanceId}"/>
+        </StackPanel>
 
-        <Label Margin="0,10,0,0" FontWeight="Normal">Outline Color Components</Label>
-        <inputField:InputFieldControl Label="Blue" Text="{Binding OutlineColorBlueComponent}" LabelWidth="50"/>
-        <inputField:InputFieldControl Label="Green" Text="{Binding OutlineColorGreenComponent}" LabelWidth="50"/>
-        <inputField:InputFieldControl Label="Red" Text="{Binding OutlineColorRedComponent}" LabelWidth="50"/>
+        <StackPanel Orientation="Vertical" DataContext="{Binding MaximumInPixels}">
+            <Label Margin="0,10,0,0" FontWeight="Normal">Maximum (in pixels)</Label>
+            <controls:InputField Field="{Binding Width}" Label="Width" LabelWidth="50"/>
+            <controls:InputField Field="{Binding Height}" Label="Height" LabelWidth="50"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" DataContext="{Binding OutlineColorComponent}">
+            <Label Margin="0,10,0,0" FontWeight="Normal">Outline Color Components</Label>
+            <controls:InputField Field="{Binding Red}" Label="Red" LabelWidth="50"/>
+            <controls:InputField Field="{Binding Green}" Label="Green" LabelWidth="50"/>
+            <controls:InputField Field="{Binding Blue}" Label="Blue" LabelWidth="50"/>
+        </StackPanel>
     </StackPanel>
 </UserControl>

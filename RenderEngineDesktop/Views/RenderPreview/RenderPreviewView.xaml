@@ -10,11 +10,11 @@
         <renderPreview:RenderPreviewViewModel/>
     </UserControl.DataContext>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Left">
+        <StackPanel DockPanel.Dock="Left" Name="RpvFieldsStackPanel">
             <renderPreview:RenderPreviewFields DataContext="{Binding}"/>
             <Button Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
         </StackPanel>
-        <StackPanel Background="Gray">
+        <StackPanel Background="Gray" Name="RpvImageStackPanel">
             <Border BorderBrush="Black" BorderThickness="2">
                 <Image Source="{Binding Image}"/>
             </Border>

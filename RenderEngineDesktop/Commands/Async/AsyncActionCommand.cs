@@ -1,4 +1,5 @@
-﻿using RenderEngineDesktop.Processes;
+﻿using System.Windows;
+using RenderEngineDesktop.Processes;
 
 namespace RenderEngineDesktop.Commands.Async
 {
@@ -16,7 +17,14 @@ namespace RenderEngineDesktop.Commands.Async
 
         public override async void Execute()
         {
-            await _process.Invoke();
+            try
+            {
+                await _process.Invoke();
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Async Action failed.");
+            }
         }
     }
 }

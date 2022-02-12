@@ -4,9 +4,6 @@
              StartupUri="Main/MainWindow.xaml">
     <Application.Resources>
          <ResourceDictionary>
-             <ResourceDictionary.MergedDictionaries>
-                 <ResourceDictionary Source="Controls/InputField/InputFieldStyle.xaml"/>
-             </ResourceDictionary.MergedDictionaries>
          </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -2,12 +2,12 @@
 
 namespace RenderEngineDesktop.Models
 {
-    public class RenderOutputFilesModel
+    public class RenderLowResPreviewModel
     {
         public SourceModel Source { get; } = new();
 
         public TemplateModel Template { get; } = new();
 
-        public PathsModel OutputFiles { get; } = new();
+        public PathModel OutputFile { get; set; } = new();
     }
 }

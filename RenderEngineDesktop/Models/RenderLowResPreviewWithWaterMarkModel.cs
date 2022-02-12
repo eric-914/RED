@@ -2,12 +2,14 @@
 
 namespace RenderEngineDesktop.Models
 {
-    public class RenderOutputFilesModel
+    public class RenderLowResPreviewWithWaterMarkModel
     {
         public SourceModel Source { get; } = new();
 
         public TemplateModel Template { get; } = new();
 
-        public PathsModel OutputFiles { get; } = new();
+        public PathModel OutputFile { get; set; } = new();
+
+        public WaterMarkModel WaterMark { get; } = new();
     }
 }

@@ -16,7 +16,10 @@ namespace RenderEngineDesktop.Views.RenderPreview
 
         //--Used by the XAML designer
 #pragma warning disable CS8618
-        public RenderPreviewViewModel() { }
+        public RenderPreviewViewModel()
+        {
+            Model = new RenderPreviewModel();
+        }
 #pragma warning restore CS8618
 
         #endregion

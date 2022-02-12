@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Windows;
 using RenderEngineDesktop.Processes;
 
 namespace RenderEngineDesktop.Commands.Async;
@@ -20,11 +21,18 @@ public class AsyncFunctionCommand<T> : AsyncBaseCommand
     {
         Task<T> task = _process.Invoke();
 
-        T result = await task;
-
-        if (task.IsCompletedSuccessfully)
+        try
         {
-            _process.InvokeComplete(result);
+            T result = await task;
+
+            if (task.IsCompletedSuccessfully)
+            {
+                _process.InvokeComplete(result);
+            }
+        }
+        catch (System.Exception)
+        {
+            MessageBox.Show("Async Function failed.");
         }
     }
 }
