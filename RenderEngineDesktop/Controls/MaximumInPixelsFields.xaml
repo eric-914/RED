@@ -12,13 +12,17 @@
             <Setter Property="Orientation" Value="Vertical"/>
             <Setter Property="Margin" Value="0,0,0,10"/>
         </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Margin" Value="0,10,0,0"/>
+        </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
         <common:SizeModel/>
     </UserControl.DataContext>
 
-    <StackPanel Orientation="Vertical">
-        <Label Margin="0,10,0,0" FontWeight="Normal">Maximum (in pixels)</Label>
+    <StackPanel>
+        <Label>Maximum (in pixels)</Label>
         <local:InputField Text="{Binding Width}" Label="Width" LabelWidth="50"/>
         <local:InputField Text="{Binding Height}" Label="Height" LabelWidth="50"/>
     </StackPanel>

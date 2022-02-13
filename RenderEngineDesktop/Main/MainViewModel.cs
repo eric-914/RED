@@ -1,6 +1,5 @@
 ﻿using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.IoC;
-using RenderEngineDesktop.Views;
 using RenderEngineDesktop.Views.ListEnumeratedFonts;
 using RenderEngineDesktop.Views.Options;
 using RenderEngineDesktop.Views.RenderOutputFiles;
@@ -9,7 +8,7 @@ using RenderEngineDesktop.Views.RenderPreviewHtml5;
 
 namespace RenderEngineDesktop.Main
 {
-    public class MainViewModel : BaseViewModel
+    public class MainViewModel
     {
         public ConfigurationModel Model { get; set; }
         public OptionsViewModel Options { get; }

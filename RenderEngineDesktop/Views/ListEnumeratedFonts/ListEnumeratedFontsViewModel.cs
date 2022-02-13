@@ -1,10 +1,11 @@
 ﻿using RenderEngineDesktop.Commands;
+using RenderEngineDesktop.Models.Common;
 using RenderEngineDesktop.Service;
 using System.Windows.Input;
 
 namespace RenderEngineDesktop.Views.ListEnumeratedFonts
 {
-    public class ListEnumeratedFontsViewModel : BaseViewModel
+    public class ListEnumeratedFontsViewModel : NotifyModel
     {
         private readonly IRenderEngine _re;
 
@@ -30,13 +31,7 @@ namespace RenderEngineDesktop.Views.ListEnumeratedFonts
         public string Result
         {
             get => _result;
-            set
-            {
-                if (_result == value) return;
-
-                _result = value;
-                OnPropertyChanged();
-            }
+            set => Set(_result == value, () => _result = value);
         }
 
         private async void Invoke()

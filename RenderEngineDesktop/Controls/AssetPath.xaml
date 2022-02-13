@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="RenderEngineDesktop.Controls.AssetPath"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
+             xmlns:assets="clr-namespace:RenderEngineDesktop.Models.Assets"
+             mc:Ignorable="d" Background="White"
+             d:DesignHeight="200" d:DesignWidth="280">
+    <UserControl.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Vertical"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight" Value="Normal"/>
+        </Style>
+        <Style TargetType="Border">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+        </Style>
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <assets:AssetPathModel/>
+    </UserControl.DataContext>
+
+    <StackPanel>
+        <Label>Asset Path</Label>
+        <Border>
+            <StackPanel>
+                <StackPanel DataContext="{Binding Server}">
+                    <Label>Server:</Label>
+                    <local:InputField Text="{Binding Environment}" Label="Environment" LabelWidth="80" TextWidth="50"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border>
+            <StackPanel>
+                <StackPanel DataContext="{Binding Folders}">
+                    <Label>Folders:</Label>
+                    <local:InputField Text="{Binding AssetRoot}" Label="AssetRoot" LabelWidth="80" TextWidth="150"/>
+                    <local:InputField Text="{Binding Toolbox}" Label="Toolbox" LabelWidth="80" TextWidth="150"/>
+                    <local:InputField Text="{Binding Environment}" Label="Environment" LabelWidth="80" TextWidth="150"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border>
+            <local:BrowsablePath Context="{Binding Root}" Height="20"/>
+        </Border>
+    </StackPanel>
+</UserControl>

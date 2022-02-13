@@ -1,13 +1,14 @@
 ﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Models;
+using RenderEngineDesktop.Models.Common;
 using RenderEngineDesktop.Support;
 using System.Windows.Input;
 using System.Windows.Media;
 
 namespace RenderEngineDesktop.Views.RenderPreview
 {
-    public class RenderPreviewViewModel : BaseViewModel
+    public class RenderPreviewViewModel : NotifyModel
     {
         public RenderPreviewModel Model { get; }
         public ICommand InvokeCommand { get; }
@@ -38,13 +39,7 @@ namespace RenderEngineDesktop.Views.RenderPreview
         public ImageSource Image
         {
             get => _image;
-            set
-            {
-                if (_image == value) return;
-
-                _image = value;
-                OnPropertyChanged();
-            }
+            set => Set(_image == value, () => _image = value);
         }
     }
 }

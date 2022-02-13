@@ -1,12 +1,13 @@
 ﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Configuration;
-using RenderEngineDesktop.Models;
-using System.Windows.Input;
 using RenderEngineDesktop.Controls;
+using RenderEngineDesktop.Models;
+using RenderEngineDesktop.Models.Common;
+using System.Windows.Input;
 
 namespace RenderEngineDesktop.Views.RenderPreviewHtml5
 {
-    public class RenderPreviewHtml5ViewModel : BaseViewModel
+    public class RenderPreviewHtml5ViewModel : NotifyModel
     {
         public RenderPreviewHtml5Model Model { get; }
         public ICommand InvokeCommand { get; }
@@ -35,13 +36,7 @@ namespace RenderEngineDesktop.Views.RenderPreviewHtml5
         public string Document
         {
             get => _document;
-            set
-            {
-                if (_document == value) return;
-
-                _document = value;
-                OnPropertyChanged();
-            }
+            set => Set(_document == value, () => _document = value);
         }
     }
 }

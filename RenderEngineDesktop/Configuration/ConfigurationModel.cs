@@ -1,5 +1,6 @@
 ﻿using RenderEngineDesktop.Main;
 using RenderEngineDesktop.Models;
+using RenderEngineDesktop.Models.Assets;
 
 namespace RenderEngineDesktop.Configuration
 {
@@ -7,6 +8,7 @@ namespace RenderEngineDesktop.Configuration
     {
         public string Uri { get; set; } = "net.tcp://localhost:1411/";
         public ViewTabs ActiveTab { get; set; } = default;
+        public AssetPathModel AssetPath { get; } = new();
 
         public RenderPreviewModel RenderPreview { get; } = new();
         public RenderOutputFilesModel RenderOutputFiles { get; } = new();
