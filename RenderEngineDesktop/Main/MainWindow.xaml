@@ -9,6 +9,7 @@
         xmlns:converters="clr-namespace:RenderEngineDesktop.Converters"
         xmlns:options="clr-namespace:RenderEngineDesktop.Views.Options"
         xmlns:renderOutputFiles="clr-namespace:RenderEngineDesktop.Views.RenderOutputFiles"
+        xmlns:renderPreviewHtml5="clr-namespace:RenderEngineDesktop.Views.RenderPreviewHtml5"
         mc:Ignorable="d"
         Title="Render Engine Desktop" Height="460" Width="770" 
         Icon="/Resources/RenderEngine.ico">
@@ -28,6 +29,9 @@
         </TabItem>
         <TabItem Header="Render Output Files">
             <renderOutputFiles:RenderOutputFilesView DataContext="{Binding RenderOutputFiles}"/>
+        </TabItem>
+        <TabItem Header="Render Preview Html5">
+            <renderPreviewHtml5:RenderPreviewHtml5View DataContext="{Binding RenderPreviewHtml5}"/>
         </TabItem>
         <TabItem Header="List Enumerated Fonts">
             <listEnumeratedFonts:ListEnumeratedFontsView DataContext="{Binding ListEnumeratedFonts}"/>

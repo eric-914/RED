@@ -3,19 +3,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
+             xmlns:local="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
-        <renderPreview:RenderPreviewViewModel/>
+        <local:RenderPreviewViewModel/>
     </UserControl.DataContext>
 
     <DockPanel>
-        <StackPanel DockPanel.Dock="Left" Name="RpvFieldsStackPanel">
-            <renderPreview:RenderPreviewFields DataContext="{Binding}"/>
+        <StackPanel DockPanel.Dock="Left">
+            <local:RenderPreviewFields DataContext="{Binding}"/>
             <Button Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
         </StackPanel>
-        <StackPanel Background="Gray" Name="RpvImageStackPanel">
+        <StackPanel Background="Gray">
             <Border BorderBrush="Black" BorderThickness="2">
                 <Image Source="{Binding Image}"/>
             </Border>

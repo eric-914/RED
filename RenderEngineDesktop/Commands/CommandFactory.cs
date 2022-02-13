@@ -15,6 +15,7 @@ namespace RenderEngineDesktop.Commands
 
         ICommand RenderPreviewCommand(Action<ImageSource> onComplete);
         ICommand RenderOutputFilesCommand();
+        ICommand RenderPreviewHtml5Command(Action<string> onComplete);
     }
 
     internal class CommandsFactory : ICommands
@@ -43,6 +44,14 @@ namespace RenderEngineDesktop.Commands
             var process = _factory.Get<RenderOutputFilesProcess>();
 
             return new AsyncActionCommand(process);
+        }
+
+        public ICommand RenderPreviewHtml5Command(Action<string> onComplete)
+        {
+            var process = _factory.Get<RenderPreviewHtml5Process>();
+            process.OnComplete = onComplete;
+
+            return new AsyncFunctionCommand<string>(process);
         }
     }
 }

@@ -5,6 +5,7 @@ using RenderEngineDesktop.Views.ListEnumeratedFonts;
 using RenderEngineDesktop.Views.Options;
 using RenderEngineDesktop.Views.RenderOutputFiles;
 using RenderEngineDesktop.Views.RenderPreview;
+using RenderEngineDesktop.Views.RenderPreviewHtml5;
 
 namespace RenderEngineDesktop.Main
 {
@@ -15,6 +16,7 @@ namespace RenderEngineDesktop.Main
         public ListEnumeratedFontsViewModel ListEnumeratedFonts { get; }
         public RenderPreviewViewModel RenderPreview { get; }
         public RenderOutputFilesViewModel RenderOutputFiles { get; }
+        public RenderPreviewHtml5ViewModel RenderPreviewHtml5 { get; }
 
         #region XAML Design
 
@@ -34,6 +36,7 @@ namespace RenderEngineDesktop.Main
             ListEnumeratedFonts = factory.Get<ListEnumeratedFontsViewModel>();
             RenderPreview = factory.Get<RenderPreviewViewModel>();
             RenderOutputFiles = factory.Get<RenderOutputFilesViewModel>();
+            RenderPreviewHtml5 = factory.Get<RenderPreviewHtml5ViewModel>();
         }
     }
 }

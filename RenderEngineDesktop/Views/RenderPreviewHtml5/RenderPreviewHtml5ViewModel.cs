@@ -1,0 +1,47 @@
+﻿using RenderEngineDesktop.Commands;
+using RenderEngineDesktop.Configuration;
+using RenderEngineDesktop.Models;
+using System.Windows.Input;
+using RenderEngineDesktop.Controls;
+
+namespace RenderEngineDesktop.Views.RenderPreviewHtml5
+{
+    public class RenderPreviewHtml5ViewModel : BaseViewModel
+    {
+        public RenderPreviewHtml5Model Model { get; }
+        public ICommand InvokeCommand { get; }
+
+        #region XAML Design
+
+        //--Used by the XAML designer
+#pragma warning disable CS8618
+        public RenderPreviewHtml5ViewModel()
+        {
+            Model = new RenderPreviewHtml5Model();
+        }
+#pragma warning restore CS8618
+
+        #endregion
+
+        [Ninject.Inject]
+        public RenderPreviewHtml5ViewModel(ICommands commands, IConfiguration configuration)
+        {
+            Model = configuration.Model.RenderPreviewHtml5;
+
+            InvokeCommand = commands.RenderPreviewHtml5Command(x => Document = x);
+        }
+
+        private string _document = HtmlViewer.EmptyDocument;
+        public string Document
+        {
+            get => _document;
+            set
+            {
+                if (_document == value) return;
+
+                _document = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+}
