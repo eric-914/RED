@@ -1,10 +1,35 @@
-﻿namespace RenderEngineDesktop.Models.Common
+﻿using RenderEngineDesktop.Support;
+
+namespace RenderEngineDesktop.Models.Common
 {
     /// <summary>
     /// Common definition for a SINGLE file path.
     /// </summary>
     public class PathModel
     {
-        public string Path { get; set; } = string.Empty;
+        private readonly bool _isReadOnly;
+
+        public PathModel() { }
+
+        public PathModel(string path)
+        {
+            Path = path;
+            _isReadOnly = true;
+        }
+
+        private string _path = string.Empty;
+        public string Path
+        {
+            get => _path;
+            set
+            {
+                if (!_isReadOnly)
+                {
+                    _path = value;
+                }
+            }
+        }
+
+        public void Browse() => FileExplorer.Open(Path);
     }
 }

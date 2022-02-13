@@ -10,14 +10,30 @@
     <UserControl.DataContext>
         <options:OptionsViewModel/>
     </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="Separator">
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+    </UserControl.Resources>
 
     <DockPanel>
         <options:LogoView DockPanel.Dock="Right" Width="200"/>
         <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left">
+            <Label>Application Data Folder</Label>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <controls:BrowsablePath Context="{Binding Model.ApplicationFolder}"/>
+            </Border>
+
+            <Separator Height="16"/>
+
             <controls:InputField Text="{Binding Model.Uri}" Label="Render Engine Service Uri:" LabelWidth="150" TextWidth="150"/>
+
+            <Separator Height="6"/>
+            
             <controls:AssetPath DataContext="{Binding Model.AssetPath}"/>
 
-            <Button Command="{Binding BrowseCommand}" Width="180">Open configuration file folder</Button>
+            <Separator Height="16"/>
+
             <Button Command="{Binding TestCommand}" Width="180">Run Error Dialog Test</Button>
         </StackPanel>
     </DockPanel>

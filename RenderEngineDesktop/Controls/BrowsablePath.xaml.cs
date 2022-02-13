@@ -1,8 +1,6 @@
-﻿using System.Windows;
+﻿using RenderEngineDesktop.Models.Common;
+using System.Windows;
 using System.Windows.Data;
-using RenderEngineDesktop.IoC;
-using RenderEngineDesktop.Models.Common;
-using RenderEngineDesktop.Support;
 
 namespace RenderEngineDesktop.Controls
 {
@@ -25,7 +23,7 @@ namespace RenderEngineDesktop.Controls
         {
             if (DataContext is PathModel model)
             {
-                Factory.Instance.Get<ISystemInformation>().OpenExplorer(model.Path);
+                model.Browse();
             }
         }
     }

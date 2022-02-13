@@ -1,6 +1,8 @@
 ﻿using RenderEngineDesktop.Main;
 using RenderEngineDesktop.Models;
 using RenderEngineDesktop.Models.Assets;
+using RenderEngineDesktop.Models.Common;
+using RenderEngineDesktop.Support;
 
 namespace RenderEngineDesktop.Configuration
 {
@@ -8,6 +10,8 @@ namespace RenderEngineDesktop.Configuration
     {
         public string Uri { get; set; } = "net.tcp://localhost:1411/";
         public ViewTabs ActiveTab { get; set; } = default;
+        public PathModel ApplicationFolder { get; } = new(ApplicationInformation.ApplicationFolder());
+
         public AssetPathModel AssetPath { get; } = new();
 
         public RenderPreviewModel RenderPreview { get; } = new();

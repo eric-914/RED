@@ -13,7 +13,7 @@ namespace RenderEngineDesktop.Models.Assets
 
         public AssetFoldersModel Folders { get; } = new();
 
-        public PathModel Root { get; } = new();
+        public PathModel Root { get; private set; } = new();
 
         public AssetPathModel()
         {
@@ -23,8 +23,10 @@ namespace RenderEngineDesktop.Models.Assets
 
         private void UpdateRoot()
         {
-            Root.Path = Path.Join($@"\\{Server.Environment}", Folders.AssetRoot, Folders.Toolbox, Folders.Environment);
+            Root = new PathModel(ToString());
             OnPropertyChanged(nameof(Root));
         }
+
+        public override string ToString() => Path.Join($@"\\{Server.Environment}", Folders.AssetRoot, Folders.Toolbox, Folders.Environment);
     }
 }

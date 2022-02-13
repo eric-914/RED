@@ -21,7 +21,7 @@ namespace RenderEngineDesktop.Commands
             _dialog
                 .ShowPathError(
                     new Exception("Invalid write permissions"),
-                    Path.Combine(_system.ApplicationLocalFolder(), "config.json"),
+                    Path.Combine(_system.ApplicationFolder(), "config.json"),
                     "An error occurred while trying to save the file:");
         }
     }

@@ -33,6 +33,6 @@ namespace RenderEngineDesktop.Configuration
             _persistence.Save(FilePath, model);
         }
 
-        private string FilePath => Path.Join(_information.ApplicationLocalFolder(), FileName);
+        private string FilePath => Path.Join(_information.ApplicationFolder(), FileName);
     }
 }

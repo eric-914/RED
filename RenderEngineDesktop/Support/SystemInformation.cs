@@ -1,15 +1,13 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-using System.Windows;
-using RenderEngineDesktop.Dialogs;
+﻿using RenderEngineDesktop.Dialogs;
 using RenderEngineDesktop.IoC;
+using System;
+using System.IO;
 
 namespace RenderEngineDesktop.Support
 {
     public interface ISystemInformation
     {
-        string ApplicationLocalFolder();
+        string ApplicationFolder();
         void OpenExplorer(string path);
     }
 
@@ -22,16 +20,10 @@ namespace RenderEngineDesktop.Support
             _factory = factory;
         }
 
-        public string AssemblyName
-            => System.Reflection.Assembly.GetExecutingAssembly().GetName().Name
-               ?? System.AppDomain.CurrentDomain.FriendlyName;
+        public string ApplicationFolder() => ValidateApplicationFolder(ApplicationInformation.ApplicationFolder());
 
-        public string ApplicationFolder() => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-
-        public string ApplicationFolder(string localFolder)
+        public string ValidateApplicationFolder(string path)
         {
-            string path = Path.Combine(ApplicationFolder(), localFolder);
-            
             if (!Directory.Exists(path))
             {
                 try
@@ -53,19 +45,7 @@ namespace RenderEngineDesktop.Support
             return path;
         }
 
-        public string ApplicationLocalFolder() => ApplicationFolder(AssemblyName);
 
-        public void OpenExplorer(string path)
-        {
-            var info = new ProcessStartInfo
-            {
-                FileName = path,
-                WorkingDirectory = path,
-                UseShellExecute = true,
-                Verb = "open"
-            };
-
-            Process.Start(info);
-        }
+        public void OpenExplorer(string path) => FileExplorer.Open(path);
     }
 }
