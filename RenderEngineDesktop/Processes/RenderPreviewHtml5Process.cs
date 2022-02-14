@@ -1,6 +1,7 @@
 ﻿using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Service;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -43,7 +44,35 @@ namespace RenderEngineDesktop.Processes
                 return;
             }
 
-            OnComplete(result);
+            var path = DocumentPath(result);
+
+            //OnComplete(ConvertToHtmlLink(result));
+            OnComplete(path);
+        }
+
+        public string DocumentPath(string file)
+        {
+            var root = _configuration.Model.AssetPath.Root.Path;
+            var folder = _configuration.Model.RenderPreviewHtml5.Source.ClientId.ToString();
+
+            return Path.Combine(root, folder, file);
+        }
+
+        public string ConvertToHtmlLink(string file)
+        {
+            var path = DocumentPath(file);
+
+            var html = $@"
+<html>
+<head></head>
+<body>
+<a href = ""{path}"" target=""_blank"">{file}</a>
+<a href = ""https://www.bing.com"">Bing</a>
+</body>
+</html>
+";
+
+            return html;
         }
     }
 }

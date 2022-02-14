@@ -16,8 +16,6 @@
             <local:RenderPreviewHtml5Fields DataContext="{Binding}"/>
             <Button Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
         </StackPanel>
-        <StackPanel Background="Gray">
-            <controls:HtmlViewer Html="{Binding Document}" />
-        </StackPanel>
+        <controls:HtmlViewer Html="{Binding Document}" Url="{Binding Url}"/>
     </DockPanel>
 </UserControl>

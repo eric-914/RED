@@ -29,7 +29,7 @@ namespace RenderEngineDesktop.Views.RenderPreviewHtml5
         {
             Model = configuration.Model.RenderPreviewHtml5;
 
-            InvokeCommand = commands.RenderPreviewHtml5Command(x => Document = x);
+            InvokeCommand = commands.RenderPreviewHtml5Command(x => Url = x);
         }
 
         private string _document = HtmlViewer.EmptyDocument;
@@ -37,6 +37,13 @@ namespace RenderEngineDesktop.Views.RenderPreviewHtml5
         {
             get => _document;
             set => Set(_document == value, () => _document = value);
+        }
+
+        private string _url = string.Empty;
+        public string Url
+        {
+            get => _url;
+            set => Set(_url == value, () => _url = value);
         }
     }
 }

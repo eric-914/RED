@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace RenderEngineDesktop.Controls
 {
@@ -16,10 +17,14 @@ No HTML document rendered.
 </html>
 ";
 
-        public static readonly DependencyProperty HtmlProperty 
+        public static readonly DependencyProperty HtmlProperty
             = DependencyProperty.Register("Html", typeof(string), typeof(HtmlViewer));
 
-        private string _document = "about:blank";
+        public static readonly DependencyProperty UrlProperty
+            = DependencyProperty.Register("Url", typeof(string), typeof(HtmlViewer));
+
+        private string _html = "about:blank";
+        private string _url = "about:blank";
 
         public HtmlViewer()
         {
@@ -32,6 +37,12 @@ No HTML document rendered.
             set => SetValue(HtmlProperty, value);
         }
 
+        public string Url
+        {
+            get => (string)GetValue(UrlProperty);
+            set => SetValue(UrlProperty, value);
+        }
+
         protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             base.OnPropertyChanged(e);
@@ -40,14 +51,26 @@ No HTML document rendered.
             {
                 SetDocument(Html);
             }
+            else if (e.Property == UrlProperty)
+            {
+                SetUrl(Url);
+            }
         }
 
         private void SetDocument(string html)
         {
-            if (string.IsNullOrEmpty(html) || html == _document) return;
+            if (string.IsNullOrEmpty(html) || html == _html) return;
 
-            _document = html;
-            Browser.NavigateToString(_document);
+            _html = html;
+            Browser.NavigateToString(_html);
+        }
+
+        private void SetUrl(string url)
+        {
+            if (string.IsNullOrEmpty(url) || url == _url) return;
+
+            _url = url;
+            Browser.Navigate(new Uri(url));
         }
     }
 }
