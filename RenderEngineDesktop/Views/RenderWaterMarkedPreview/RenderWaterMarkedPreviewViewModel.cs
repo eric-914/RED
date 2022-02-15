@@ -1,6 +1,9 @@
 ﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Models;
+using RenderEngineDesktop.Support;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace RenderEngineDesktop.Views.RenderWaterMarkedPreview
 {
@@ -9,10 +12,18 @@ namespace RenderEngineDesktop.Views.RenderWaterMarkedPreview
         public RenderWaterMarkedPreviewViewModel() { }
 
         [Ninject.Inject]
-        public RenderWaterMarkedPreviewViewModel(ICommands commands, IConfiguration configuration)
+        public RenderWaterMarkedPreviewViewModel(ICommands commands, IConfiguration configuration, IBitmapTools tools)
         : base(configuration.Model.RenderWaterMarkedPreview)
         {
-            SetInvoke(commands.RenderWaterMarkedPreviewCommand(_ => { }));
+            SetInvoke(commands.RenderWaterMarkedPreviewCommand(image => Image = image));
+            _image = tools.NoImage();
+        }
+
+        private ImageSource _image = new BitmapImage();
+        public ImageSource Image
+        {
+            get => _image;
+            set => Set(_image == value, () => _image = value);
         }
     }
 }

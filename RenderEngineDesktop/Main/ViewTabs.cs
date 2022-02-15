@@ -5,6 +5,7 @@
     {
         Options,
         RenderPreview,
+        RenderWaterMarkedPreview,
         RenderOutputFiles,
         ListEnumeratedFonts,
     }

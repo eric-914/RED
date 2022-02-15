@@ -10,6 +10,7 @@
         xmlns:options="clr-namespace:RenderEngineDesktop.Views.Options"
         xmlns:renderOutputFiles="clr-namespace:RenderEngineDesktop.Views.RenderOutputFiles"
         xmlns:renderPreviewHtml5="clr-namespace:RenderEngineDesktop.Views.RenderPreviewHtml5"
+        xmlns:renderWaterMarkedPreview="clr-namespace:RenderEngineDesktop.Views.RenderWaterMarkedPreview"
         mc:Ignorable="d"
         Title="Render Engine Desktop" Height="460" Width="770" 
         Icon="/Resources/RenderEngine.ico">
@@ -26,6 +27,9 @@
         </TabItem>
         <TabItem Header="Render Preview">
             <renderPreview:RenderPreviewView DataContext="{Binding RenderPreview}"/>
+        </TabItem>
+        <TabItem Header="Render Watermarked Preview">
+            <renderWaterMarkedPreview:RenderWaterMarkedPreviewView DataContext="{Binding RenderWaterMarkedPreview}"/>
         </TabItem>
         <TabItem Header="Render Output Files">
             <renderOutputFiles:RenderOutputFilesView DataContext="{Binding RenderOutputFiles}"/>
