@@ -6,5 +6,9 @@
         <Style TargetType="Control">
             <Setter Property="Background" Value="White"/>
         </Style>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
     </Application.Resources>
 </Application>

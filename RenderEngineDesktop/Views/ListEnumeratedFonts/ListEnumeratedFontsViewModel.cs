@@ -1,14 +1,11 @@
 ﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Models.Common;
-using RenderEngineDesktop.Service;
 using System.Windows.Input;
 
 namespace RenderEngineDesktop.Views.ListEnumeratedFonts
 {
     public class ListEnumeratedFontsViewModel : NotifyModel
     {
-        private readonly IRenderEngine _re;
-
         public ICommand InvokeCommand { get; }
 
         #region XAML Design
@@ -21,10 +18,9 @@ namespace RenderEngineDesktop.Views.ListEnumeratedFonts
         #endregion
 
         [Ninject.Inject]
-        public ListEnumeratedFontsViewModel(ICommands commands, IRenderEngine re)
+        public ListEnumeratedFontsViewModel(ICommands commands)
         {
-            _re = re;
-            InvokeCommand = commands.Action(Invoke);
+            InvokeCommand = commands.ListEnumeratedFontsCommand(x => Result = x);
         }
 
         private string _result = string.Empty;
@@ -32,11 +28,6 @@ namespace RenderEngineDesktop.Views.ListEnumeratedFonts
         {
             get => _result;
             set => Set(_result == value, () => _result = value);
-        }
-
-        private async void Invoke()
-        {
-            Result = await _re.ListEnumeratedFontsAsync();
         }
     }
 }

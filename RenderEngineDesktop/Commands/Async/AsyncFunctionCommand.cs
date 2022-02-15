@@ -1,6 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using RenderEngineDesktop.Processes;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
-using RenderEngineDesktop.Processes;
 
 namespace RenderEngineDesktop.Commands.Async;
 
@@ -19,10 +20,10 @@ public class AsyncFunctionCommand<T> : AsyncBaseCommand
 
     public override async void Execute()
     {
-        Task<T> task = _process.Invoke();
-
         try
         {
+            Task<T> task = _process.Invoke();
+
             T result = await task;
 
             if (task.IsCompletedSuccessfully)
@@ -30,8 +31,9 @@ public class AsyncFunctionCommand<T> : AsyncBaseCommand
                 _process.InvokeComplete(result);
             }
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
+            Debug.WriteLine(e.Message);
             MessageBox.Show("Async Function failed.");
         }
     }

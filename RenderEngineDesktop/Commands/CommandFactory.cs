@@ -13,9 +13,16 @@ namespace RenderEngineDesktop.Commands
 
         ICommand Test { get; }
 
-        ICommand RenderPreviewCommand(Action<ImageSource> onComplete);
+        ICommand ListEnumeratedFontsCommand(Action<string> onComplete);
+        ICommand PrepZipDirectoryForParseCommand();
+        ICommand RenderLeadsCommand();
+        ICommand RenderLowResPreviewCommand();
         ICommand RenderOutputFilesCommand();
+        ICommand RenderOutputFilesWithWaterMark();
+        ICommand RenderPreviewCommand(Action<ImageSource> onComplete);
         ICommand RenderPreviewHtml5Command(Action<string> onComplete);
+        ICommand RenderWaterMarkedPreviewCommand(Action<ImageSource> action);
+        ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> action);
     }
 
     internal class CommandsFactory : ICommands
@@ -31,12 +38,33 @@ namespace RenderEngineDesktop.Commands
 
         public ICommand Test => _factory.Get<TestCommand>();
 
-        public ICommand RenderPreviewCommand(Action<ImageSource> onComplete)
+        public ICommand ListEnumeratedFontsCommand(Action<string> onComplete)
         {
-            var process = _factory.Get<RenderPreviewProcess>();
+            var process = _factory.Get<ListEnumeratedFontsProcess>();
             process.OnComplete = onComplete;
 
-            return new AsyncFunctionCommand<byte[]?>(process);
+            return new AsyncFunctionCommand<string>(process);
+        }
+
+        public ICommand PrepZipDirectoryForParseCommand()
+        {
+            var process = _factory.Get<PrepZipDirectoryForParseProcess>();
+
+            return new AsyncActionCommand(process);
+        }
+
+        public ICommand RenderLeadsCommand()
+        {
+            var process = _factory.Get<RenderLeadsProcess>();
+
+            return new AsyncActionCommand(process);
+        }
+
+        public ICommand RenderLowResPreviewCommand()
+        {
+            var process = _factory.Get<RenderLowResPreviewProcess>();
+
+            return new AsyncActionCommand(process);
         }
 
         public ICommand RenderOutputFilesCommand()
@@ -46,12 +74,43 @@ namespace RenderEngineDesktop.Commands
             return new AsyncActionCommand(process);
         }
 
+        public ICommand RenderOutputFilesWithWaterMark()
+        {
+            var process = _factory.Get<RenderOutputFilesWithWaterMarkProcess>();
+
+            return new AsyncActionCommand(process);
+        }
+
+        public ICommand RenderPreviewCommand(Action<ImageSource> onComplete)
+        {
+            var process = _factory.Get<RenderPreviewProcess>();
+            process.OnComplete = onComplete;
+
+            return new AsyncFunctionCommand<byte[]?>(process);
+        }
+
         public ICommand RenderPreviewHtml5Command(Action<string> onComplete)
         {
             var process = _factory.Get<RenderPreviewHtml5Process>();
             process.OnComplete = onComplete;
 
             return new AsyncFunctionCommand<string>(process);
+        }
+
+        public ICommand RenderWaterMarkedPreviewCommand(Action<ImageSource> onComplete)
+        {
+            var process = _factory.Get<RenderWaterMarkedPreviewProcess>();
+            process.OnComplete = onComplete;
+
+            return new AsyncFunctionCommand<byte[]?>(process);
+        }
+
+        public ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> onComplete)
+        {
+            var process = _factory.Get<RenderZoomedPreviewFragmentProcess>();
+            process.OnComplete = onComplete;
+
+            return new AsyncFunctionCommand<byte[]?>(process);
         }
     }
 }

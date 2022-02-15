@@ -14,14 +14,15 @@ namespace RenderEngineDesktop.Configuration
 
         public AssetPathModel AssetPath { get; } = new();
 
-        public RenderPreviewModel RenderPreview { get; } = new();
-        public RenderOutputFilesModel RenderOutputFiles { get; } = new();
         public PrepZipDirectoryForParseModel PrepZipDirectoryForParse { get; } = new();
         public RenderLeadsModel RenderLeads { get; } = new();
         public RenderLowResPreviewModel RenderLowResPreview { get; } = new();
+        public RenderLowResPreviewWithWaterMarkModel RenderLowResPreviewWithWaterMark { get; } = new();
+        public RenderOutputFilesModel RenderOutputFiles { get; } = new();
         public RenderOutputFilesWithWaterMarkModel RenderOutputFilesWithWaterMark { get; } = new();
         public RenderPreviewHtml5Model RenderPreviewHtml5 { get; } = new();
+        public RenderPreviewModel RenderPreview { get; } = new();
         public RenderWaterMarkedPreviewModel RenderWaterMarkedPreview { get; } = new();
-        public RenderZoomedPreviewFragmentModel RenderZoomedPreview { get; } = new();
+        public RenderZoomedPreviewFragmentModel RenderZoomedPreviewFragment { get; } = new();
     }
 }

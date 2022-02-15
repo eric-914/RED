@@ -4,8 +4,6 @@
     {
         public RenderPreviewView()
         {
-            DataContext = new RenderPreviewViewModel();
-
             InitializeComponent();
         }
     }

@@ -1,30 +1,31 @@
-﻿using System.Windows;
-using RenderEngineDesktop.Processes;
+﻿using RenderEngineDesktop.Processes;
+using System.Diagnostics;
+using System.Windows;
 
-namespace RenderEngineDesktop.Commands.Async
+namespace RenderEngineDesktop.Commands.Async;
+
+/// <summary>
+/// Execute the given process
+/// </summary>
+public class AsyncActionCommand : AsyncBaseCommand
 {
-    /// <summary>
-    /// Execute the given process
-    /// </summary>
-    public class AsyncActionCommand : AsyncBaseCommand
+    private readonly IAsyncAction _process;
+
+    public AsyncActionCommand(IAsyncAction process)
     {
-        private readonly IAsyncAction _process;
+        _process = process;
+    }
 
-        public AsyncActionCommand(IAsyncAction process)
+    public override async void Execute()
+    {
+        try
         {
-            _process = process;
+            await _process.Invoke();
         }
-
-        public override async void Execute()
+        catch (System.Exception e)
         {
-            try
-            {
-                await _process.Invoke();
-            }
-            catch (System.Exception)
-            {
-                MessageBox.Show("Async Action failed.");
-            }
+            Debug.WriteLine(e.Message);
+            MessageBox.Show("Async Action failed.");
         }
     }
 }
