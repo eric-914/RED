@@ -1,7 +1,7 @@
-﻿using RenderEngineDesktop.IoC;
-using System.Windows;
+﻿using System.Windows;
+using RenderEngineDesktop.IoC;
 
-namespace RenderEngineDesktop.Dialogs
+namespace RenderEngineDesktop.Dialogs.FileError
 {
     public partial class FileErrorMessageBox
     {

@@ -1,36 +1,27 @@
-﻿using RenderEngineDesktop.Annotations;
-using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Configuration.Support;
-using System;
-using System.ComponentModel;
-using System.IO;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
+﻿using RenderEngineDesktop.Commands;
+using RenderEngineDesktop.Models.Common;
 using RenderEngineDesktop.Support;
+using System;
+using System.IO;
+using System.Windows.Input;
 
-namespace RenderEngineDesktop.Dialogs;
+namespace RenderEngineDesktop.Dialogs.FileError;
 
-public class FileErrorMessageBoxViewModel : INotifyPropertyChanged
+public class FileErrorMessageBoxViewModel : NotifyModel
 {
     public event EventHandler? Close;
 
     private readonly ISystemInformation _system;
 
+    public ICommand OkCommand { get; }
+    public ICommand BrowseCommand { get; }
+
     private FileErrorMessageBoxModel _model = new();
     public FileErrorMessageBoxModel Model
     {
         get => _model;
-        set
-        {
-            if (_model == value) return;
-
-            _model = value;
-            OnPropertyChanged();
-        }
+        set => Set(_model == value, () => _model = value);
     }
-
-    public ICommand OkCommand { get; }
-    public ICommand BrowseCommand { get; }
 
     #region XAML Design
 
@@ -60,13 +51,5 @@ public class FileErrorMessageBoxViewModel : INotifyPropertyChanged
         var path = Path.GetDirectoryName(Model.Path) ?? @"C:\";
 
         _system.OpenExplorer(path);
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    [NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

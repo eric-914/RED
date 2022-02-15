@@ -1,10 +1,10 @@
 ﻿using RenderEngineDesktop.Configuration;
+using RenderEngineDesktop.Dialogs;
+using RenderEngineDesktop.IoC;
 using System;
-using System.Diagnostics;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace RenderEngineDesktop.Service
 {
@@ -73,6 +73,8 @@ namespace RenderEngineDesktop.Service
                 templateInstanceId,
                 cultureName));
 
+        #region Swf/Unused
+
         public Task<byte[]> RenderPreviewSwfAsync(
             Guid clientId,
             string instance,
@@ -83,6 +85,8 @@ namespace RenderEngineDesktop.Service
             int maximumHeightInPixels,
             bool suppressMultimediaLinks)
             => throw new Exception("Why Are You Trying To Use Swf?");
+
+        #endregion
 
         public Task<byte[]> RenderPreviewAsync(
             Guid clientId,
@@ -196,6 +200,8 @@ namespace RenderEngineDesktop.Service
         public Task<string> ListEnumeratedFontsAsync()
             => Invoke(x => x.ListEnumeratedFontsAsync());
 
+        #region Swf/Unused
+
         public Task PrepSwfForParseAsync(
             Guid clientId,
             string instance,
@@ -203,6 +209,8 @@ namespace RenderEngineDesktop.Service
             string key,
             string swfFileName)
             => throw new Exception("Why Are You Trying To Use Swf?");
+
+        #endregion
 
         public Task PrepZipDirectoryForParseAsync(
             Guid clientId,
@@ -223,7 +231,14 @@ namespace RenderEngineDesktop.Service
         {
             using var client = new RenderEngineServiceClient(Binding(), EndpointAddress());
 
-            await invoke(client);
+            try
+            {
+                await invoke(client);
+            }
+            catch (Exception e)
+            {
+                Factory.Instance.Get<IDialogManager>().ShowServiceError(e);
+            }
         }
 
         private async Task<T> Invoke<T>(Func<IRenderEngineService, Task<T>> invoke)
@@ -232,15 +247,12 @@ namespace RenderEngineDesktop.Service
 
             try
             {
-                T result = await invoke(client);
-
-                return result;
+                return await invoke(client);
 
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e.Message);
-                MessageBox.Show("Call to RES failed.");
+                Factory.Instance.Get<IDialogManager>().ShowServiceError(e);
 
                 return default!;
             }

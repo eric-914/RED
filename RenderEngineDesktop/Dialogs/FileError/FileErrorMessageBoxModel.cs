@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RenderEngineDesktop.Dialogs
+namespace RenderEngineDesktop.Dialogs.FileError
 {
     public class FileErrorMessageBoxModel
     {
