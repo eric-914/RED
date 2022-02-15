@@ -3,6 +3,7 @@ using RenderEngineDesktop.IoC;
 using RenderEngineDesktop.Views.ListEnumeratedFonts;
 using RenderEngineDesktop.Views.Options;
 using RenderEngineDesktop.Views.RenderOutputFiles;
+using RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark;
 using RenderEngineDesktop.Views.RenderPreview;
 using RenderEngineDesktop.Views.RenderPreviewHtml5;
 using RenderEngineDesktop.Views.RenderWaterMarkedPreview;
@@ -17,6 +18,7 @@ namespace RenderEngineDesktop.Main
         public RenderPreviewViewModel RenderPreview { get; }
         public RenderWaterMarkedPreviewViewModel RenderWaterMarkedPreview { get; }
         public RenderOutputFilesViewModel RenderOutputFiles { get; }
+        public RenderOutputFilesWithWaterMarkViewModel RenderOutputFilesWithWaterMark { get; }
         public RenderPreviewHtml5ViewModel RenderPreviewHtml5 { get; }
 
         #region XAML Design
@@ -38,6 +40,7 @@ namespace RenderEngineDesktop.Main
             RenderPreview = factory.Get<RenderPreviewViewModel>();
             RenderWaterMarkedPreview = factory.Get<RenderWaterMarkedPreviewViewModel>();
             RenderOutputFiles = factory.Get<RenderOutputFilesViewModel>();
+            RenderOutputFilesWithWaterMark = factory.Get<RenderOutputFilesWithWaterMarkViewModel>();
             RenderPreviewHtml5 = factory.Get<RenderPreviewHtml5ViewModel>();
         }
     }

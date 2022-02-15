@@ -1,15 +1,11 @@
 ﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Models;
-using System.Windows.Input;
 
 namespace RenderEngineDesktop.Views.RenderOutputFiles
 {
-    public class RenderOutputFilesViewModel
+    public class RenderOutputFilesViewModel : BaseServiceViewModel<RenderOutputFilesModel>
     {
-        public RenderOutputFilesModel Model { get; }
-        public ICommand InvokeCommand { get; }
-
         #region XAML Design
 
         //--Used by the XAML designer
@@ -21,9 +17,9 @@ namespace RenderEngineDesktop.Views.RenderOutputFiles
 
         [Ninject.Inject]
         public RenderOutputFilesViewModel(ICommands commands, IConfiguration configuration)
+        : base(configuration.Model.RenderOutputFiles)
         {
-            Model = configuration.Model.RenderOutputFiles;
-            InvokeCommand = commands.RenderOutputFilesCommand();
+            SetInvoke(commands.RenderOutputFilesCommand());
         }
     }
 }

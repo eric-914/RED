@@ -12,7 +12,7 @@
 
     <DockPanel>
         <StackPanel DockPanel.Dock="Left">
-            <local:RenderOutputFilesFields DataContext="{Binding}"/>
+            <local:RenderOutputFilesFields DataContext="{Binding Model}"/>
             <Button Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
         </StackPanel>
     </DockPanel>

@@ -7,6 +7,7 @@
         RenderPreview,
         RenderWaterMarkedPreview,
         RenderOutputFiles,
+        RenderOutputFilesWithWaterMark,
         ListEnumeratedFonts,
     }
 }
