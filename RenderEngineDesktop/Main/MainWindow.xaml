@@ -5,23 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:main="clr-namespace:RenderEngineDesktop.Main"
         xmlns:listEnumeratedFonts="clr-namespace:RenderEngineDesktop.Views.ListEnumeratedFonts"
-        xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
-        xmlns:converters="clr-namespace:RenderEngineDesktop.Converters"
         xmlns:options="clr-namespace:RenderEngineDesktop.Views.Options"
+        xmlns:renderLowResPreview="clr-namespace:RenderEngineDesktop.Views.RenderLowResPreview"
         xmlns:renderOutputFiles="clr-namespace:RenderEngineDesktop.Views.RenderOutputFiles"
+        xmlns:renderOutputFilesWithWaterMark="clr-namespace:RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark"
+        xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
         xmlns:renderPreviewHtml5="clr-namespace:RenderEngineDesktop.Views.RenderPreviewHtml5"
         xmlns:renderWaterMarkedPreview="clr-namespace:RenderEngineDesktop.Views.RenderWaterMarkedPreview"
-        xmlns:renderOutputFilesWithWaterMark="clr-namespace:RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark"
+        xmlns:prepZipDirectoryForParse="clr-namespace:RenderEngineDesktop.Views.PrepZipDirectoryForParse"
+        xmlns:renderZoomedPreviewFragment="clr-namespace:RenderEngineDesktop.Views.RenderZoomedPreviewFragment"
         mc:Ignorable="d"
         Title="Render Engine Desktop" Height="460" Width="770" 
         Icon="/Resources/RenderEngine.ico">
     <Window.DataContext>
         <main:MainViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-        <converters:ViewTabsConverter x:Key="ViewTabsConverter"/>
-    </Window.Resources>
-    <TabControl TabStripPlacement="Left" SelectedIndex="{Binding Model.ActiveTab, Converter={StaticResource ViewTabsConverter}}">
+    <TabControl TabStripPlacement="Left" SelectedIndex="{Binding Model.ActiveTab}">
         <!-- Needs to be in the same order as defined in ViewTabs -->
         <TabItem Header="Options">
             <options:OptionsView DataContext="{Binding Options}"/>
@@ -40,6 +39,15 @@
         </TabItem>
         <TabItem Header="Render Preview Html5">
             <renderPreviewHtml5:RenderPreviewHtml5View DataContext="{Binding RenderPreviewHtml5}"/>
+        </TabItem>
+        <TabItem Header="Render Low-Res Preview">
+            <renderLowResPreview:RenderLowResPreviewView DataContext="{Binding RenderLowResPreview}"/>
+        </TabItem>
+        <TabItem Header="Render Zoomed Preview Fragment">
+            <renderZoomedPreviewFragment:RenderZoomedPreviewFragmentView DataContext="{Binding RenderZoomedPreviewFragment}"/>
+        </TabItem>
+        <TabItem Header="Prep Zip Directory For Parse">
+            <prepZipDirectoryForParse:PrepZipDirectoryForParseView DataContext="{Binding PrepZipDirectoryForParse}"/>
         </TabItem>
         <TabItem Header="List Enumerated Fonts">
             <listEnumeratedFonts:ListEnumeratedFontsView DataContext="{Binding ListEnumeratedFonts}"/>

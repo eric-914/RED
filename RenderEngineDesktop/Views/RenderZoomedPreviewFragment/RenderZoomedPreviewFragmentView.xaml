@@ -12,8 +12,13 @@
 
     <DockPanel>
         <StackPanel DockPanel.Dock="Left">
-            <local:RenderZoomedPreviewFragmentFields DataContext="{Binding}"/>
+            <local:RenderZoomedPreviewFragmentFields DataContext="{Binding Model}"/>
             <Button Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
+        </StackPanel>
+        <StackPanel Background="Gray">
+            <Border BorderBrush="Black" BorderThickness="2">
+                <Image Source="{Binding Image}"/>
+            </Border>
         </StackPanel>
     </DockPanel>
 </UserControl>

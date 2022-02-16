@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
-             xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
+             xmlns:models="clr-namespace:RenderEngineDesktop.Models"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200">
     <UserControl.Resources>
@@ -13,10 +13,10 @@
         </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <renderPreview:RenderPreviewViewModel/>
+        <models:RenderPreviewModel/>
     </UserControl.DataContext>
 
-    <StackPanel DataContext="{Binding Model}">
+    <StackPanel>
         <controls:SourceFields Context="{Binding Source}"/>
         <controls:TemplateFields Context="{Binding Template}"/>
         <controls:MaximumInPixelsFields Context="{Binding MaximumInPixels}"/>

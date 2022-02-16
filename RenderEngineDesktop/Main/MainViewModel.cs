@@ -2,11 +2,14 @@
 using RenderEngineDesktop.IoC;
 using RenderEngineDesktop.Views.ListEnumeratedFonts;
 using RenderEngineDesktop.Views.Options;
+using RenderEngineDesktop.Views.PrepZipDirectoryForParse;
+using RenderEngineDesktop.Views.RenderLowResPreview;
 using RenderEngineDesktop.Views.RenderOutputFiles;
 using RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark;
 using RenderEngineDesktop.Views.RenderPreview;
 using RenderEngineDesktop.Views.RenderPreviewHtml5;
 using RenderEngineDesktop.Views.RenderWaterMarkedPreview;
+using RenderEngineDesktop.Views.RenderZoomedPreviewFragment;
 
 namespace RenderEngineDesktop.Main
 {
@@ -19,7 +22,10 @@ namespace RenderEngineDesktop.Main
         public RenderWaterMarkedPreviewViewModel RenderWaterMarkedPreview { get; }
         public RenderOutputFilesViewModel RenderOutputFiles { get; }
         public RenderOutputFilesWithWaterMarkViewModel RenderOutputFilesWithWaterMark { get; }
+        public RenderLowResPreviewViewModel RenderLowResPreview { get; }
         public RenderPreviewHtml5ViewModel RenderPreviewHtml5 { get; }
+        public RenderZoomedPreviewFragmentViewModel RenderZoomedPreviewFragment { get; }
+        public PrepZipDirectoryForParseViewModel PrepZipDirectoryForParse { get; }
 
         #region XAML Design
 
@@ -42,6 +48,9 @@ namespace RenderEngineDesktop.Main
             RenderOutputFiles = factory.Get<RenderOutputFilesViewModel>();
             RenderOutputFilesWithWaterMark = factory.Get<RenderOutputFilesWithWaterMarkViewModel>();
             RenderPreviewHtml5 = factory.Get<RenderPreviewHtml5ViewModel>();
+            RenderLowResPreview = factory.Get<RenderLowResPreviewViewModel>();
+            RenderZoomedPreviewFragment = factory.Get<RenderZoomedPreviewFragmentViewModel>();
+            PrepZipDirectoryForParse = factory.Get<PrepZipDirectoryForParseViewModel>();
         }
     }
 }
