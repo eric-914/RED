@@ -19,7 +19,7 @@
     <StackPanel DataContext="{Binding Model}">
         <controls:SourceFields Context="{Binding Source}"/>
         <controls:TemplateFields Context="{Binding Template}"/>
-        <controls:MaximumInPixelsFields Context="{Binding MaximumInPixels}"/>
+        <controls:SizeFields Context="{Binding MaximumInPixels}" Label="Maximum (in pixels)"/>
         <controls:OutlineColorComponentFields Context="{Binding OutlineColorComponent}"/>
     </StackPanel>
 </UserControl>

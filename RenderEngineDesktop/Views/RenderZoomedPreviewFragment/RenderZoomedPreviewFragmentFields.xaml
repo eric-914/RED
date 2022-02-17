@@ -20,9 +20,9 @@
     <StackPanel>
         <controls:SourceFields Context="{Binding Source}"/>
         <controls:TemplateFields Context="{Binding Template}"/>
-        <controls:MaximumInPixelsFields Context="{Binding MaximumInPixels}"/>
+        <controls:SizeFields Context="{Binding MaximumInPixels}" Label="Maximum (in pixels)"/>
         <controls:OutlineColorComponentFields Context="{Binding OutlineColorComponent}"/>
-        <controls:PercentTranslationFields Context="{Binding PercentTranslation}"/>
-        <controls:PercentageFields Context="{Binding Percentage}"/>
+        <controls:PointFields Context="{Binding PercentTranslation}" Label="Percent Translation"/>
+        <controls:SizeFields Context="{Binding Percentage}" Label="Percentage"/>
     </StackPanel>
 </UserControl>

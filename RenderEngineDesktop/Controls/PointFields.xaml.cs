@@ -1,8 +1,8 @@
 ﻿namespace RenderEngineDesktop.Controls
 {
-    public partial class PathFields
+    public partial class PointFields
     {
-        public PathFields()
+        public PointFields()
         {
             InitializeComponent();
         }
@@ -11,6 +11,5 @@
         {
             set => LabelControl.Content = value;
         }
-
     }
 }

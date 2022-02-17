@@ -1,12 +1,12 @@
-﻿<UserControl x:Class="RenderEngineDesktop.Controls.SourceFields"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
-             xmlns:common="clr-namespace:RenderEngineDesktop.Models.Common"
-             mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="200">
+﻿<local:ContextControl x:Class="RenderEngineDesktop.Controls.SourceFields"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
+                xmlns:common="clr-namespace:RenderEngineDesktop.Models.Common"
+                mc:Ignorable="d" 
+                d:DesignHeight="150" d:DesignWidth="200">
     <UserControl.DataContext>
         <common:SourceModel/>
     </UserControl.DataContext>
@@ -26,4 +26,4 @@
         <local:InputField Text="{Binding Environment}" Label="Environment" LabelWidth="80" TextWidth="80"/>
         <local:InputField Text="{Binding Key}" Label="Key" LabelWidth="80" TextWidth="80"/>
     </StackPanel>
-</UserControl>
+</local:ContextControl>

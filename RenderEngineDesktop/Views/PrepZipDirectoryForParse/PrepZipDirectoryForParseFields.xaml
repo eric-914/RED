@@ -18,6 +18,6 @@
 
     <StackPanel>
         <controls:SourceFields Context="{Binding Source}"/>
-        <controls:ZipFileFields Context="{Binding ZipFile}"/>
+        <controls:PathFields Context="{Binding ZipFile}" Label="ZipFile"/>
     </StackPanel>
 </UserControl>
