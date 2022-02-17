@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="RenderEngineDesktop.Controls.ZipFileFields"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:common="clr-namespace:RenderEngineDesktop.Models.Common"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="400">
+    <UserControl.DataContext>
+        <common:PathModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Vertical"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="TextWrapping" Value="NoWrap"/>
+            <Setter Property="AcceptsReturn" Value="False"/>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <Label>ZipFile</Label>
+        <TextBox Text="{Binding Path}"/>
+    </StackPanel>
+</UserControl>
