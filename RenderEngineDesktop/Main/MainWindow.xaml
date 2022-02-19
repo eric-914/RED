@@ -14,6 +14,7 @@
         xmlns:renderWaterMarkedPreview="clr-namespace:RenderEngineDesktop.Views.RenderWaterMarkedPreview"
         xmlns:prepZipDirectoryForParse="clr-namespace:RenderEngineDesktop.Views.PrepZipDirectoryForParse"
         xmlns:renderZoomedPreviewFragment="clr-namespace:RenderEngineDesktop.Views.RenderZoomedPreviewFragment"
+        xmlns:renderLeads="clr-namespace:RenderEngineDesktop.Views.RenderLeads"
         mc:Ignorable="d"
         Title="Render Engine Desktop" Height="460" Width="770" 
         Icon="/Resources/RenderEngine.ico">
@@ -45,6 +46,9 @@
         </TabItem>
         <TabItem Header="Render Zoomed Preview Fragment">
             <renderZoomedPreviewFragment:RenderZoomedPreviewFragmentView DataContext="{Binding RenderZoomedPreviewFragment}"/>
+        </TabItem>
+        <TabItem Header="Render Leads">
+            <renderLeads:RenderLeadsView DataContext="{Binding RenderLeads}"/>
         </TabItem>
         <TabItem Header="Prep Zip Directory For Parse">
             <prepZipDirectoryForParse:PrepZipDirectoryForParseView DataContext="{Binding PrepZipDirectoryForParse}"/>

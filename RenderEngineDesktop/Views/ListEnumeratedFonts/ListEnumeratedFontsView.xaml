@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:converters="clr-namespace:RenderEngineDesktop.Converters"
              xmlns:listEnumeratedFonts="clr-namespace:RenderEngineDesktop.Views.ListEnumeratedFonts"
+             xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="200">
     <UserControl.DataContext>
@@ -15,15 +16,19 @@
     </UserControl.Resources>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
-            <Button Command="{Binding InvokeCommand}">Invoke</Button>
-        </StackPanel>
-        <ScrollViewer Grid.Column="1" Height="300">
-            <ListView ItemsSource="{Binding Result, Mode=OneWay, Converter={StaticResource SplitStringConverter}}"/>
-        </ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Button Name="Invoke" Command="{Binding InvokeCommand}">Invoke</Button>
+            </StackPanel>
+            <ScrollViewer Grid.Column="1" Height="300">
+                <ListView ItemsSource="{Binding Result, Mode=OneWay, Converter={StaticResource SplitStringConverter}}"/>
+            </ScrollViewer>
+        </Grid>
+
+        <controls:BusyIndicator CommandName="Invoke"/>
     </Grid>
 </UserControl>

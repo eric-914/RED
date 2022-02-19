@@ -4,16 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RenderEngineDesktop.Views.RenderOutputFiles"
+             xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <local:RenderOutputFilesViewModel/>
     </UserControl.DataContext>
 
-    <DockPanel>
-        <StackPanel DockPanel.Dock="Left">
-            <local:RenderOutputFilesFields DataContext="{Binding Model}"/>
-            <Button Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
-        </StackPanel>
-    </DockPanel>
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left">
+                <local:RenderOutputFilesFields DataContext="{Binding Model}"/>
+                <Button Name="Invoke" Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
+            </StackPanel>
+        </DockPanel>
+
+        <controls:BusyIndicator CommandName="Invoke"/>
+    </Grid>
 </UserControl>

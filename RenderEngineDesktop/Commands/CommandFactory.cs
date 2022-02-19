@@ -40,10 +40,14 @@ namespace RenderEngineDesktop.Commands
 
         public ICommand ListEnumeratedFontsCommand(Action<string> onComplete)
         {
-            var process = _factory.Get<ListEnumeratedFontsProcess>();
-            process.OnComplete = onComplete;
+            return new ListEnumeratedFontsCommand(
+                _factory.Get<ListEnumeratedFontsProcess>(),
+                onComplete);
 
-            return new AsyncFunctionCommand<string>(process);
+            //var process = _factory.Get<ListEnumeratedFontsProcess>();
+            //process.OnComplete = onComplete;
+
+            //return new AsyncFunctionCommand<string>(process);
         }
 
         public ICommand PrepZipDirectoryForParseCommand()

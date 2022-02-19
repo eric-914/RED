@@ -11,11 +11,15 @@
         <local:RenderPreviewHtml5ViewModel/>
     </UserControl.DataContext>
 
-    <DockPanel>
-        <StackPanel DockPanel.Dock="Left">
-            <local:RenderPreviewHtml5Fields DataContext="{Binding}"/>
-            <Button Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
-        </StackPanel>
-        <controls:HtmlViewer Html="{Binding Document}" Url="{Binding Url}"/>
-    </DockPanel>
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left">
+                <local:RenderPreviewHtml5Fields DataContext="{Binding}"/>
+                <Button Name="Invoke" Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
+            </StackPanel>
+            <controls:HtmlViewer Html="{Binding Document}" Url="{Binding Url}"/>
+        </DockPanel>
+
+        <controls:BusyIndicator CommandName="Invoke"/>
+    </Grid>
 </UserControl>

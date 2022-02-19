@@ -3,6 +3,7 @@ using RenderEngineDesktop.IoC;
 using RenderEngineDesktop.Views.ListEnumeratedFonts;
 using RenderEngineDesktop.Views.Options;
 using RenderEngineDesktop.Views.PrepZipDirectoryForParse;
+using RenderEngineDesktop.Views.RenderLeads;
 using RenderEngineDesktop.Views.RenderLowResPreview;
 using RenderEngineDesktop.Views.RenderOutputFiles;
 using RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark;
@@ -25,6 +26,7 @@ namespace RenderEngineDesktop.Main
         public RenderLowResPreviewViewModel RenderLowResPreview { get; }
         public RenderPreviewHtml5ViewModel RenderPreviewHtml5 { get; }
         public RenderZoomedPreviewFragmentViewModel RenderZoomedPreviewFragment { get; }
+        public RenderLeadsViewModel RenderLeads { get; }
         public PrepZipDirectoryForParseViewModel PrepZipDirectoryForParse { get; }
 
         #region XAML Design
@@ -50,6 +52,7 @@ namespace RenderEngineDesktop.Main
             RenderPreviewHtml5 = factory.Get<RenderPreviewHtml5ViewModel>();
             RenderLowResPreview = factory.Get<RenderLowResPreviewViewModel>();
             RenderZoomedPreviewFragment = factory.Get<RenderZoomedPreviewFragmentViewModel>();
+            RenderLeads = factory.Get<RenderLeadsViewModel>();
             PrepZipDirectoryForParse = factory.Get<PrepZipDirectoryForParseViewModel>();
         }
     }

@@ -4,21 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RenderEngineDesktop.Views.RenderWaterMarkedPreview"
+             xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <local:RenderWaterMarkedPreviewViewModel/>
     </UserControl.DataContext>
 
-    <DockPanel>
-        <StackPanel DockPanel.Dock="Left">
-            <local:RenderWaterMarkedPreviewFields DataContext="{Binding}"/>
-            <Button Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
-        </StackPanel>
-        <StackPanel Background="Gray">
-            <Border BorderBrush="Black" BorderThickness="2">
-                <Image Source="{Binding Image}"/>
-            </Border>
-        </StackPanel>
-    </DockPanel>
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left">
+                <local:RenderWaterMarkedPreviewFields DataContext="{Binding}"/>
+                <Button Name="Invoke" Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
+            </StackPanel>
+            <StackPanel Background="Gray">
+                <Border BorderBrush="Black" BorderThickness="2">
+                    <Image Source="{Binding Image}"/>
+                </Border>
+            </StackPanel>
+        </DockPanel>
+
+        <controls:BusyIndicator CommandName="Invoke"/>
+    </Grid>
 </UserControl>
