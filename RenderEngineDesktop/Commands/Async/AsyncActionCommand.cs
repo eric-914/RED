@@ -16,8 +16,10 @@ public class AsyncActionCommand : AsyncBaseCommand
         _process = process;
     }
 
-    public override async void Execute()
+    public override async void Execute(object? o)
     {
+        IsBusy = true;
+
         try
         {
             await _process.Invoke();
@@ -27,5 +29,7 @@ public class AsyncActionCommand : AsyncBaseCommand
             Debug.WriteLine(e.Message);
             MessageBox.Show("Async Action failed.");
         }
+
+        IsBusy = false;
     }
 }

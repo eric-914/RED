@@ -18,8 +18,10 @@ public class AsyncFunctionCommand<T> : AsyncBaseCommand
         _process = process;
     }
 
-    public override async void Execute()
+    public override async void Execute(object? o)
     {
+        IsBusy = true;
+
         try
         {
             Task<T> task = _process.Invoke();
@@ -36,5 +38,7 @@ public class AsyncFunctionCommand<T> : AsyncBaseCommand
             Debug.WriteLine(e.Message);
             MessageBox.Show("Async Function failed.");
         }
+
+        IsBusy = false;
     }
 }

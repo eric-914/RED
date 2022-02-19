@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace RenderEngineDesktop.Commands.Async
@@ -19,21 +20,13 @@ namespace RenderEngineDesktop.Commands.Async
                 if (_isBusy == value) return;
 
                 _isBusy = value;
+                Debug.WriteLine($"IsBusy={_isBusy}");
                 CanExecuteChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
         public bool CanExecute(object? parameter) => !IsBusy;
 
-        public void Execute(object? parameter)
-        {
-            IsBusy = true;
-
-            Execute();
-
-            IsBusy = false;
-        }
-
-        public abstract void Execute();
+        public abstract void Execute(object? parameter);
     }
 }
