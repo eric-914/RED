@@ -14,6 +14,9 @@ using RenderEngineDesktop.Views.RenderZoomedPreviewFragment;
 
 namespace RenderEngineDesktop.Main
 {
+    /// <summary>
+    /// The Main window's view-model.  It defines all child-tab view-models.
+    /// </summary>
     public class MainViewModel
     {
         public ConfigurationModel Model { get; set; }

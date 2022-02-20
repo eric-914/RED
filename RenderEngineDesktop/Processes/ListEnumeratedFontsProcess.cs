@@ -8,7 +8,7 @@ namespace RenderEngineDesktop.Processes
     /// <summary>
     /// Handles the RenderEngine.ListEnumeratedFonts process
     /// </summary>
-    public class ListEnumeratedFontsProcess : IAsyncFunction<string>
+    public class ListEnumeratedFontsProcess : IAsyncFunction<string, string>
     {
         private readonly IRenderEngine _re;
 

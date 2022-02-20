@@ -1,7 +1,7 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Models.Common;
 using System;
 using System.Windows.Input;
+using RenderEngineDesktop.Service.Parameters.Models;
 
 namespace RenderEngineDesktop.Dialogs.ServiceError
 {

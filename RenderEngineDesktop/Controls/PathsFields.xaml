@@ -4,12 +4,12 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:converters="clr-namespace:RenderEngineDesktop.Converters"
-                xmlns:common="clr-namespace:RenderEngineDesktop.Models.Common"
                 xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
+                xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                 mc:Ignorable="d" 
                 d:DesignHeight="150" d:DesignWidth="100">
     <UserControl.DataContext>
-        <common:PathsModel/>
+        <models:PathsModel/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <Style TargetType="StackPanel">
@@ -22,11 +22,11 @@
             <Setter Property="VerticalScrollBarVisibility" Value="Visible"/>
             <Setter Property="Height" Value="100"/>
         </Style>
-        <converters:ListStringConverter x:Key="ListStringConverter"/>
+        <converters:ListToStringConverter x:Key="ListToStringConverter"/>
     </UserControl.Resources>
 
     <StackPanel>
         <Label>OutputFilePaths</Label>
-        <TextBox Text="{Binding Paths, Converter={StaticResource ListStringConverter}}"/>
+        <TextBox Text="{Binding Paths, Converter={StaticResource ListToStringConverter}}"/>
     </StackPanel>
 </controls:ContextControl>

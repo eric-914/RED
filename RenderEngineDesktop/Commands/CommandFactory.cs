@@ -1,6 +1,6 @@
-﻿using RenderEngineDesktop.Commands.Async;
+﻿using RenderEngineDesktop.Commands.Process.Actions;
+using RenderEngineDesktop.Commands.Process.Functions;
 using RenderEngineDesktop.IoC;
-using RenderEngineDesktop.Processes;
 using System;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -18,13 +18,16 @@ namespace RenderEngineDesktop.Commands
         ICommand RenderLeadsCommand();
         ICommand RenderLowResPreviewCommand();
         ICommand RenderOutputFilesCommand();
-        ICommand RenderOutputFilesWithWaterMark();
+        ICommand RenderOutputFilesWithWaterMarkCommand();
         ICommand RenderPreviewCommand(Action<ImageSource> onComplete);
         ICommand RenderPreviewHtml5Command(Action<string> onComplete);
         ICommand RenderWaterMarkedPreviewCommand(Action<ImageSource> action);
         ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> action);
     }
 
+    /// <summary>
+    /// Special repository for commands
+    /// </summary>
     internal class CommandsFactory : ICommands
     {
         private readonly IFactory _factory;
@@ -34,87 +37,44 @@ namespace RenderEngineDesktop.Commands
             _factory = factory;
         }
 
+        /// <summary>
+        /// The most generic type of command: execute the given action.
+        /// </summary>
         public ICommand Action(Action action) => new ActionCommand(action);
 
+        /// <summary>
+        /// For testing
+        /// </summary>
         public ICommand Test => _factory.Get<TestCommand>();
 
-        public ICommand ListEnumeratedFontsCommand(Action<string> onComplete)
-        {
-            return new ListEnumeratedFontsCommand(
-                _factory.Get<ListEnumeratedFontsProcess>(),
-                onComplete);
+        public ICommand PrepZipDirectoryForParseCommand() 
+            => _factory.Get<PrepZipDirectoryForParseCommand>();
 
-            //var process = _factory.Get<ListEnumeratedFontsProcess>();
-            //process.OnComplete = onComplete;
+        public ICommand RenderLeadsCommand() 
+            => _factory.Get<RenderLeadsCommand>();
 
-            //return new AsyncFunctionCommand<string>(process);
-        }
+        public ICommand RenderLowResPreviewCommand() 
+            => _factory.Get<RenderLowResPreviewCommand>();
 
-        public ICommand PrepZipDirectoryForParseCommand()
-        {
-            var process = _factory.Get<PrepZipDirectoryForParseProcess>();
+        public ICommand RenderOutputFilesCommand() 
+            => _factory.Get<RenderOutputFilesCommand>();
 
-            return new AsyncActionCommand(process);
-        }
+        public ICommand RenderOutputFilesWithWaterMarkCommand() 
+            => _factory.Get<RenderOutputFilesWithWaterMarkCommand>();
 
-        public ICommand RenderLeadsCommand()
-        {
-            var process = _factory.Get<RenderLeadsProcess>();
+        public ICommand ListEnumeratedFontsCommand(Action<string> onComplete) 
+            => _factory.Get<ListEnumeratedFontsCommand, string>(onComplete);
 
-            return new AsyncActionCommand(process);
-        }
+        public ICommand RenderPreviewCommand(Action<ImageSource> onComplete) 
+            => _factory.Get<RenderPreviewCommand, ImageSource>(onComplete);
 
-        public ICommand RenderLowResPreviewCommand()
-        {
-            var process = _factory.Get<RenderLowResPreviewProcess>();
+        public ICommand RenderPreviewHtml5Command(Action<string> onComplete) 
+            => _factory.Get<RenderPreviewHtml5Command, string>(onComplete);
 
-            return new AsyncActionCommand(process);
-        }
+        public ICommand RenderWaterMarkedPreviewCommand(Action<ImageSource> onComplete) 
+            => _factory.Get<RenderWaterMarkedPreviewCommand, ImageSource>(onComplete);
 
-        public ICommand RenderOutputFilesCommand()
-        {
-            var process = _factory.Get<RenderOutputFilesProcess>();
-
-            return new AsyncActionCommand(process);
-        }
-
-        public ICommand RenderOutputFilesWithWaterMark()
-        {
-            var process = _factory.Get<RenderOutputFilesWithWaterMarkProcess>();
-
-            return new AsyncActionCommand(process);
-        }
-
-        public ICommand RenderPreviewCommand(Action<ImageSource> onComplete)
-        {
-            var process = _factory.Get<RenderPreviewProcess>();
-            process.OnComplete = onComplete;
-
-            return new AsyncFunctionCommand<byte[]?>(process);
-        }
-
-        public ICommand RenderPreviewHtml5Command(Action<string> onComplete)
-        {
-            var process = _factory.Get<RenderPreviewHtml5Process>();
-            process.OnComplete = onComplete;
-
-            return new AsyncFunctionCommand<string>(process);
-        }
-
-        public ICommand RenderWaterMarkedPreviewCommand(Action<ImageSource> onComplete)
-        {
-            var process = _factory.Get<RenderWaterMarkedPreviewProcess>();
-            process.OnComplete = onComplete;
-
-            return new AsyncFunctionCommand<byte[]?>(process);
-        }
-
-        public ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> onComplete)
-        {
-            var process = _factory.Get<RenderZoomedPreviewFragmentProcess>();
-            process.OnComplete = onComplete;
-
-            return new AsyncFunctionCommand<byte[]?>(process);
-        }
+        public ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> onComplete) 
+            => _factory.Get<RenderZoomedPreviewFragmentCommand, ImageSource>(onComplete);
     }
 }

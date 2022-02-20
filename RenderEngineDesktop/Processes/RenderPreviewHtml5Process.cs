@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace RenderEngineDesktop.Processes
 {
-    public class RenderPreviewHtml5Process : IAsyncFunction<string>
+    public class RenderPreviewHtml5Process : IAsyncFunction<string, string>
     {
         private readonly IConfiguration _configuration;
         private readonly IRenderEngine _re;

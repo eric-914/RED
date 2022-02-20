@@ -8,11 +8,12 @@
     <Grid>
         <Border HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Background="White"
+                Background="BlanchedAlmond"
                 Padding="30"
                 BorderBrush="Orange"
-                BorderThickness="4">
-            <Label FontSize="16">Processing...</Label>
+                BorderThickness="4"
+                CornerRadius="16">
+            <Label FontSize="18">Processing...</Label>
         </Border>
     </Grid>
 </UserControl>

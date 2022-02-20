@@ -11,7 +11,7 @@ namespace RenderEngineDesktop.Processes
     /// <summary>
     /// Handles the RenderEngine.RenderZoomedPreviewFragment process
     /// </summary>
-    public class RenderZoomedPreviewFragmentProcess : IAsyncFunction<byte[]?>
+    public class RenderZoomedPreviewFragmentProcess : IAsyncFunction<byte[]?, ImageSource>
     {
         private readonly IConfiguration _configuration;
         private readonly IRenderEngine _re;

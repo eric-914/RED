@@ -1,6 +1,6 @@
 ﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Configuration;
-using RenderEngineDesktop.Models;
+using RenderEngineDesktop.Models.Process;
 using RenderEngineDesktop.Support;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;

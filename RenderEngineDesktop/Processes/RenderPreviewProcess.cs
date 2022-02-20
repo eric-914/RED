@@ -11,7 +11,7 @@ namespace RenderEngineDesktop.Processes
     /// <summary>
     /// Handles the RenderEngine.RenderPreview process
     /// </summary>
-    public class RenderPreviewProcess : IAsyncFunction<byte[]?>
+    public class RenderPreviewProcess : IAsyncFunction<byte[]?, ImageSource>
     {
         private readonly IConfiguration _configuration;
         private readonly IRenderEngine _re;

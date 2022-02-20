@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
              xmlns:models="clr-namespace:RenderEngineDesktop.Models"
+             xmlns:process="clr-namespace:RenderEngineDesktop.Models.Process"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200">
     <UserControl.Resources>
@@ -13,7 +14,7 @@
         </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <models:RenderPreviewModel/>
+        <process:RenderPreviewModel/>
     </UserControl.DataContext>
 
     <StackPanel>

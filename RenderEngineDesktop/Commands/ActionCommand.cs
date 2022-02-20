@@ -2,7 +2,10 @@
 
 namespace RenderEngineDesktop.Commands
 {
-    public class ActionCommand : BaseCommand
+    /// <summary>
+    /// A simple Command class to bind an action to a command.
+    /// </summary>
+    public class ActionCommand : CanExecuteCommand
     {
         private readonly Action _action;
 

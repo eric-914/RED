@@ -1,5 +1,6 @@
 ﻿using RenderEngineDesktop.Models;
 using System.Threading.Tasks;
+using RenderEngineDesktop.Models.Process;
 
 namespace RenderEngineDesktop.Service
 {

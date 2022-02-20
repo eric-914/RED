@@ -1,11 +1,4 @@
-﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Configuration;
-using RenderEngineDesktop.Configuration.Support;
-using RenderEngineDesktop.Dialogs;
-using RenderEngineDesktop.IoC;
-using RenderEngineDesktop.Service;
-using System.Windows;
-using RenderEngineDesktop.Support;
+﻿using System.Windows;
 
 namespace RenderEngineDesktop
 {
@@ -15,26 +8,7 @@ namespace RenderEngineDesktop
         {
             base.OnStartup(e);
 
-            Factory.Instance
-                .SelfBind()
-
-                .Bind<IRenderEngineService, RenderEngineService>()
-                .Bind<IRenderEngine, RenderEngine>()
-
-                .Bind<ISystemInformation, SystemInformation>()
-                .Bind<IBitmapTools, BitmapTools>()
-                .Bind<IDialogManager, DialogManager>()
-
-                //--Configuration
-                .Bind<IConfigurationPersistence, ConfigurationPersistence>()
-                .Bind<IConfigurationManager, ConfigurationManager>()
-                .Singleton<IConfiguration, ConfigurationInstance>()
-
-                //--Commands
-                .Bind<ICommands, CommandsFactory>()
-
-                //--Main
-                ;
+            IoC.Bindings.Configure();
         }
     }
 }

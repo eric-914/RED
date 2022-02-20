@@ -5,7 +5,10 @@ using System.IO;
 
 namespace RenderEngineDesktop.Commands
 {
-    internal class TestCommand : BaseCommand
+    /// <summary>
+    /// This is just a test class
+    /// </summary>
+    internal class TestCommand : CanExecuteCommand
     {
         private readonly IDialogManager _dialog;
         private readonly ISystemInformation _system;

@@ -1,9 +1,12 @@
-﻿using System.IO;
-using RenderEngineDesktop.Configuration.Support;
+﻿using RenderEngineDesktop.Configuration.Support;
 using RenderEngineDesktop.Support;
+using System.IO;
 
 namespace RenderEngineDesktop.Configuration
 {
+    /// <summary>
+    /// Manages the load/save of the configuration model
+    /// </summary>
     internal interface IConfigurationManager
     {
         ConfigurationModel Load();

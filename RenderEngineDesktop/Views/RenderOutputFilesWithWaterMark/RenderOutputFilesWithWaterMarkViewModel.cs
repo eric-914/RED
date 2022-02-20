@@ -1,6 +1,6 @@
 ﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Configuration;
-using RenderEngineDesktop.Models;
+using RenderEngineDesktop.Models.Process;
 
 namespace RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark
 {
@@ -12,7 +12,7 @@ namespace RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark
         public RenderOutputFilesWithWaterMarkViewModel(ICommands commands, IConfiguration configuration)
         : base(configuration.Model.RenderOutputFilesWithWaterMark)
         {
-            SetInvoke(commands.RenderOutputFilesWithWaterMark());
+            SetInvoke(commands.RenderOutputFilesWithWaterMarkCommand());
         }
     }
 }

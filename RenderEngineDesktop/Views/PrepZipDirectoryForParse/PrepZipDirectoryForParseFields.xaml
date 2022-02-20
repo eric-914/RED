@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:RenderEngineDesktop.Models"
              xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
+             xmlns:process="clr-namespace:RenderEngineDesktop.Models.Process"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200">
     <UserControl.Resources>
@@ -13,7 +14,7 @@
         </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <models:PrepZipDirectoryForParseModel/>
+        <process:PrepZipDirectoryForParseModel/>
     </UserControl.DataContext>
 
     <StackPanel>

@@ -1,6 +1,6 @@
 ﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Configuration;
-using RenderEngineDesktop.Models;
+using RenderEngineDesktop.Models.Process;
 
 namespace RenderEngineDesktop.Views.RenderOutputFiles
 {

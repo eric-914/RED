@@ -1,4 +1,4 @@
-﻿using RenderEngineDesktop.Models.Common;
+﻿using RenderEngineDesktop.Service.Parameters.Models;
 using System.Windows;
 
 namespace RenderEngineDesktop.Controls

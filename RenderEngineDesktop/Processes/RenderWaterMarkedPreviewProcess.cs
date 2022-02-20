@@ -11,7 +11,7 @@ namespace RenderEngineDesktop.Processes
     /// <summary>
     /// Handles the RenderEngine.RenderWaterMarkedPreview process
     /// </summary>
-    public class RenderWaterMarkedPreviewProcess : IAsyncFunction<byte[]?>
+    public class RenderWaterMarkedPreviewProcess : IAsyncFunction<byte[]?, ImageSource>
     {
         private readonly IConfiguration _configuration;
         private readonly IRenderEngine _re;

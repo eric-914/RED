@@ -1,8 +1,8 @@
 ﻿using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Controls;
-using RenderEngineDesktop.Models;
-using RenderEngineDesktop.Models.Common;
+using RenderEngineDesktop.Models.Process;
+using RenderEngineDesktop.Service.Parameters.Models;
 using System.Windows.Input;
 
 namespace RenderEngineDesktop.Views.RenderPreviewHtml5

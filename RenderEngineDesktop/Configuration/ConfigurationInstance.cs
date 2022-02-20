@@ -1,5 +1,8 @@
 ﻿namespace RenderEngineDesktop.Configuration
 {
+    /// <summary>
+    /// Provides access to the configuration model and it's persistence.
+    /// </summary>
     public interface IConfiguration
     {
         ConfigurationModel Model { get; }
@@ -8,6 +11,9 @@
         void Save();
     }
 
+    /// <summary>
+    /// The root container of the configuration model
+    /// </summary>
     internal class ConfigurationInstance : IConfiguration
     {
         private readonly IConfigurationManager _manager;

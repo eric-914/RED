@@ -4,7 +4,7 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
-                xmlns:common="clr-namespace:RenderEngineDesktop.Models.Common"
+                xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                 mc:Ignorable="d" 
                 d:DesignHeight="100" d:DesignWidth="200">
     <UserControl.Resources>
@@ -18,7 +18,7 @@
         </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <common:SizeModel/>
+        <models:SizeModel/>
     </UserControl.DataContext>
 
     <StackPanel>

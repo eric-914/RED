@@ -7,11 +7,13 @@ namespace RenderEngineDesktop.Commands.Async;
 /// <summary>
 /// Execute the given process
 /// </summary>
-public class AsyncActionCommand : AsyncBaseCommand
+/// <typeparam name="TProcess">The process action type to invoke</typeparam>
+public class AsyncActionCommand<TProcess> : AsyncBaseCommand
+where TProcess : IAsyncAction
 {
-    private readonly IAsyncAction _process;
+    private readonly TProcess _process;
 
-    public AsyncActionCommand(IAsyncAction process)
+    public AsyncActionCommand(TProcess process)
     {
         _process = process;
     }

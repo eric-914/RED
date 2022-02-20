@@ -3,8 +3,8 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                xmlns:common="clr-namespace:RenderEngineDesktop.Models.Common"
                 xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
+                xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                 mc:Ignorable="d" 
                 d:DesignHeight="50" d:DesignWidth="250">
     <UserControl.Resources>
@@ -14,7 +14,7 @@
         </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <common:TemplateModel/>
+        <models:TemplateModel/>
     </UserControl.DataContext>
 
     <StackPanel>

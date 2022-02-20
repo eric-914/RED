@@ -5,6 +5,10 @@ using System.Windows.Data;
 
 namespace RenderEngineDesktop.Converters
 {
+    /// <summary>
+    /// The inverse of the BooleanToVisibilityConverter.
+    /// Hide when true, Show when false.
+    /// </summary>
     public class BooleanToVisibilityInverseConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

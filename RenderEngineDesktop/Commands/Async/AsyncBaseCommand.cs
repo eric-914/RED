@@ -1,12 +1,16 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows.Input;
 
 namespace RenderEngineDesktop.Commands.Async
 {
     /// <summary>
-    /// Handle busy state during async execution process
+    /// Provides a busy state during an async execution process
+    /// CanExecute is disabled when Busy
     /// </summary>
+    /// <remarks>
+    /// It seems the children have to turn Busy on/off within their async process.
+    /// Otherwise, the UI doesn't update properly.
+    /// </remarks>
     public abstract class AsyncBaseCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged;
@@ -20,7 +24,6 @@ namespace RenderEngineDesktop.Commands.Async
                 if (_isBusy == value) return;
 
                 _isBusy = value;
-                Debug.WriteLine($"IsBusy={_isBusy}");
                 CanExecuteChanged?.Invoke(this, EventArgs.Empty);
             }
         }

@@ -1,6 +1,7 @@
 ﻿using RenderEngineDesktop.Models;
 using RenderEngineDesktop.Models.Assets;
-using RenderEngineDesktop.Models.Common;
+using RenderEngineDesktop.Models.Process;
+using RenderEngineDesktop.Service.Parameters.Models;
 using RenderEngineDesktop.Support;
 
 namespace RenderEngineDesktop.Configuration

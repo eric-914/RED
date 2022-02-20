@@ -4,7 +4,7 @@
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                 xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
-                xmlns:common="clr-namespace:RenderEngineDesktop.Models.Common"
+                xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                 mc:Ignorable="d" 
                 d:DesignHeight="100" d:DesignWidth="200">
     <UserControl.Resources>
@@ -18,7 +18,7 @@
         </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
-        <common:PointModel/>
+        <models:PointModel/>
     </UserControl.DataContext>
 
     <StackPanel>

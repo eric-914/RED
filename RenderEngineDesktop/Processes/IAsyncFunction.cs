@@ -6,11 +6,12 @@ namespace RenderEngineDesktop.Processes
     /// An async function has two parts:
     /// What to invoke, and what to do with result when complete.
     /// </summary>
-    /// <typeparam name="T">The result type</typeparam>
-    public interface IAsyncFunction<T>
+    /// <typeparam name="TResult">The result type</typeparam>
+    /// <typeparam name="TPayload">The OnComplete payload type</typeparam>
+    public interface IAsyncFunction<TResult, TPayload> : IAsyncOnComplete<TPayload>
     {
-        public Task<T> Invoke();
+        public Task<TResult> Invoke();
 
-        public void InvokeComplete(T result);
+        public void InvokeComplete(TResult result);
     }
 }

@@ -6,10 +6,11 @@
              xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
              xmlns:renderOutputFiles="clr-namespace:RenderEngineDesktop.Views.RenderOutputFiles"
              xmlns:models="clr-namespace:RenderEngineDesktop.Models"
+             xmlns:process="clr-namespace:RenderEngineDesktop.Models.Process"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
-        <models:RenderOutputFilesModel/>
+        <process:RenderOutputFilesModel/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <Style TargetType="StackPanel">
