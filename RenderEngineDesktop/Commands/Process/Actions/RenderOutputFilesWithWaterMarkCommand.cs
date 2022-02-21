@@ -3,10 +3,10 @@ using RenderEngineDesktop.Processes;
 
 namespace RenderEngineDesktop.Commands.Process.Actions
 {
-    public class RenderOutputFilesWithWaterMarkCommand 
-        : AsyncActionCommand<RenderOutputFilesWithWaterMarkProcess>
+    public class RenderOutputFilesWithWatermarkCommand 
+        : AsyncActionCommand<RenderOutputFilesWithWatermarkProcess>
     {
-        public RenderOutputFilesWithWaterMarkCommand(RenderOutputFilesWithWaterMarkProcess process) 
+        public RenderOutputFilesWithWatermarkCommand(RenderOutputFilesWithWatermarkProcess process) 
             : base(process)
         {
         }

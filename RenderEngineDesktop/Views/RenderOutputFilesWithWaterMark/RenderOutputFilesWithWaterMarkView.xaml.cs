@@ -1,8 +1,8 @@
-﻿namespace RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark
+﻿namespace RenderEngineDesktop.Views.RenderOutputFilesWithWatermark
 {
-    public partial class RenderOutputFilesWithWaterMarkView 
+    public partial class RenderOutputFilesWithWatermarkView 
     {
-        public RenderOutputFilesWithWaterMarkView()
+        public RenderOutputFilesWithWatermarkView()
         {
             InitializeComponent();
         }

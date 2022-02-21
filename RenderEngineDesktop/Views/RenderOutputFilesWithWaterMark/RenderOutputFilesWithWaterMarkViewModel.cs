@@ -2,17 +2,17 @@
 using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Models.Process;
 
-namespace RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark
+namespace RenderEngineDesktop.Views.RenderOutputFilesWithWatermark
 {
-    public class RenderOutputFilesWithWaterMarkViewModel : BaseServiceViewModel<RenderOutputFilesWithWaterMarkModel>
+    public class RenderOutputFilesWithWatermarkViewModel : BaseServiceViewModel<RenderOutputFilesWithWatermarkModel>
     {
-        public RenderOutputFilesWithWaterMarkViewModel() { }
+        public RenderOutputFilesWithWatermarkViewModel() { }
 
         [Ninject.Inject]
-        public RenderOutputFilesWithWaterMarkViewModel(ICommands commands, IConfiguration configuration)
-        : base(configuration.Model.RenderOutputFilesWithWaterMark)
+        public RenderOutputFilesWithWatermarkViewModel(ICommands commands, IConfiguration configuration)
+        : base(configuration.Model.RenderOutputFilesWithWatermark)
         {
-            SetInvoke(commands.RenderOutputFilesWithWaterMarkCommand());
+            SetInvoke(commands.RenderOutputFilesWithWatermarkCommand());
         }
     }
 }

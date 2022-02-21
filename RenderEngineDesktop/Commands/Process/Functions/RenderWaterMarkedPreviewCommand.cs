@@ -5,10 +5,10 @@ using System.Windows.Media;
 
 namespace RenderEngineDesktop.Commands.Process.Functions
 {
-    public class RenderWaterMarkedPreviewCommand 
-        : AsyncBitmapFunctionCommand<RenderWaterMarkedPreviewProcess>
+    public class RenderWatermarkedPreviewCommand 
+        : AsyncBitmapFunctionCommand<RenderWatermarkedPreviewProcess>
     {
-        public RenderWaterMarkedPreviewCommand(RenderWaterMarkedPreviewProcess process, Action<ImageSource> onComplete) 
+        public RenderWatermarkedPreviewCommand(RenderWatermarkedPreviewProcess process, Action<ImageSource> onComplete) 
             : base(process, onComplete)
         {
         }

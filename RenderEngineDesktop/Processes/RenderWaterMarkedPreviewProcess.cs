@@ -1,17 +1,17 @@
 ﻿using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Service;
+using RenderEngineDesktop.Support;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
-using RenderEngineDesktop.Support;
 
 namespace RenderEngineDesktop.Processes
 {
     /// <summary>
-    /// Handles the RenderEngine.RenderWaterMarkedPreview process
+    /// Handles the RenderEngine.RenderWatermarkedPreview process
     /// </summary>
-    public class RenderWaterMarkedPreviewProcess : IAsyncFunction<byte[]?, ImageSource>
+    public class RenderWatermarkedPreviewProcess : IAsyncFunction<byte[]?, ImageSource>
     {
         private readonly IConfiguration _configuration;
         private readonly IRenderEngine _re;
@@ -22,7 +22,7 @@ namespace RenderEngineDesktop.Processes
         /// </summary>
         public Action<ImageSource> OnComplete { get; set; } = _ => { };
 
-        public RenderWaterMarkedPreviewProcess(IConfiguration configuration, IRenderEngine re, IBitmapTools tools)
+        public RenderWatermarkedPreviewProcess(IConfiguration configuration, IRenderEngine re, IBitmapTools tools)
         {
             _configuration = configuration;
             _re = re;
@@ -33,7 +33,7 @@ namespace RenderEngineDesktop.Processes
         {
             try
             {
-                return await _re.RenderWaterMarkedPreviewAsync(_configuration.Model.RenderWaterMarkedPreview);
+                return await _re.RenderWatermarkedPreviewAsync(_configuration.Model.RenderWatermarkedPreview);
             }
             catch (Exception)
             {

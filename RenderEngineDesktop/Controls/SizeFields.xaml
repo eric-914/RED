@@ -23,7 +23,7 @@
 
     <StackPanel>
         <Label Name="LabelControl" Content="Width/Height"/>
-        <local:InputField Text="{Binding Width}" Label="Width" LabelWidth="50"/>
-        <local:InputField Text="{Binding Height}" Label="Height" LabelWidth="50"/>
+        <local:InputField Text="{Binding Width, FallbackValue=0}" Label="Width" LabelWidth="50"/>
+        <local:InputField Text="{Binding Height, FallbackValue=0}" Label="Height" LabelWidth="50"/>
     </StackPanel>
 </local:ContextControl>

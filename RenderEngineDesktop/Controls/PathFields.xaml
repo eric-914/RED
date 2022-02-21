@@ -23,6 +23,6 @@
 
     <StackPanel>
         <Label Name="LabelControl" Content="OutputFilePath"/>
-        <TextBox Text="{Binding Path}"/>
+        <TextBox Text="{Binding Path, FallbackValue=''}"/>
     </StackPanel>
 </controls:ContextControl>

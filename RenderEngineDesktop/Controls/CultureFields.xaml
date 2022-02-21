@@ -17,6 +17,6 @@
     </UserControl.Resources>
 
     <StackPanel>
-        <local:InputField Text="{Binding Name}" Label="CultureName" LabelWidth="80" TextWidth="80"/>
+        <local:InputField Text="{Binding Name, FallbackValue=''}" Label="CultureName" LabelWidth="80" TextWidth="80"/>
     </StackPanel>
 </local:ContextControl>

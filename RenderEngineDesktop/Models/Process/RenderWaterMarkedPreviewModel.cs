@@ -3,7 +3,7 @@ using RenderEngineDesktop.Service.Parameters.Models;
 
 namespace RenderEngineDesktop.Models.Process;
 
-public class RenderWaterMarkedPreviewModel : ISource, ITemplate, IMaximumInPixels, IOutlineColorComponent
+public class RenderWatermarkedPreviewModel : ISource, ITemplate, IMaximumInPixels, IOutlineColorComponent
 {
     public SourceModel Source { get; } = new();
 

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RenderEngineDesktop.Views.RenderLowResPreview"
              xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
+             xmlns:views="clr-namespace:RenderEngineDesktop.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
@@ -14,7 +15,7 @@
     <Grid>
         <DockPanel>
             <StackPanel DockPanel.Dock="Left">
-                <local:RenderLowResPreviewFields DataContext="{Binding Model}"/>
+                <views:RenderEngineFields Context="{Binding Model}"/>
                 <Button Name="Invoke" Command="{Binding InvokeCommand}" Margin="10" IsDefault="True">Invoke</Button>
             </StackPanel>
         </DockPanel>

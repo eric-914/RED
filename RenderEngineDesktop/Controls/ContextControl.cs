@@ -21,7 +21,18 @@ namespace RenderEngineDesktop.Controls
         //TODO: Figure out why this just can't be the DataContext itself
         public Binding Context
         {
-            set => SetBinding(DataContextProperty, value);
+            set
+            {
+                SetBinding(DataContextProperty, value);
+            }
+        }
+
+        public object Model
+        {
+            set
+            {
+
+            }
         }
     }
 }

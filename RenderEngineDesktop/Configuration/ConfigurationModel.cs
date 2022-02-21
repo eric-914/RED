@@ -17,12 +17,12 @@ namespace RenderEngineDesktop.Configuration
         public PrepZipDirectoryForParseModel PrepZipDirectoryForParse { get; } = new();
         public RenderLeadsModel RenderLeads { get; } = new();
         public RenderLowResPreviewModel RenderLowResPreview { get; } = new();
-        public RenderLowResPreviewWithWaterMarkModel RenderLowResPreviewWithWaterMark { get; } = new();
+        public RenderLowResPreviewWithWatermarkModel RenderLowResPreviewWithWatermark { get; } = new();
         public RenderOutputFilesModel RenderOutputFiles { get; } = new();
-        public RenderOutputFilesWithWaterMarkModel RenderOutputFilesWithWaterMark { get; } = new();
+        public RenderOutputFilesWithWatermarkModel RenderOutputFilesWithWatermark { get; } = new();
         public RenderPreviewHtml5Model RenderPreviewHtml5 { get; } = new();
         public RenderPreviewModel RenderPreview { get; } = new();
-        public RenderWaterMarkedPreviewModel RenderWaterMarkedPreview { get; } = new();
+        public RenderWatermarkedPreviewModel RenderWatermarkedPreview { get; } = new();
         public RenderZoomedPreviewFragmentModel RenderZoomedPreviewFragment { get; } = new();
     }
 }

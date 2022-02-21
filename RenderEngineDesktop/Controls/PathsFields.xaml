@@ -27,6 +27,6 @@
 
     <StackPanel>
         <Label>OutputFilePaths</Label>
-        <TextBox Text="{Binding Paths, Converter={StaticResource ListToStringConverter}}"/>
+        <TextBox Text="{Binding Paths, Converter={StaticResource ListToStringConverter}, FallbackValue=''}"/>
     </StackPanel>
 </controls:ContextControl>

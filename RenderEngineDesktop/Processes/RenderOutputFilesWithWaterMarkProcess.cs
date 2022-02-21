@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 namespace RenderEngineDesktop.Processes
 {
     /// <summary>
-    /// Handles the RenderEngine.RenderOutputFilesWithWaterMark process
+    /// Handles the RenderEngine.RenderOutputFilesWithWatermark process
     /// </summary>
-    public class RenderOutputFilesWithWaterMarkProcess : IAsyncAction
+    public class RenderOutputFilesWithWatermarkProcess : IAsyncAction
     {
         private readonly IConfiguration _configuration;
         private readonly IRenderEngine _re;
 
-        public RenderOutputFilesWithWaterMarkProcess(IConfiguration configuration, IRenderEngine re)
+        public RenderOutputFilesWithWatermarkProcess(IConfiguration configuration, IRenderEngine re)
         {
             _configuration = configuration;
             _re = re;
@@ -20,7 +20,7 @@ namespace RenderEngineDesktop.Processes
 
         public async Task Invoke()
         {
-            await _re.RenderOutputFilesWithWaterMarkAsync(_configuration.Model.RenderOutputFilesWithWaterMark);
+            await _re.RenderOutputFilesWithWatermarkAsync(_configuration.Model.RenderOutputFilesWithWatermark);
         }
     }
 }

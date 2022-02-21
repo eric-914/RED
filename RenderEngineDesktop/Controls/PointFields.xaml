@@ -23,7 +23,7 @@
 
     <StackPanel>
         <Label Name="LabelControl" Content="X/Y"/>
-        <local:InputField Text="{Binding X}" Label="X" LabelWidth="50"/>
-        <local:InputField Text="{Binding Y}" Label="Y" LabelWidth="50"/>
+        <local:InputField Text="{Binding X, FallbackValue=0}" Label="X" LabelWidth="50"/>
+        <local:InputField Text="{Binding Y, FallbackValue=0}" Label="Y" LabelWidth="50"/>
     </StackPanel>
 </local:ContextControl>

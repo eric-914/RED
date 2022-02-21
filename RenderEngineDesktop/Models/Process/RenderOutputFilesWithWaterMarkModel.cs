@@ -3,7 +3,7 @@ using RenderEngineDesktop.Service.Parameters.Models;
 
 namespace RenderEngineDesktop.Models.Process;
 
-public class RenderOutputFilesWithWaterMarkModel : ISource, ITemplate, IOutputFiles, IWatermark
+public class RenderOutputFilesWithWatermarkModel : ISource, ITemplate, IOutputFiles, IWatermark
 {
     public SourceModel Source { get; } = new();
 
@@ -11,5 +11,5 @@ public class RenderOutputFilesWithWaterMarkModel : ISource, ITemplate, IOutputFi
 
     public PathsModel OutputFiles { get; } = new();
 
-    public WaterMarkModel WaterMark { get; } = new();
+    public WatermarkModel Watermark { get; } = new();
 }

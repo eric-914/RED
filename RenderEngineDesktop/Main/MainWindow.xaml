@@ -8,10 +8,10 @@
         xmlns:options="clr-namespace:RenderEngineDesktop.Views.Options"
         xmlns:renderLowResPreview="clr-namespace:RenderEngineDesktop.Views.RenderLowResPreview"
         xmlns:renderOutputFiles="clr-namespace:RenderEngineDesktop.Views.RenderOutputFiles"
-        xmlns:renderOutputFilesWithWaterMark="clr-namespace:RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark"
+        xmlns:renderOutputFilesWithWatermark="clr-namespace:RenderEngineDesktop.Views.RenderOutputFilesWithWatermark"
         xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
         xmlns:renderPreviewHtml5="clr-namespace:RenderEngineDesktop.Views.RenderPreviewHtml5"
-        xmlns:renderWaterMarkedPreview="clr-namespace:RenderEngineDesktop.Views.RenderWaterMarkedPreview"
+        xmlns:renderWatermarkedPreview="clr-namespace:RenderEngineDesktop.Views.RenderWatermarkedPreview"
         xmlns:prepZipDirectoryForParse="clr-namespace:RenderEngineDesktop.Views.PrepZipDirectoryForParse"
         xmlns:renderZoomedPreviewFragment="clr-namespace:RenderEngineDesktop.Views.RenderZoomedPreviewFragment"
         xmlns:renderLeads="clr-namespace:RenderEngineDesktop.Views.RenderLeads"
@@ -30,13 +30,13 @@
             <renderPreview:RenderPreviewView DataContext="{Binding RenderPreview}"/>
         </TabItem>
         <TabItem Header="Render Watermarked Preview">
-            <renderWaterMarkedPreview:RenderWaterMarkedPreviewView DataContext="{Binding RenderWaterMarkedPreview}"/>
+            <renderWatermarkedPreview:RenderWatermarkedPreviewView DataContext="{Binding RenderWatermarkedPreview}"/>
         </TabItem>
         <TabItem Header="Render Output Files">
             <renderOutputFiles:RenderOutputFilesView DataContext="{Binding RenderOutputFiles}"/>
         </TabItem>
         <TabItem Header="Render Output Files With Watermark">
-            <renderOutputFilesWithWaterMark:RenderOutputFilesWithWaterMarkView DataContext="{Binding RenderOutputFilesWithWaterMark}"/>
+            <renderOutputFilesWithWatermark:RenderOutputFilesWithWatermarkView DataContext="{Binding RenderOutputFilesWithWatermark}"/>
         </TabItem>
         <TabItem Header="Render Preview Html5">
             <renderPreviewHtml5:RenderPreviewHtml5View DataContext="{Binding RenderPreviewHtml5}"/>

@@ -8,7 +8,7 @@
                 mc:Ignorable="d" 
                 d:DesignHeight="35" d:DesignWidth="200">
     <UserControl.DataContext>
-        <models:WaterMarkModel/>
+        <models:WatermarkModel/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <Style TargetType="StackPanel">
@@ -17,6 +17,6 @@
     </UserControl.Resources>
 
     <StackPanel>
-        <local:InputField Text="{Binding Text}" Label="Watermark" LabelWidth="80" TextWidth="80"/>
+        <local:InputField Text="{Binding Text, FallbackValue=''}" Label="Watermark" LabelWidth="80" TextWidth="80"/>
     </StackPanel>
 </local:ContextControl>

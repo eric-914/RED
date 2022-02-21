@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 namespace RenderEngineDesktop.Processes
 {
     /// <summary>
-    /// Handles the RenderEngine.RenderLowResPreviewWithWaterMark process
+    /// Handles the RenderEngine.RenderLowResPreviewWithWatermark process
     /// </summary>
-    public class RenderLowResPreviewWithWaterMarkProcess : IAsyncAction
+    public class RenderLowResPreviewWithWatermarkProcess : IAsyncAction
     {
         private readonly IConfiguration _configuration;
         private readonly IRenderEngine _re;
 
-        public RenderLowResPreviewWithWaterMarkProcess(IConfiguration configuration, IRenderEngine re)
+        public RenderLowResPreviewWithWatermarkProcess(IConfiguration configuration, IRenderEngine re)
         {
             _configuration = configuration;
             _re = re;
@@ -20,7 +20,7 @@ namespace RenderEngineDesktop.Processes
 
         public async Task Invoke()
         {
-            await _re.RenderLowResPreviewWithWaterMarkAsync(_configuration.Model.RenderLowResPreviewWithWaterMark);
+            await _re.RenderLowResPreviewWithWatermarkAsync(_configuration.Model.RenderLowResPreviewWithWatermark);
         }
     }
 }

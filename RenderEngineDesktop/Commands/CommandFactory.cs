@@ -18,10 +18,10 @@ namespace RenderEngineDesktop.Commands
         ICommand RenderLeadsCommand();
         ICommand RenderLowResPreviewCommand();
         ICommand RenderOutputFilesCommand();
-        ICommand RenderOutputFilesWithWaterMarkCommand();
+        ICommand RenderOutputFilesWithWatermarkCommand();
         ICommand RenderPreviewCommand(Action<ImageSource> onComplete);
         ICommand RenderPreviewHtml5Command(Action<string> onComplete);
-        ICommand RenderWaterMarkedPreviewCommand(Action<ImageSource> action);
+        ICommand RenderWatermarkedPreviewCommand(Action<ImageSource> action);
         ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> action);
     }
 
@@ -59,8 +59,8 @@ namespace RenderEngineDesktop.Commands
         public ICommand RenderOutputFilesCommand() 
             => _factory.Get<RenderOutputFilesCommand>();
 
-        public ICommand RenderOutputFilesWithWaterMarkCommand() 
-            => _factory.Get<RenderOutputFilesWithWaterMarkCommand>();
+        public ICommand RenderOutputFilesWithWatermarkCommand() 
+            => _factory.Get<RenderOutputFilesWithWatermarkCommand>();
 
         public ICommand ListEnumeratedFontsCommand(Action<string> onComplete) 
             => _factory.Get<ListEnumeratedFontsCommand, string>(onComplete);
@@ -71,8 +71,8 @@ namespace RenderEngineDesktop.Commands
         public ICommand RenderPreviewHtml5Command(Action<string> onComplete) 
             => _factory.Get<RenderPreviewHtml5Command, string>(onComplete);
 
-        public ICommand RenderWaterMarkedPreviewCommand(Action<ImageSource> onComplete) 
-            => _factory.Get<RenderWaterMarkedPreviewCommand, ImageSource>(onComplete);
+        public ICommand RenderWatermarkedPreviewCommand(Action<ImageSource> onComplete) 
+            => _factory.Get<RenderWatermarkedPreviewCommand, ImageSource>(onComplete);
 
         public ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> onComplete) 
             => _factory.Get<RenderZoomedPreviewFragmentCommand, ImageSource>(onComplete);

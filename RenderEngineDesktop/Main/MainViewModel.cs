@@ -6,10 +6,10 @@ using RenderEngineDesktop.Views.PrepZipDirectoryForParse;
 using RenderEngineDesktop.Views.RenderLeads;
 using RenderEngineDesktop.Views.RenderLowResPreview;
 using RenderEngineDesktop.Views.RenderOutputFiles;
-using RenderEngineDesktop.Views.RenderOutputFilesWithWaterMark;
+using RenderEngineDesktop.Views.RenderOutputFilesWithWatermark;
 using RenderEngineDesktop.Views.RenderPreview;
 using RenderEngineDesktop.Views.RenderPreviewHtml5;
-using RenderEngineDesktop.Views.RenderWaterMarkedPreview;
+using RenderEngineDesktop.Views.RenderWatermarkedPreview;
 using RenderEngineDesktop.Views.RenderZoomedPreviewFragment;
 
 namespace RenderEngineDesktop.Main
@@ -23,9 +23,9 @@ namespace RenderEngineDesktop.Main
         public OptionsViewModel Options { get; }
         public ListEnumeratedFontsViewModel ListEnumeratedFonts { get; }
         public RenderPreviewViewModel RenderPreview { get; }
-        public RenderWaterMarkedPreviewViewModel RenderWaterMarkedPreview { get; }
+        public RenderWatermarkedPreviewViewModel RenderWatermarkedPreview { get; }
         public RenderOutputFilesViewModel RenderOutputFiles { get; }
-        public RenderOutputFilesWithWaterMarkViewModel RenderOutputFilesWithWaterMark { get; }
+        public RenderOutputFilesWithWatermarkViewModel RenderOutputFilesWithWatermark { get; }
         public RenderLowResPreviewViewModel RenderLowResPreview { get; }
         public RenderPreviewHtml5ViewModel RenderPreviewHtml5 { get; }
         public RenderZoomedPreviewFragmentViewModel RenderZoomedPreviewFragment { get; }
@@ -49,9 +49,9 @@ namespace RenderEngineDesktop.Main
             Options = factory.Get<OptionsViewModel>();
             ListEnumeratedFonts = factory.Get<ListEnumeratedFontsViewModel>();
             RenderPreview = factory.Get<RenderPreviewViewModel>();
-            RenderWaterMarkedPreview = factory.Get<RenderWaterMarkedPreviewViewModel>();
+            RenderWatermarkedPreview = factory.Get<RenderWatermarkedPreviewViewModel>();
             RenderOutputFiles = factory.Get<RenderOutputFilesViewModel>();
-            RenderOutputFilesWithWaterMark = factory.Get<RenderOutputFilesWithWaterMarkViewModel>();
+            RenderOutputFilesWithWatermark = factory.Get<RenderOutputFilesWithWatermarkViewModel>();
             RenderPreviewHtml5 = factory.Get<RenderPreviewHtml5ViewModel>();
             RenderLowResPreview = factory.Get<RenderLowResPreviewViewModel>();
             RenderZoomedPreviewFragment = factory.Get<RenderZoomedPreviewFragmentViewModel>();
