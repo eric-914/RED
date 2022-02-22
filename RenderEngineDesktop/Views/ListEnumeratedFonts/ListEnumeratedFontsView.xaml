@@ -16,18 +16,15 @@
     </UserControl.Resources>
 
     <Grid>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Left">
                 <Button Name="Invoke" Command="{Binding InvokeCommand}">Invoke</Button>
             </StackPanel>
-            <ScrollViewer Grid.Column="1" Height="300">
+
+            <ScrollViewer VerticalAlignment="Stretch" PreviewMouseWheel="UIElement_OnPreviewMouseWheel">
                 <ListView ItemsSource="{Binding Result, Mode=OneWay, Converter={StaticResource StringToListConverter}}"/>
             </ScrollViewer>
-        </Grid>
+        </DockPanel>
 
         <controls:BusyIndicator CommandName="Invoke"/>
     </Grid>

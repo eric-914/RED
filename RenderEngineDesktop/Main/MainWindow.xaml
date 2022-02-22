@@ -21,8 +21,50 @@
     <Window.DataContext>
         <main:MainViewModel/>
     </Window.DataContext>
-    <TabControl TabStripPlacement="Left" SelectedIndex="{Binding Model.ActiveTab}">
-        <!-- Needs to be in the same order as defined in ViewTabs -->
+    <Window.Resources>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#F0F8FF" />
+        <Style TargetType="TabControl">
+            <Setter Property="TabStripPlacement" Value="Left" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
+        </Style>
+        <Style TargetType="Border" x:Key="BorderStyle">
+            <Setter Property="Margin" Value="2,0,0,0" />
+            <Setter Property="Padding" Value="1" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1,1,0,1" />
+            <Setter Property="CornerRadius" Value="5,0,0,5" />
+        </Style>
+        <Style TargetType="TabItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Border Name="Border" Style="{DynamicResource BorderStyle}">
+                            <Grid>
+                                <ContentPresenter x:Name="ContentSite"
+                                              VerticalAlignment="Center"
+                                              HorizontalAlignment="Left"
+                                              ContentSource="Header"
+                                              Margin="5,2"/>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="Black" />
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource BackgroundBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray" />
+                                <Setter TargetName="Border" Property="Background" Value="#F8F8F8" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <TabControl SelectedIndex="{Binding Model.ActiveTab}">
         <TabItem Header="Options">
             <options:OptionsView DataContext="{Binding Options}"/>
         </TabItem>
