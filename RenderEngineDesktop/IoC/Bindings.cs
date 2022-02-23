@@ -2,6 +2,7 @@
 using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Configuration.Support;
 using RenderEngineDesktop.Dialogs;
+using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service;
 using RenderEngineDesktop.Support;
 
@@ -19,6 +20,8 @@ namespace RenderEngineDesktop.IoC
         {
             Factory.Instance
                 .SelfBind()
+
+                .Bind<ILogger, Logger>()
 
                 .Bind<IRenderEngineService, RenderEngineService>()
                 .Bind<IRenderEngine, RenderEngine>()

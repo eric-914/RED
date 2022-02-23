@@ -15,6 +15,7 @@
         xmlns:prepZipDirectoryForParse="clr-namespace:RenderEngineDesktop.Views.PrepZipDirectoryForParse"
         xmlns:renderZoomedPreviewFragment="clr-namespace:RenderEngineDesktop.Views.RenderZoomedPreviewFragment"
         xmlns:renderLeads="clr-namespace:RenderEngineDesktop.Views.RenderLeads"
+        xmlns:logging="clr-namespace:RenderEngineDesktop.Views.Logging"
         mc:Ignorable="d"
         Title="Render Engine Desktop" Height="460" Width="770" 
         Icon="/Resources/RenderEngine.ico">
@@ -22,46 +23,14 @@
         <main:MainViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <SolidColorBrush x:Key="BackgroundBrush" Color="#F0F8FF" />
-        <Style TargetType="TabControl">
-            <Setter Property="TabStripPlacement" Value="Left" />
-            <Setter Property="HorizontalContentAlignment" Value="Left" />
-            <Setter Property="Background" Value="{StaticResource BackgroundBrush}" />
-        </Style>
-        <Style TargetType="Border" x:Key="BorderStyle">
-            <Setter Property="Margin" Value="2,0,0,0" />
-            <Setter Property="Padding" Value="1" />
-            <Setter Property="BorderBrush" Value="Black" />
-            <Setter Property="BorderThickness" Value="1,1,0,1" />
-            <Setter Property="CornerRadius" Value="5,0,0,5" />
-        </Style>
-        <Style TargetType="TabItem">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="TabItem">
-                        <Border Name="Border" Style="{DynamicResource BorderStyle}">
-                            <Grid>
-                                <ContentPresenter x:Name="ContentSite"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Left"
-                                              ContentSource="Header"
-                                              Margin="5,2"/>
-                            </Grid>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="Black" />
-                                <Setter TargetName="Border" Property="Background" Value="{StaticResource BackgroundBrush}" />
-                            </Trigger>
-                            <Trigger Property="IsSelected" Value="False">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="DarkGray" />
-                                <Setter TargetName="Border" Property="Background" Value="#F8F8F8" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./MainTabControlStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type ScrollViewer}">
+                <EventSetter Event="PreviewMouseWheel" Handler="UIElement_OnPreviewMouseWheel"/>
+            </Style>
+        </ResourceDictionary>
     </Window.Resources>
 
     <TabControl SelectedIndex="{Binding Model.ActiveTab}">
@@ -97,6 +66,9 @@
         </TabItem>
         <TabItem Header="List Enumerated Fonts">
             <listEnumeratedFonts:ListEnumeratedFontsView DataContext="{Binding ListEnumeratedFonts}"/>
+        </TabItem>
+        <TabItem Header="Output">
+            <logging:LogView DataContext="{Binding Log}"/>
         </TabItem>
     </TabControl>
 </Window>

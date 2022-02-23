@@ -21,9 +21,7 @@
                 <Button Name="Invoke" Command="{Binding InvokeCommand}">Invoke</Button>
             </StackPanel>
 
-            <ScrollViewer VerticalAlignment="Stretch" PreviewMouseWheel="UIElement_OnPreviewMouseWheel">
-                <ListView ItemsSource="{Binding Result, Mode=OneWay, Converter={StaticResource StringToListConverter}}"/>
-            </ScrollViewer>
+            <ListView ItemsSource="{Binding Result, Mode=OneWay, Converter={StaticResource StringToListConverter}}"/>
         </DockPanel>
 
         <controls:BusyIndicator CommandName="Invoke"/>

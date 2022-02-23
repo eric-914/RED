@@ -27,17 +27,19 @@
         </Style>
     </UserControl.Resources>
 
-    <StackPanel>
-        <controls:SourceFields x:Name="SourceFields" Context="{Binding Source, FallbackValue={StaticResource DefaultSourceModel}}"/>
-        <controls:TemplateFields x:Name="TemplateFields" Context="{Binding Template, FallbackValue={StaticResource DefaultTemplateModel}}"/>
-        <controls:PathFields x:Name="OutputFileFields" Context="{Binding OutputFile, FallbackValue={StaticResource DefaultPathModel}}" Label="OutputFilePath"/>
-        <controls:PathsFields x:Name="OutputFilesFields" Context="{Binding OutputFiles, FallbackValue={StaticResource DefaultPathsModel}}"/>
-        <controls:PathFields x:Name ="ZipFileFields" Context="{Binding ZipFile, FallbackValue={StaticResource DefaultPathModel}}" Label="ZipFile"/>
-        <controls:SizeFields x:Name="MaximumInPixelsFields" Context="{Binding MaximumInPixels, FallbackValue={StaticResource DefaultSizeModel}}" Label="Maximum (in pixels)"/>
-        <controls:OutlineColorComponentFields x:Name="OutlineColorComponentFields" Context="{Binding OutlineColorComponent, FallbackValue={StaticResource DefaultRgbModel}}"/>
-        <controls:WatermarkFields x:Name="WatermarkFields" Context="{Binding Watermark, FallbackValue={StaticResource DefaultWatermarkModel}}"/>
-        <controls:CultureFields x:Name="CultureFields" Context="{Binding Culture, FallbackValue={StaticResource DefaultCultureModel}}"/>
-        <controls:PointFields x:Name="PercentTranslationFields" Context="{Binding PercentTranslation, FallbackValue={StaticResource DefaultPointModel}}" Label="Percent Translation"/>
-        <controls:SizeFields x:Name="PercentageFields" Context="{Binding Percentage, FallbackValue={StaticResource DefaultSizeModel}}" Label="Percentage"/>
-    </StackPanel>
+    
+        <StackPanel>
+            <controls:SourceFields x:Name="SourceFields" Context="{Binding Source, FallbackValue={StaticResource DefaultSourceModel}}"/>
+            <controls:TemplateFields x:Name="TemplateFields" Context="{Binding Template, FallbackValue={StaticResource DefaultTemplateModel}}"/>
+            <controls:PathFields x:Name="OutputFileFields" Context="{Binding OutputFile, FallbackValue={StaticResource DefaultPathModel}}" Label="OutputFilePath"/>
+            <controls:PathsFields x:Name="OutputFilesFields" Context="{Binding OutputFiles, FallbackValue={StaticResource DefaultPathsModel}}"/>
+            <controls:PathFields x:Name ="ZipFileFields" Context="{Binding ZipFile, FallbackValue={StaticResource DefaultPathModel}}" Label="ZipFile"/>
+            <controls:SizeFields x:Name="MaximumInPixelsFields" Context="{Binding MaximumInPixels, FallbackValue={StaticResource DefaultSizeModel}}" Label="Maximum (in pixels)"/>
+            <controls:OutlineColorComponentFields x:Name="OutlineColorComponentFields" Context="{Binding OutlineColorComponent, FallbackValue={StaticResource DefaultRgbModel}}"/>
+            <controls:WatermarkFields x:Name="WatermarkFields" Context="{Binding Watermark, FallbackValue={StaticResource DefaultWatermarkModel}}"/>
+            <controls:CultureFields x:Name="CultureFields" Context="{Binding Culture, FallbackValue={StaticResource DefaultCultureModel}}"/>
+            <controls:PointFields x:Name="PercentTranslationFields" Context="{Binding PercentTranslation, FallbackValue={StaticResource DefaultPointModel}}" Label="Percent Translation"/>
+            <controls:SizeFields x:Name="PercentageFields" Context="{Binding Percentage, FallbackValue={StaticResource DefaultSizeModel}}" Label="Percentage"/>
+        </StackPanel>
+    
 </UserControl>

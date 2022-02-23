@@ -1,6 +1,7 @@
 ﻿using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.IoC;
 using RenderEngineDesktop.Views.ListEnumeratedFonts;
+using RenderEngineDesktop.Views.Logging;
 using RenderEngineDesktop.Views.Options;
 using RenderEngineDesktop.Views.PrepZipDirectoryForParse;
 using RenderEngineDesktop.Views.RenderLeads;
@@ -21,6 +22,8 @@ namespace RenderEngineDesktop.Main
     {
         public ConfigurationModel Model { get; set; }
         public OptionsViewModel Options { get; }
+        public LogViewModel Log { get; }
+
         public ListEnumeratedFontsViewModel ListEnumeratedFonts { get; }
         public RenderPreviewViewModel RenderPreview { get; }
         public RenderWatermarkedPreviewViewModel RenderWatermarkedPreview { get; }
@@ -47,6 +50,8 @@ namespace RenderEngineDesktop.Main
             Model = configuration.Model;
 
             Options = factory.Get<OptionsViewModel>();
+            Log = factory.Get<LogViewModel>();
+
             ListEnumeratedFonts = factory.Get<ListEnumeratedFontsViewModel>();
             RenderPreview = factory.Get<RenderPreviewViewModel>();
             RenderWatermarkedPreview = factory.Get<RenderWatermarkedPreviewViewModel>();
