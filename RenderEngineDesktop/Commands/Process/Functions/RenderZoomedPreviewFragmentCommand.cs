@@ -9,7 +9,7 @@ namespace RenderEngineDesktop.Commands.Process.Functions
         : AsyncBitmapFunctionCommand<RenderZoomedPreviewFragmentProcess>
     {
         public RenderZoomedPreviewFragmentCommand(RenderZoomedPreviewFragmentProcess process, Action<ImageSource> onComplete) 
-            : base(process, onComplete)
+            : base(onComplete)
         {
         }
     }

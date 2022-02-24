@@ -15,8 +15,8 @@ namespace RenderEngineDesktop.Commands.Async
         : AsyncFunctionCommand<TProcess, byte[]?, ImageSource>
         where TProcess : IAsyncFunction<byte[]?, ImageSource>
     {
-        public AsyncBitmapFunctionCommand(TProcess process, Action<ImageSource> onComplete) 
-            : base(process, onComplete)
+        public AsyncBitmapFunctionCommand(Action<ImageSource> onComplete) 
+            : base(onComplete)
         {
         }
     }

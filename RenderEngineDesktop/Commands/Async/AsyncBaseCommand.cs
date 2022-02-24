@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Ninject;
+using RenderEngineDesktop.Models.Logging;
+using System;
 using System.Windows.Input;
 
 namespace RenderEngineDesktop.Commands.Async
@@ -14,6 +16,9 @@ namespace RenderEngineDesktop.Commands.Async
     public abstract class AsyncBaseCommand : ICommand
     {
         public event EventHandler? CanExecuteChanged;
+
+        [Inject] 
+        public ILogger Logger { get; set; } = default!;
 
         private bool _isBusy;
         public bool IsBusy

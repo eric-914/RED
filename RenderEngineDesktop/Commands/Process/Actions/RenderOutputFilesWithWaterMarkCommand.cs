@@ -6,9 +6,5 @@ namespace RenderEngineDesktop.Commands.Process.Actions
     public class RenderOutputFilesWithWatermarkCommand 
         : AsyncActionCommand<RenderOutputFilesWithWatermarkProcess>
     {
-        public RenderOutputFilesWithWatermarkCommand(RenderOutputFilesWithWatermarkProcess process) 
-            : base(process)
-        {
-        }
     }
 }

@@ -9,7 +9,7 @@ namespace RenderEngineDesktop.Commands.Process.Functions
         : AsyncBitmapFunctionCommand<RenderWatermarkedPreviewProcess>
     {
         public RenderWatermarkedPreviewCommand(RenderWatermarkedPreviewProcess process, Action<ImageSource> onComplete) 
-            : base(process, onComplete)
+            : base(onComplete)
         {
         }
     }

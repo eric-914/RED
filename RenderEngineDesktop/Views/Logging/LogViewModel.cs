@@ -53,6 +53,7 @@ namespace RenderEngineDesktop.Views.Logging
             };
 
             Document.Blocks.Add(paragraph);
+            OnPropertyChanged("Document");
         }
 
         private void LoggedEventHandler(object sender, ILogEvent e)

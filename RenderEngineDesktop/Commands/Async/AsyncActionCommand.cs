@@ -1,4 +1,5 @@
-﻿using RenderEngineDesktop.Processes;
+﻿using Ninject;
+using RenderEngineDesktop.Processes;
 using System.Diagnostics;
 using System.Windows;
 
@@ -11,12 +12,8 @@ namespace RenderEngineDesktop.Commands.Async;
 public class AsyncActionCommand<TProcess> : AsyncBaseCommand
 where TProcess : IAsyncAction
 {
-    private readonly TProcess _process;
-
-    public AsyncActionCommand(TProcess process)
-    {
-        _process = process;
-    }
+    [Inject] 
+    public TProcess Process { get; set; } = default!;
 
     public override async void Execute(object? o)
     {
@@ -24,7 +21,11 @@ where TProcess : IAsyncAction
 
         try
         {
-            await _process.Invoke();
+            Logger.LogInformation($"{GetType().Name}.Execute():START");
+
+            await Process.Invoke();
+
+            Logger.LogInformation($"{GetType().Name}.Execute():COMPLETE");
         }
         catch (System.Exception e)
         {

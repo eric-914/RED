@@ -10,8 +10,8 @@ namespace RenderEngineDesktop.Commands.Async
         : AsyncFunctionCommand<TProcess, string, string> 
         where TProcess : IAsyncFunction<string, string>
     {
-        public AsyncStringFunctionCommand(TProcess process, Action<string> onComplete) 
-            : base(process, onComplete)
+        public AsyncStringFunctionCommand(Action<string> onComplete) 
+            : base(onComplete)
         {
         }
     }

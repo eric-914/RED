@@ -21,7 +21,7 @@ namespace RenderEngineDesktop.IoC
             Factory.Instance
                 .SelfBind()
 
-                .Bind<ILogger, Logger>()
+                .Singleton<ILogger, Logger>()
 
                 .Bind<IRenderEngineService, RenderEngineService>()
                 .Bind<IRenderEngine, RenderEngine>()

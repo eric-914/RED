@@ -9,7 +9,7 @@ namespace RenderEngineDesktop.Commands.Process.Functions
         : AsyncBitmapFunctionCommand<RenderPreviewProcess>
     {
         public RenderPreviewCommand(RenderPreviewProcess process, Action<ImageSource> onComplete) 
-            : base(process, onComplete)
+            : base(onComplete)
         {
         }
     }

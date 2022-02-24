@@ -8,7 +8,7 @@ namespace RenderEngineDesktop.Commands.Process.Functions
         : AsyncStringFunctionCommand<ListEnumeratedFontsProcess>
     {
         public ListEnumeratedFontsCommand(ListEnumeratedFontsProcess process, Action<string> onComplete) 
-            : base(process, onComplete)
+            : base(onComplete)
         {
         }
     }

@@ -1,5 +1,6 @@
-﻿using System;
+﻿using Ninject;
 using RenderEngineDesktop.Processes;
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,12 +16,24 @@ namespace RenderEngineDesktop.Commands.Async;
 public class AsyncFunctionCommand<TProcess, TResult, TPayload> : AsyncBaseCommand
 where TProcess : IAsyncFunction<TResult, TPayload>
 {
-    private readonly TProcess _process;
+    private readonly Action<TPayload> _onComplete;
 
-    public AsyncFunctionCommand(TProcess process, Action<TPayload> onComplete)
+    private TProcess _process = default!;
+
+    [Inject]
+    public TProcess Process
     {
-        _process = process;
-        _process.OnComplete = onComplete;
+        get => _process;
+        set
+        {
+            _process = value;
+            _process.OnComplete = _onComplete;
+        }
+    }
+
+    public AsyncFunctionCommand(Action<TPayload> onComplete)
+    {
+        _onComplete = onComplete;
     }
 
     public override async void Execute(object? o)
@@ -29,13 +42,17 @@ where TProcess : IAsyncFunction<TResult, TPayload>
 
         try
         {
-            Task<TResult> task = _process.Invoke();
+            Logger.LogInformation($"{GetType().Name}.Execute():START");
+
+            Task<TResult> task = Process.Invoke();
+
+            Logger.LogInformation($"{GetType().Name}.Execute():COMPLETE");
 
             TResult result = await task;
 
             if (task.IsCompletedSuccessfully)
             {
-                _process.InvokeComplete(result);
+                Process.InvokeComplete(result);
             }
         }
         catch (Exception e)

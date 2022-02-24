@@ -8,7 +8,7 @@ namespace RenderEngineDesktop.Commands.Process.Functions
         : AsyncStringFunctionCommand<RenderPreviewHtml5Process>
     {
         public RenderPreviewHtml5Command(RenderPreviewHtml5Process process, Action<string> onComplete) 
-            : base(process, onComplete)
+            : base(onComplete)
         {
         }
     }
