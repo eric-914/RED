@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 
 namespace RenderEngineDesktop.Models.Logging
 {
     public interface ILogger
     {
-        event LoggedInformationEventHandler? LoggedInformation;
-        event LoggedErrorEventHandler? LoggedError;
-        event LoggedExceptionEventHandler? LoggedException;
+        event LoggedEventHandler? LoggedEvent;
+
+        ObservableCollection<LogEvent> Events { get; }
 
         void LogInformation(string message);
         void LogError(string message);
@@ -16,93 +17,50 @@ namespace RenderEngineDesktop.Models.Logging
     // ReSharper disable InconsistentNaming
     public class Logger : ILogger
     {
-        #region Information
+        public ObservableCollection<LogEvent> Events { get; } = new();
 
-        private readonly object _lockInformation = new();
-        private event LoggedInformationEventHandler? _loggedInformation;
-        public event LoggedInformationEventHandler? LoggedInformation
+        private readonly object _lock = new();
+        private event LoggedEventHandler? _loggedEvent;
+        public event LoggedEventHandler? LoggedEvent
         {
             add
             {
-                lock (_lockInformation)
+                lock (_lock)
                 {
-                    _loggedInformation += value;
+                    _loggedEvent += value;
                 }
             }
-
             remove
             {
-                lock (_lockInformation)
+                lock (_lock)
                 {
-                    _loggedInformation -= value;
+                    _loggedEvent -= value;
                 }
             }
+        }
+
+        private void Log(LogEvent @event)
+        {
+            Events.Add(@event);
+            _loggedEvent?.Invoke(this, new LoggedEventArgs(@event));
         }
 
         public void LogInformation(string message)
         {
-            _loggedInformation?.Invoke(this, new LoggedInformationEventArgs(message));
-        }
-
-        #endregion
-
-        #region Error
-
-        private readonly object _lockError = new();
-        private event LoggedErrorEventHandler? _loggedError;
-        public event LoggedErrorEventHandler? LoggedError
-        {
-            add
-            {
-                lock (_lockError)
-                {
-                    _loggedError += value;
-                }
-            }
-
-            remove
-            {
-                lock (_lockError)
-                {
-                    _loggedError -= value;
-                }
-            }
+            var @event = new LogEvent(LogType.Information, message);
+            Log(@event);
         }
 
         public void LogError(string message)
         {
-            _loggedError?.Invoke(this, new LoggedErrorEventArgs(message));
-        }
-
-        #endregion
-
-        #region Exception
-
-        private readonly object _lockException = new();
-        private event LoggedExceptionEventHandler? _loggedException;
-        public event LoggedExceptionEventHandler? LoggedException
-        {
-            add
-            {
-                lock (_lockException)
-                {
-                    _loggedException += value;
-                }
-            }
-            remove
-            {
-                lock (_lockException)
-                {
-                    _loggedException -= value;
-                }
-            }
+            var @event = new LogEvent(LogType.Error, message);
+            Log(@event);
         }
 
         public void LogException(Exception ex, string? message = null)
         {
-            _loggedException?.Invoke(this, new LoggedExceptionEventArgs(ex, message));
+            var @event = new LogEvent(LogType.Exception, ex, message);
+            Log(@event);
         }
-
-        #endregion
     }
 }
