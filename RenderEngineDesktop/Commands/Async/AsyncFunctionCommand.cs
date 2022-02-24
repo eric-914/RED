@@ -1,9 +1,7 @@
 ﻿using Ninject;
 using RenderEngineDesktop.Processes;
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace RenderEngineDesktop.Commands.Async;
 
@@ -57,8 +55,7 @@ where TProcess : IAsyncFunction<TResult, TPayload>
         }
         catch (Exception e)
         {
-            Debug.WriteLine(e.Message);
-            MessageBox.Show("Async Function failed.");
+            Logger.LogException(e, "Async Function failed.");
         }
 
         IsBusy = false;

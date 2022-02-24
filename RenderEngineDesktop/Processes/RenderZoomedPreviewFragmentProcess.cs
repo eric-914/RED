@@ -1,9 +1,9 @@
 ﻿using RenderEngineDesktop.Configuration;
+using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service;
 using RenderEngineDesktop.Support;
 using System;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Media;
 
 namespace RenderEngineDesktop.Processes
@@ -13,6 +13,7 @@ namespace RenderEngineDesktop.Processes
     /// </summary>
     public class RenderZoomedPreviewFragmentProcess : IAsyncFunction<byte[]?, ImageSource>
     {
+        private readonly ILogger _logger;
         private readonly IConfiguration _configuration;
         private readonly IRenderEngine _re;
         private readonly IBitmapTools _tools;
@@ -22,8 +23,9 @@ namespace RenderEngineDesktop.Processes
         /// </summary>
         public Action<ImageSource> OnComplete { get; set; } = _ => { };
 
-        public RenderZoomedPreviewFragmentProcess(IConfiguration configuration, IRenderEngine re, IBitmapTools tools)
+        public RenderZoomedPreviewFragmentProcess(ILogger logger, IConfiguration configuration, IRenderEngine re, IBitmapTools tools)
         {
+            _logger = logger;
             _configuration = configuration;
             _re = re;
             _tools = tools;
@@ -37,7 +39,7 @@ namespace RenderEngineDesktop.Processes
             }
             catch (Exception)
             {
-                MessageBox.Show("Unexpected connection failure");
+                _logger.LogError("Unexpected connection failure");
                 throw;
             }
         }
@@ -46,7 +48,7 @@ namespace RenderEngineDesktop.Processes
         {
             if (bmp == null || bmp.Length == 0)
             {
-                MessageBox.Show("No image data returned");
+                _logger.LogError("No image data returned");
                 return;
             }
 

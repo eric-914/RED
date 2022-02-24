@@ -1,7 +1,5 @@
 ﻿using Ninject;
 using RenderEngineDesktop.Processes;
-using System.Diagnostics;
-using System.Windows;
 
 namespace RenderEngineDesktop.Commands.Async;
 
@@ -29,8 +27,7 @@ where TProcess : IAsyncAction
         }
         catch (System.Exception e)
         {
-            Debug.WriteLine(e.Message);
-            MessageBox.Show("Async Action failed.");
+            Logger.LogException(e, "Async Action failed.");
         }
 
         IsBusy = false;

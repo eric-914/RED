@@ -1,6 +1,6 @@
 ﻿using RenderEngineDesktop.Configuration;
-using RenderEngineDesktop.Dialogs;
 using RenderEngineDesktop.IoC;
+using RenderEngineDesktop.Models.Logging;
 using System;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
@@ -237,7 +237,7 @@ namespace RenderEngineDesktop.Service
             }
             catch (Exception e)
             {
-                Factory.Instance.Get<IDialogManager>().ShowServiceError(e);
+                Factory.Instance.Get<ILogger>().LogException(e, "RES Action");
             }
         }
 
@@ -252,7 +252,7 @@ namespace RenderEngineDesktop.Service
             }
             catch (Exception e)
             {
-                Factory.Instance.Get<IDialogManager>().ShowServiceError(e);
+                Factory.Instance.Get<ILogger>().LogException(e, "RES Function");
 
                 return default!;
             }

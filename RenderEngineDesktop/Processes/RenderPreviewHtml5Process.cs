@@ -1,14 +1,15 @@
 ﻿using RenderEngineDesktop.Configuration;
+using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace RenderEngineDesktop.Processes
 {
     public class RenderPreviewHtml5Process : IAsyncFunction<string, string>
     {
+        private readonly ILogger _logger;
         private readonly IConfiguration _configuration;
         private readonly IRenderEngine _re;
 
@@ -17,8 +18,9 @@ namespace RenderEngineDesktop.Processes
         /// </summary>
         public Action<string> OnComplete { get; set; } = _ => { };
 
-        public RenderPreviewHtml5Process(IConfiguration configuration, IRenderEngine re)
+        public RenderPreviewHtml5Process(ILogger logger, IConfiguration configuration, IRenderEngine re)
         {
+            _logger = logger;
             _configuration = configuration;
             _re = re;
         }
@@ -31,7 +33,7 @@ namespace RenderEngineDesktop.Processes
             }
             catch (Exception)
             {
-                MessageBox.Show("Unexpected connection failure");
+                _logger.LogError("Unexpected connection failure");
                 throw;
             }
         }
@@ -40,7 +42,7 @@ namespace RenderEngineDesktop.Processes
         {
             if (string.IsNullOrEmpty(result))
             {
-                MessageBox.Show("No HTML data returned");
+                _logger.LogError("No HTML data returned");
                 return;
             }
 

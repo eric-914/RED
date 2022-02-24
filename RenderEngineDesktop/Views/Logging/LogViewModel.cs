@@ -1,5 +1,7 @@
 ﻿using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service.Parameters.Models;
+using System;
+using System.Collections.Generic;
 using System.Windows.Documents;
 using System.Windows.Media;
 
@@ -14,31 +16,52 @@ namespace RenderEngineDesktop.Views.Logging
             public static readonly SolidColorBrush Exception = new(Color.FromRgb(224, 0, 0));
         }
 
-        private FlowDocument _document = new();
+        private readonly Dictionary<LogType, Action<ILogEvent>> _lookup;
 
+        #region Properties
+
+        private FlowDocument _document = new();
         public FlowDocument Document
         {
             get => _document;
-            set
-            {
-                if (value == _document) return;
-
-                _document = value;
-                OnPropertyChanged();
-            }
+            set => Set(_document==value, () => _document = value);
         }
 
-        #region XAML Design
+        private bool _showInformation;
+        public bool ShowInformation
+        {
+            get => _showInformation;
+            set => Set(_showInformation == value, () => _showInformation = value);
+        }
 
-        //--Used by XAML Designer
-#pragma warning disable CS8618
-        public LogViewModel() { }
-#pragma warning restore CS8618
+        private bool _showErrors;
+        public bool ShowErrors
+        {
+            get => _showErrors;
+            set => Set(_showErrors == value, () => _showErrors = value);
+        }
+
+        private bool _showExceptions;
+        public bool ShowExceptions
+        {
+            get => _showExceptions;
+            set => Set(_showExceptions == value, () => _showExceptions = value);
+        }
 
         #endregion
 
+        public LogViewModel()
+        {
+            _lookup = new Dictionary<LogType, Action<ILogEvent>>
+            {
+                {LogType.Information, Information},
+                {LogType.Error, Error},
+                {LogType.Exception, Exception},
+            };
+        }
+
         [Ninject.Inject]
-        public LogViewModel(ILogger logger)
+        public LogViewModel(ILogger logger) : this()
         {
             logger.LoggedEvent += LoggedEventHandler;
 
@@ -53,25 +76,13 @@ namespace RenderEngineDesktop.Views.Logging
             };
 
             Document.Blocks.Add(paragraph);
-            OnPropertyChanged("Document");
         }
 
         private void LoggedEventHandler(object sender, ILogEvent e)
         {
-            switch (e.LogType)
-            {
-                case LogType.Information:
-                    Information(e);
-                    break;
+            _lookup[e.LogType](e);
 
-                case LogType.Error:
-                    Error(e);
-                    break;
-
-                case LogType.Exception:
-                    Exception(e);
-                    break;
-            }
+            OnPropertyChanged(nameof(Document));
         }
 
         private void Information(ILogEvent e)
@@ -97,8 +108,8 @@ namespace RenderEngineDesktop.Views.Logging
             else
             {
                 var span = new Span();
-                span.Inlines.Add(new Run(e.Exception.Message));
                 span.Inlines.Add(new Run(e.Message));
+                span.Inlines.Add(new Run(e.Exception.Message));
 
                 Add(Colors.Exception, span);
             }

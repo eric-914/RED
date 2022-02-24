@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\ClearAll.png" />
     <None Remove="Resources\FileErrorMessageIcon.ico" />
     <None Remove="Resources\NoImage.png" />
     <None Remove="Resources\RenderEngine.ico" />
@@ -37,6 +38,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\ClearAll.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\FileErrorMessageIcon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

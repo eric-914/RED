@@ -1,7 +1,7 @@
-﻿using RenderEngineDesktop.Service;
+﻿using RenderEngineDesktop.Models.Logging;
+using RenderEngineDesktop.Service;
 using System;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace RenderEngineDesktop.Processes
 {
@@ -10,6 +10,7 @@ namespace RenderEngineDesktop.Processes
     /// </summary>
     public class ListEnumeratedFontsProcess : IAsyncFunction<string, string>
     {
+        private readonly ILogger _logger;
         private readonly IRenderEngine _re;
 
         /// <summary>
@@ -17,8 +18,9 @@ namespace RenderEngineDesktop.Processes
         /// </summary>
         public Action<string> OnComplete { get; set; } = _ => { };
 
-        public ListEnumeratedFontsProcess(IRenderEngine re)
+        public ListEnumeratedFontsProcess(ILogger logger, IRenderEngine re)
         {
+            _logger = logger;
             _re = re;
         }
 
@@ -31,7 +33,7 @@ namespace RenderEngineDesktop.Processes
         {
             if (string.IsNullOrEmpty(result))
             {
-                MessageBox.Show("No font data returned");
+                _logger.LogError("No font data returned");
                 return;
             }
 
