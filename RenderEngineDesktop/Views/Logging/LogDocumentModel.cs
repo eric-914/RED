@@ -1,7 +1,7 @@
-﻿using System;
+﻿using RenderEngineDesktop.Models.Logging;
+using System;
 using System.Collections.Generic;
 using System.Windows.Documents;
-using RenderEngineDesktop.Models.Logging;
 
 namespace RenderEngineDesktop.Views.Logging
 {
@@ -10,11 +10,6 @@ namespace RenderEngineDesktop.Views.Logging
         FlowDocument Document { get; set; }
         LogShowState Show { get; }
 
-        void Information(ILogEvent e);
-        void Error(ILogEvent e);
-        void Exception(ILogEvent e);
-
-        void Add(ILogEvent e);
         void AddRange(IEnumerable<ILogEvent> e);
         void Reset();
     }
@@ -24,21 +19,22 @@ namespace RenderEngineDesktop.Views.Logging
         public FlowDocument Document { get; set; } = new();
         public LogShowState Show { get; } = new();
 
+        private readonly ILogger _logger;
         private readonly ILogBlock _block;
 
-        private readonly Dictionary<LogType, Action<ILogEvent>> _lookup;
+        private readonly Dictionary<LogType, Action<ILogEvent>> _handlers;
 
-        public LogDocumentModel(ILogBlock block)
+        public LogDocumentModel(ILogger logger, ILogBlock block)
         {
+            _logger = logger;
             _block = block;
 
-            _lookup = new Dictionary<LogType, Action<ILogEvent>>
+            _handlers = new Dictionary<LogType, Action<ILogEvent>>
             {
                 {LogType.Information, Information},
                 {LogType.Error, Error},
                 {LogType.Exception, Exception},
             };
-
         }
 
         public void Information(ILogEvent e)
@@ -68,6 +64,8 @@ namespace RenderEngineDesktop.Views.Logging
         public void Reset()
         {
             Document = new FlowDocument();
+
+            AddRange(_logger.Events);
         }
 
         public void AddRange(IEnumerable<ILogEvent> list)
@@ -78,27 +76,20 @@ namespace RenderEngineDesktop.Views.Logging
             }
         }
 
-        public void Add(ILogEvent e)
-        {
-            _lookup[e.LogType](e);
-        }
+        public void Add(ILogEvent e) => _handlers[e.LogType](e);
 
-        private void Add(Block block)
-        {
-            Document.Blocks.Add(block);
-        }
+        private void Add(Block block) => Document.Blocks.Add(block);
     }
 
+    /// <summary>
+    /// This is just a placeholder until a valid document model is created.
+    /// </summary>
     public class NullLogDocumentModel : ILogDocumentModel
     {
         public FlowDocument Document { get; set; } = new();
         public LogShowState Show { get; } = new();
 
-        public void Information(ILogEvent e) => throw new System.NotImplementedException();
-        public void Error(ILogEvent e) => throw new System.NotImplementedException();
-        public void Exception(ILogEvent e) => throw new System.NotImplementedException();
-        public void Add(ILogEvent e) => throw new NotImplementedException();
         public void AddRange(IEnumerable<ILogEvent> e) => throw new NotImplementedException();
-        public void Reset() => throw new System.NotImplementedException();
+        public void Reset() => throw new NotImplementedException();
     }
 }

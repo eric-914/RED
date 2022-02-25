@@ -1,8 +1,10 @@
-﻿using RenderEngineDesktop.Commands;
+﻿using System;
+using RenderEngineDesktop.Commands;
 using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service.Parameters.Models;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Documents;
 using System.Windows.Input;
 
@@ -25,19 +27,26 @@ namespace RenderEngineDesktop.Views.Logging
         public bool ShowInformation
         {
             get => _model.Show.Information;
-            set => Set(_model.Show.Information == value, () => _model.Show.Information = value);
+            set => SetState(_model.Show.Information == value, () => _model.Show.Information = value);
         }
 
         public bool ShowErrors
         {
             get => _model.Show.Errors;
-            set => Set(_model.Show.Errors == value, () => _model.Show.Errors = value);
+            set => SetState(_model.Show.Errors == value, () => _model.Show.Errors = value);
         }
 
         public bool ShowExceptions
         {
             get => _model.Show.Exceptions;
-            set => Set(_model.Show.Exceptions == value, () => _model.Show.Exceptions = value);
+            set => SetState(_model.Show.Exceptions == value, () => _model.Show.Exceptions = value);
+        }
+
+        private void SetState(bool compare, Action action, [CallerMemberName] string? propertyName = null)
+        {
+            Set(compare, action, propertyName);
+            _model.Reset();
+            OnPropertyChanged(nameof(Document));
         }
 
         #endregion
