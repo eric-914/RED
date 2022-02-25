@@ -4,6 +4,7 @@ using RenderEngineDesktop.IoC;
 using System;
 using System.Windows.Input;
 using System.Windows.Media;
+using RenderEngineDesktop.Commands.Logging;
 
 namespace RenderEngineDesktop.Commands
 {
@@ -23,6 +24,7 @@ namespace RenderEngineDesktop.Commands
         ICommand RenderPreviewHtml5Command(Action<string> onComplete);
         ICommand RenderWatermarkedPreviewCommand(Action<ImageSource> action);
         ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> action);
+        ICommand ClearAllCommand();
     }
 
     /// <summary>
@@ -76,5 +78,8 @@ namespace RenderEngineDesktop.Commands
 
         public ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> onComplete) 
             => _factory.Get<RenderZoomedPreviewFragmentCommand, ImageSource>(onComplete);
+
+        public ICommand ClearAllCommand()
+            => _factory.Get<ClearAllCommand>();
     }
 }

@@ -56,15 +56,20 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style TargetType="FlowDocument">
+        </Style>
+        <Style TargetType="Paragraph">
+            <Setter Property="Margin" Value="0,1,0,1"/>
+        </Style>
     </Control.Resources>
     <DockPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
             <Label>Show output from:</Label>
-            <ToggleButton IsChecked="True" Background="#C0C000">Information</ToggleButton>
-            <ToggleButton IsChecked="True" Background="#FF6040">Errors</ToggleButton>
-            <ToggleButton IsChecked="True" Background="#D00000">Exceptions</ToggleButton>
+            <ToggleButton IsChecked="{Binding ShowInformation}" Background="#C0C000">Information</ToggleButton>
+            <ToggleButton IsChecked="{Binding ShowErrors}" Background="#FF6040">Errors</ToggleButton>
+            <ToggleButton IsChecked="{Binding ShowExceptions}" Background="#D00000">Exceptions</ToggleButton>
             <Separator Width="16"/>
-            <Button>
+            <Button Command="{Binding ClearAllCommand}">
                 <Image Source="../../Resources/ClearAll.png" Height="22" ToolTip="Clear All"/>
             </Button>
         </StackPanel>

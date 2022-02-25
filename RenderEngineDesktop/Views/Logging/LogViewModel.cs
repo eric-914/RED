@@ -1,8 +1,11 @@
-﻿using RenderEngineDesktop.Models.Logging;
+﻿using RenderEngineDesktop.Commands;
+using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service.Parameters.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace RenderEngineDesktop.Views.Logging
@@ -20,6 +23,8 @@ namespace RenderEngineDesktop.Views.Logging
 
         #region Properties
 
+        public ICommand ClearAllCommand { get; } = default!;
+
         private FlowDocument _document = new();
         public FlowDocument Document
         {
@@ -27,21 +32,21 @@ namespace RenderEngineDesktop.Views.Logging
             set => Set(_document==value, () => _document = value);
         }
 
-        private bool _showInformation;
+        private bool _showInformation = true;
         public bool ShowInformation
         {
             get => _showInformation;
             set => Set(_showInformation == value, () => _showInformation = value);
         }
 
-        private bool _showErrors;
+        private bool _showErrors = true;
         public bool ShowErrors
         {
             get => _showErrors;
             set => Set(_showErrors == value, () => _showErrors = value);
         }
 
-        private bool _showExceptions;
+        private bool _showExceptions = true;
         public bool ShowExceptions
         {
             get => _showExceptions;
@@ -61,11 +66,33 @@ namespace RenderEngineDesktop.Views.Logging
         }
 
         [Ninject.Inject]
-        public LogViewModel(ILogger logger) : this()
+        public LogViewModel(ILogger logger, ICommands commands) : this()
         {
-            logger.LoggedEvent += LoggedEventHandler;
+            logger.Events.CollectionChanged += LoggedEventsCollectionChanged;
 
             logger.LogInformation("Logging started.");
+
+            ClearAllCommand = commands.ClearAllCommand();
+        }
+
+        private void LoggedEventsCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    foreach (var item in e.NewItems!)
+                    {
+                        var @event = (ILogEvent)(item);
+                        _lookup[@event.LogType](@event);
+                    }
+                    break;
+
+                case NotifyCollectionChangedAction.Reset:
+                    Document = new FlowDocument();
+                    break;
+            }
+
+            OnPropertyChanged(nameof(Document));
         }
 
         private void Add(Brush color, Inline inline)
@@ -78,25 +105,24 @@ namespace RenderEngineDesktop.Views.Logging
             Document.Blocks.Add(paragraph);
         }
 
-        private void LoggedEventHandler(object sender, ILogEvent e)
-        {
-            _lookup[e.LogType](e);
-
-            OnPropertyChanged(nameof(Document));
-        }
-
         private void Information(ILogEvent e)
         {
+            if (!_showInformation) return;
+
             Add(Colors.Information, new Run(e.Message));
         }
 
         private void Error(ILogEvent e)
         {
+            if (!_showErrors) return;
+
             Add(Colors.Error, new Run(e.Message));
         }
 
         private void Exception(ILogEvent e)
         {
+            if (!_showExceptions) return;
+
             if (e.Exception == null)
             {
                 Add(Colors.Exception, new Run(e.Message));
@@ -109,6 +135,7 @@ namespace RenderEngineDesktop.Views.Logging
             {
                 var span = new Span();
                 span.Inlines.Add(new Run(e.Message));
+                span.Inlines.Add(new LineBreak());
                 span.Inlines.Add(new Run(e.Exception.Message));
 
                 Add(Colors.Exception, span);
