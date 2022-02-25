@@ -5,6 +5,7 @@ using RenderEngineDesktop.Dialogs;
 using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service;
 using RenderEngineDesktop.Support;
+using RenderEngineDesktop.Views.Logging;
 
 namespace RenderEngineDesktop.IoC
 {
@@ -21,6 +22,8 @@ namespace RenderEngineDesktop.IoC
             Factory.Instance
                 .SelfBind()
 
+                .Bind<ILogBlock, LogBlock>()
+                .Bind<ILogDocumentModel, LogDocumentModel>()
                 .Singleton<ILogger, Logger>()
 
                 .Bind<IRenderEngineService, RenderEngineService>()
