@@ -5,31 +5,29 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
                 xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
                 xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
-                mc:Ignorable="d" 
-                d:DesignHeight="100" d:DesignWidth="200">
+                mc:Ignorable="d"
+                d:DesignHeight="60" d:DesignWidth="200">
     <UserControl.DataContext>
         <models:PointModel/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Vertical"/>
-            <Setter Property="Margin" Value="0,0,0,0"/>
         </Style>
         <Style TargetType="Label">
             <Setter Property="FontWeight" Value="Normal"/>
-            <Setter Property="Margin" Value="0,00,0,0"/>
         </Style>
         <Style TargetType="local:InputField">
             <Setter Property="TextWidth" Value="50"/>
-            <Setter Property="LabelWidth" Value="50"/>
+            <Setter Property="LabelWidth" Value="40"/>
         </Style>
     </UserControl.Resources>
 
     <StackPanel>
         <Label Name="LabelControl" Content="X/Y"/>
         <StackPanel Orientation="Horizontal">
-            <local:InputField Text="{Binding X, FallbackValue=0}" Label="X" LabelWidth="50"/>
-            <local:InputField Text="{Binding Y, FallbackValue=0}" Label="Y" LabelWidth="50"/>
+            <local:InputField Text="{Binding X, FallbackValue=0}" Label="X" />
+            <local:InputField Text="{Binding Y, FallbackValue=0}" Label="Y" />
         </StackPanel>
     </StackPanel>
 </local:ContextControl>

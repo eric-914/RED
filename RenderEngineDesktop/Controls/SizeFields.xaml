@@ -6,7 +6,7 @@
                 xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
                 xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                 mc:Ignorable="d" 
-                d:DesignHeight="70" d:DesignWidth="220">
+                d:DesignHeight="60" d:DesignWidth="220">
     <UserControl.DataContext>
         <models:SizeModel/>
     </UserControl.DataContext>

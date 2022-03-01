@@ -6,7 +6,7 @@
                 xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
                 xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                 mc:Ignorable="d" 
-                d:DesignHeight="150" d:DesignWidth="200">
+                d:DesignHeight="140" d:DesignWidth="250">
     <UserControl.DataContext>
         <models:SourceModel/>
     </UserControl.DataContext>
@@ -23,7 +23,7 @@
     <StackPanel>
         <StackPanel Margin="0,0,0,10">
             <Label>ClientId</Label>
-            <TextBox Text="{Binding ClientId}"/>
+            <TextBox Text="{Binding ClientId}" Style="{StaticResource GuidTextBox}"/>
         </StackPanel>
 
         <local:InputField Text="{Binding Instance}" Label="Instance" />

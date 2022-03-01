@@ -12,6 +12,6 @@
         </Style>
     </UserControl.Resources>
     <Border>
-        <WebBrowser x:Name="Browser"/>
+        <WebBrowser x:Name="Browser" VerticalAlignment="Stretch"/>
     </Border>
 </UserControl>

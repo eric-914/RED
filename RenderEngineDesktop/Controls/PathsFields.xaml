@@ -14,7 +14,7 @@
     <UserControl.Resources>
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Vertical"/>
-            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="TextWrapping" Value="Wrap"/>

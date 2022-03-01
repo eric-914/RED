@@ -6,14 +6,13 @@
                          xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
                          xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                          mc:Ignorable="d" 
-                d:DesignHeight="30" d:DesignWidth="400">
+                d:DesignHeight="50" d:DesignWidth="400">
     <UserControl.DataContext>
         <models:PathModel/>
     </UserControl.DataContext>
     <UserControl.Resources>
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Vertical"/>
-            <Setter Property="Margin" Value="0,0,0,10"/>
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="TextWrapping" Value="NoWrap"/>

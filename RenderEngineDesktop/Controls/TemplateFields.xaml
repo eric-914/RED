@@ -7,18 +7,18 @@
                 xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                 mc:Ignorable="d" 
                 d:DesignHeight="50" d:DesignWidth="250">
+    <UserControl.DataContext>
+        <models:TemplateModel/>
+    </UserControl.DataContext>
     <UserControl.Resources>
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Vertical"/>
             <Setter Property="Margin" Value="0,0,0,10"/>
         </Style>
     </UserControl.Resources>
-    <UserControl.DataContext>
-        <models:TemplateModel/>
-    </UserControl.DataContext>
 
     <StackPanel>
         <Label>TemplateInstanceId</Label>
-        <TextBox Text="{Binding InstanceId}"/>
+        <TextBox Text="{Binding InstanceId}" Style="{StaticResource GuidTextBox}"/>
     </StackPanel>
 </controls:ContextControl>

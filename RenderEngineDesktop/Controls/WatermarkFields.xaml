@@ -6,7 +6,7 @@
                 xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
                 xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                 mc:Ignorable="d" 
-                d:DesignHeight="35" d:DesignWidth="200">
+                d:DesignHeight="30" d:DesignWidth="210">
     <UserControl.DataContext>
         <models:WatermarkModel/>
     </UserControl.DataContext>
@@ -14,9 +14,13 @@
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Vertical"/>
         </Style>
+        <Style TargetType="local:InputField">
+            <Setter Property="TextWidth" Value="120"/>
+            <Setter Property="LabelWidth" Value="80"/>
+        </Style>
     </UserControl.Resources>
 
     <StackPanel>
-        <local:InputField Text="{Binding Text, FallbackValue=''}" Label="Watermark" LabelWidth="80" TextWidth="80"/>
+        <local:InputField Text="{Binding Text, FallbackValue=''}" Label="Watermark" />
     </StackPanel>
 </local:ContextControl>
