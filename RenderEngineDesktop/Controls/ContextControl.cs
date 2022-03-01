@@ -26,13 +26,5 @@ namespace RenderEngineDesktop.Controls
                 SetBinding(DataContextProperty, value);
             }
         }
-
-        public object Model
-        {
-            set
-            {
-
-            }
-        }
     }
 }

@@ -14,6 +14,10 @@
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Vertical"/>
         </Style>
+        <Style TargetType="local:InputField">
+            <Setter Property="TextWidth" Value="120"/>
+            <Setter Property="LabelWidth" Value="80"/>
+        </Style>
     </UserControl.Resources>
 
     <StackPanel>
@@ -22,8 +26,8 @@
             <TextBox Text="{Binding ClientId}"/>
         </StackPanel>
 
-        <local:InputField Text="{Binding Instance}" Label="Instance" LabelWidth="80" TextWidth="80"/>
-        <local:InputField Text="{Binding Environment}" Label="Environment" LabelWidth="80" TextWidth="80"/>
-        <local:InputField Text="{Binding Key}" Label="Key" LabelWidth="80" TextWidth="80"/>
+        <local:InputField Text="{Binding Instance}" Label="Instance" />
+        <local:InputField Text="{Binding Environment}" Label="Environment" />
+        <local:InputField Text="{Binding Key}" Label="Key" />
     </StackPanel>
 </local:ContextControl>

@@ -6,24 +6,30 @@
                 xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
                 xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                 mc:Ignorable="d" 
-                d:DesignHeight="100" d:DesignWidth="200">
-    <UserControl.Resources>
-        <Style TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Vertical"/>
-            <Setter Property="Margin" Value="0,0,0,10"/>
-        </Style>
-        <Style TargetType="Label">
-            <Setter Property="FontWeight" Value="Normal"/>
-            <Setter Property="Margin" Value="0,10,0,0"/>
-        </Style>
-    </UserControl.Resources>
+                d:DesignHeight="70" d:DesignWidth="220">
     <UserControl.DataContext>
         <models:SizeModel/>
     </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Vertical"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+        </Style>
+        <Style TargetType="local:InputField">
+            <Setter Property="TextWidth" Value="50"/>
+            <Setter Property="LabelWidth" Value="50"/>
+        </Style>
+    </UserControl.Resources>
 
     <StackPanel>
         <Label Name="LabelControl" Content="Width/Height"/>
-        <local:InputField Text="{Binding Width, FallbackValue=0}" Label="Width" LabelWidth="50"/>
-        <local:InputField Text="{Binding Height, FallbackValue=0}" Label="Height" LabelWidth="50"/>
+        <StackPanel Orientation="Horizontal">
+            <local:InputField Text="{Binding Width, FallbackValue=0}" Label="Width" />
+            <local:InputField Text="{Binding Height, FallbackValue=0}" Label="Height" />
+        </StackPanel>
     </StackPanel>
 </local:ContextControl>

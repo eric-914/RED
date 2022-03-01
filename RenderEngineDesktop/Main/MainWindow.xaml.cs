@@ -1,9 +1,6 @@
 ﻿using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.IoC;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using RenderEngineDesktop.Support;
 
 namespace RenderEngineDesktop.Main
 {
@@ -30,14 +27,6 @@ namespace RenderEngineDesktop.Main
             Window.Closed += (_, _) => configuration.Save();
 
             DataContext = factory.Get<MainViewModel>();
-        }
-
-        private void UIElement_OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            if (sender is ScrollViewer s)
-            {
-                s.VScroll(e);
-            }
         }
     }
 }

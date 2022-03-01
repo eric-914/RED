@@ -4,17 +4,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:main="clr-namespace:RenderEngineDesktop.Main"
-        xmlns:listEnumeratedFonts="clr-namespace:RenderEngineDesktop.Views.ListEnumeratedFonts"
-        xmlns:options="clr-namespace:RenderEngineDesktop.Views.Options"
-        xmlns:renderLowResPreview="clr-namespace:RenderEngineDesktop.Views.RenderLowResPreview"
-        xmlns:renderOutputFiles="clr-namespace:RenderEngineDesktop.Views.RenderOutputFiles"
-        xmlns:renderOutputFilesWithWatermark="clr-namespace:RenderEngineDesktop.Views.RenderOutputFilesWithWatermark"
-        xmlns:renderPreview="clr-namespace:RenderEngineDesktop.Views.RenderPreview"
-        xmlns:renderPreviewHtml5="clr-namespace:RenderEngineDesktop.Views.RenderPreviewHtml5"
-        xmlns:renderWatermarkedPreview="clr-namespace:RenderEngineDesktop.Views.RenderWatermarkedPreview"
-        xmlns:prepZipDirectoryForParse="clr-namespace:RenderEngineDesktop.Views.PrepZipDirectoryForParse"
-        xmlns:renderZoomedPreviewFragment="clr-namespace:RenderEngineDesktop.Views.RenderZoomedPreviewFragment"
-        xmlns:renderLeads="clr-namespace:RenderEngineDesktop.Views.RenderLeads"
         xmlns:logging="clr-namespace:RenderEngineDesktop.Views.Logging"
         mc:Ignorable="d"
         Title="Render Engine Desktop" Height="460" Width="770" 
@@ -23,52 +12,26 @@
         <main:MainViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="./MainTabControlStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="{x:Type ScrollViewer}">
-                <EventSetter Event="PreviewMouseWheel" Handler="UIElement_OnPreviewMouseWheel"/>
-            </Style>
-        </ResourceDictionary>
+        <Style TargetType="GridSplitter">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Background" Value="#4080FF"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Height" Value="5"/>
+        </Style>
     </Window.Resources>
 
-    <TabControl SelectedIndex="{Binding Model.ActiveTab}">
-        <TabItem Header="Options">
-            <options:OptionsView DataContext="{Binding Options}"/>
-        </TabItem>
-        <TabItem Header="Render Preview">
-            <renderPreview:RenderPreviewView DataContext="{Binding RenderPreview}"/>
-        </TabItem>
-        <TabItem Header="Render Watermarked Preview">
-            <renderWatermarkedPreview:RenderWatermarkedPreviewView DataContext="{Binding RenderWatermarkedPreview}"/>
-        </TabItem>
-        <TabItem Header="Render Output Files">
-            <renderOutputFiles:RenderOutputFilesView DataContext="{Binding RenderOutputFiles}"/>
-        </TabItem>
-        <TabItem Header="Render Output Files With Watermark">
-            <renderOutputFilesWithWatermark:RenderOutputFilesWithWatermarkView DataContext="{Binding RenderOutputFilesWithWatermark}"/>
-        </TabItem>
-        <TabItem Header="Render Preview Html5">
-            <renderPreviewHtml5:RenderPreviewHtml5View DataContext="{Binding RenderPreviewHtml5}"/>
-        </TabItem>
-        <TabItem Header="Render Low-Res Preview">
-            <renderLowResPreview:RenderLowResPreviewView DataContext="{Binding RenderLowResPreview}"/>
-        </TabItem>
-        <TabItem Header="Render Zoomed Preview Fragment">
-            <renderZoomedPreviewFragment:RenderZoomedPreviewFragmentView DataContext="{Binding RenderZoomedPreviewFragment}"/>
-        </TabItem>
-        <TabItem Header="Render Leads">
-            <renderLeads:RenderLeadsView DataContext="{Binding RenderLeads}"/>
-        </TabItem>
-        <TabItem Header="Prep Zip Directory For Parse">
-            <prepZipDirectoryForParse:PrepZipDirectoryForParseView DataContext="{Binding PrepZipDirectoryForParse}"/>
-        </TabItem>
-        <TabItem Header="List Enumerated Fonts">
-            <listEnumeratedFonts:ListEnumeratedFontsView DataContext="{Binding ListEnumeratedFonts}"/>
-        </TabItem>
-        <TabItem Header="Output">
-            <logging:LogView DataContext="{Binding Log}"/>
-        </TabItem>
-    </TabControl>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <main:MainTabs Grid.Row="0" DataContext="{Binding}"/>
+
+        <GridSplitter Grid.Row="1" />
+
+        <logging:LogView Grid.Row="2" DataContext="{Binding Log}"/>
+    </Grid>
 </Window>

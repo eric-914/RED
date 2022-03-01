@@ -27,7 +27,9 @@
                 <Image Source="../../Resources/ClearAll.png" Style="{StaticResource ClearAllStyle}" ToolTip="Clear All"/>
             </Button>
         </StackPanel>
-        <RichTextBox x:Name="RichTextBox"
+        <ScrollViewer VerticalAlignment="Stretch">
+            <RichTextBox x:Name="RichTextBox"
                      logging:RichTextBoxHelper.DocumentXaml="{Binding Document}"/>
+        </ScrollViewer>
     </DockPanel>
 </UserControl>

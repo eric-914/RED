@@ -26,7 +26,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
-                    <Border BorderThickness="3"
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
                                 CornerRadius="4" Background="{TemplateBinding Background}">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Label FontFamily="Wingdings" FontSize="14" Padding="0,2,3,0" Content="ü" Visibility="{TemplateBinding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}}"/>
@@ -36,9 +37,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Setter Property="BorderBrush" Value="Blue"/>
         <Setter Property="Padding" Value="5,0,5,0"/>
         <Setter Property="Width" Value="90"/>
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Cursor" Value="Hand"/>
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="False">
                 <Setter Property="Background" Value="#A0A0A0"/>
@@ -49,6 +51,14 @@
                 <!--<Setter Property="Background" Value="Green"/>-->
                 <Setter Property="Foreground" Value="White"/>
                 <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderBrush" Value="White"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderBrush" Value="DimGray"/>
             </Trigger>
         </Style.Triggers>
     </Style>

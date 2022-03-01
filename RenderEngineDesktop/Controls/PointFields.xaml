@@ -7,23 +7,29 @@
                 xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
                 mc:Ignorable="d" 
                 d:DesignHeight="100" d:DesignWidth="200">
-    <UserControl.Resources>
-        <Style TargetType="StackPanel">
-            <Setter Property="Orientation" Value="Vertical"/>
-            <Setter Property="Margin" Value="0,0,0,10"/>
-        </Style>
-        <Style TargetType="Label">
-            <Setter Property="FontWeight" Value="Normal"/>
-            <Setter Property="Margin" Value="0,10,0,0"/>
-        </Style>
-    </UserControl.Resources>
     <UserControl.DataContext>
         <models:PointModel/>
     </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Vertical"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Margin" Value="0,00,0,0"/>
+        </Style>
+        <Style TargetType="local:InputField">
+            <Setter Property="TextWidth" Value="50"/>
+            <Setter Property="LabelWidth" Value="50"/>
+        </Style>
+    </UserControl.Resources>
 
     <StackPanel>
         <Label Name="LabelControl" Content="X/Y"/>
-        <local:InputField Text="{Binding X, FallbackValue=0}" Label="X" LabelWidth="50"/>
-        <local:InputField Text="{Binding Y, FallbackValue=0}" Label="Y" LabelWidth="50"/>
+        <StackPanel Orientation="Horizontal">
+            <local:InputField Text="{Binding X, FallbackValue=0}" Label="X" LabelWidth="50"/>
+            <local:InputField Text="{Binding Y, FallbackValue=0}" Label="Y" LabelWidth="50"/>
+        </StackPanel>
     </StackPanel>
 </local:ContextControl>
