@@ -21,17 +21,21 @@
         </Style>
     </Window.Resources>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="3*" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <DockPanel>
+        <main:MainMenus DockPanel.Dock="Top"/>
 
-        <main:MainTabs Grid.Row="0" DataContext="{Binding}"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <GridSplitter Grid.Row="1" />
+            <main:MainTabs Grid.Row="0" DataContext="{Binding}"/>
 
-        <logging:LogView Grid.Row="2" DataContext="{Binding Log}"/>
-    </Grid>
+            <GridSplitter Grid.Row="1" />
+
+            <logging:LogView Grid.Row="2" DataContext="{Binding Log}"/>
+        </Grid>
+    </DockPanel>
 </Window>
