@@ -26,7 +26,16 @@ namespace RenderEngineDesktop.Commands
         ICommand RenderWatermarkedPreviewCommand(Action<ImageSource> action);
         ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> action);
         ICommand ClearAllCommand();
+
+        //Menu Commands
         ICommand FileExit();
+        ICommand ConfigurationNew();
+        ICommand ConfigurationOpen();
+        ICommand ConfigurationSave();
+        ICommand MacrosRun();
+        ICommand MacrosRecord();
+        ICommand MacrosOpen();
+        ICommand MacrosSave();
     }
 
     /// <summary>
@@ -86,5 +95,26 @@ namespace RenderEngineDesktop.Commands
 
         public ICommand FileExit()
             => _factory.Get<FileExitCommand>();
+
+        public ICommand ConfigurationNew()
+            => _factory.Get<ConfigurationNewCommand>();
+
+        public ICommand ConfigurationOpen()
+            => _factory.Get<ConfigurationOpenCommand>();
+
+        public ICommand ConfigurationSave()
+            => _factory.Get<ConfigurationSaveCommand>();
+
+        public ICommand MacrosRun()
+            => _factory.Get<MacrosRunCommand>();
+
+        public ICommand MacrosRecord()
+            => _factory.Get<MacrosRecordCommand>();
+
+        public ICommand MacrosOpen()
+            => _factory.Get<MacrosOpenCommand>();
+
+        public ICommand MacrosSave()
+            => _factory.Get<MacrosSaveCommand>();
     }
 }

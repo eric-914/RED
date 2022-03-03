@@ -119,18 +119,18 @@
             <MenuItem Header="_Exit" Template="{StaticResource VsMenuSub}" Command="{Binding File.Exit}"/>
         </MenuItem>
         <MenuItem Header="_Configuration" Template="{StaticResource VsMenuTop}">
-            <MenuItem Header="_New" Template="{StaticResource VsMenuSub}"/>
-            <MenuItem Header="_Open" Template="{StaticResource VsMenuSub}"/>
-            <MenuItem Header="_Save" Template="{StaticResource VsMenuSub}"/>
+            <MenuItem Header="_New" Template="{StaticResource VsMenuSub}" Command="{Binding Configuration.New}"/>
+            <MenuItem Header="_Open" Template="{StaticResource VsMenuSub}" Command="{Binding Configuration.Open}"/>
+            <MenuItem Header="_Save" Template="{StaticResource VsMenuSub}" Command="{Binding Configuration.Save}"/>
             <Separator Template="{StaticResource VsMenuSep}" />
             <MenuItem Header="saved1.cfg" Template="{StaticResource VsMenuSub}"/>
             <MenuItem Header="saved2.cfg" Template="{StaticResource VsMenuSub}"/>
         </MenuItem>
         <MenuItem Header="_Macros" Template="{StaticResource VsMenuTop}">
-            <MenuItem Header="_Run" Template="{StaticResource VsMenuSub}"/>
-            <MenuItem Header="Re_cord" Template="{StaticResource VsMenuSub}"/>
-            <MenuItem Header="_Open" Template="{StaticResource VsMenuSub}"/>
-            <MenuItem Header="_Save" Template="{StaticResource VsMenuSub}"/>
+            <MenuItem Header="_Run" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Run}"/>
+            <MenuItem Header="Re_cord" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Record}"/>
+            <MenuItem Header="_Open" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Open}"/>
+            <MenuItem Header="_Save" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Save}"/>
             <Separator Template="{StaticResource VsMenuSep}" />
             <MenuItem Header="saved1.macro" Template="{StaticResource VsMenuSub}"/>
             <MenuItem Header="saved2.macro" Template="{StaticResource VsMenuSub}"/>
