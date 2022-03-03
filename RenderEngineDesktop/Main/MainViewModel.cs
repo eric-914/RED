@@ -21,6 +21,7 @@ namespace RenderEngineDesktop.Main
     public class MainViewModel
     {
         public ConfigurationModel Model { get; set; }
+        public MainMenuViewModel Menu { get; }
         public OptionsViewModel Options { get; }
         public LogViewModel Log { get; }
 
@@ -49,6 +50,7 @@ namespace RenderEngineDesktop.Main
         {
             Model = configuration.Model;
 
+            Menu = factory.Get<MainMenuViewModel>();
             Options = factory.Get<OptionsViewModel>();
             Log = factory.Get<LogViewModel>();
 

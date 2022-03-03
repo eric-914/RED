@@ -5,6 +5,7 @@ using System;
 using System.Windows.Input;
 using System.Windows.Media;
 using RenderEngineDesktop.Commands.Logging;
+using RenderEngineDesktop.Commands.Menu;
 
 namespace RenderEngineDesktop.Commands
 {
@@ -25,6 +26,7 @@ namespace RenderEngineDesktop.Commands
         ICommand RenderWatermarkedPreviewCommand(Action<ImageSource> action);
         ICommand RenderZoomedPreviewFragmentCommand(Action<ImageSource> action);
         ICommand ClearAllCommand();
+        ICommand FileExit();
     }
 
     /// <summary>
@@ -81,5 +83,8 @@ namespace RenderEngineDesktop.Commands
 
         public ICommand ClearAllCommand()
             => _factory.Get<ClearAllCommand>();
+
+        public ICommand FileExit()
+            => _factory.Get<FileExitCommand>();
     }
 }

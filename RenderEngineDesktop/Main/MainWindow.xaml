@@ -22,7 +22,7 @@
     </Window.Resources>
 
     <DockPanel>
-        <main:MainMenus DockPanel.Dock="Top"/>
+        <main:MainMenu DockPanel.Dock="Top" DataContext="{Binding Menu}"/>
 
         <Grid>
             <Grid.RowDefinitions>
