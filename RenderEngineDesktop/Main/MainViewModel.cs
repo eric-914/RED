@@ -1,5 +1,6 @@
 ﻿using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.IoC;
+using RenderEngineDesktop.Main.Menu;
 using RenderEngineDesktop.Views.ListEnumeratedFonts;
 using RenderEngineDesktop.Views.Logging;
 using RenderEngineDesktop.Views.Options;

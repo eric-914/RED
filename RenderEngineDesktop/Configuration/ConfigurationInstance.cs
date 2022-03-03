@@ -7,8 +7,8 @@
     {
         ConfigurationModel Model { get; }
 
-        void Load();
-        void Save();
+        void Load(string? filepath = null);
+        void Save(string? filepath = null);
     }
 
     /// <summary>
@@ -25,14 +25,14 @@
             _manager = manager;
         }
 
-        public void Load()
+        public void Load(string? filepath = null)
         {
-            Model = _manager.Load();
+            Model = _manager.Load(filepath);
         }
 
-        public void Save()
+        public void Save(string? filepath = null)
         {
-            _manager.Save(Model);
+            _manager.Save(Model, filepath);
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using System.Windows;
 
-namespace RenderEngineDesktop.Commands.Menu
+namespace RenderEngineDesktop.Commands.Menu;
+
+public class ConfigurationNewCommand : CanExecuteCommand
 {
-    public class ConfigurationNewCommand : CanExecuteCommand
+    public override void Execute()
     {
-        public override void Execute()
-        {
-            MessageBox.Show("Configuration.New");
-        }
+        MessageBox.Show("Configuration.New");
     }
 }

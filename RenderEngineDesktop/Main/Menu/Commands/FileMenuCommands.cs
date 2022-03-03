@@ -1,7 +1,7 @@
-﻿using System.Windows.Input;
-using RenderEngineDesktop.Commands;
+﻿using RenderEngineDesktop.Commands;
+using System.Windows.Input;
 
-namespace RenderEngineDesktop.Main;
+namespace RenderEngineDesktop.Main.Menu.Commands;
 
 public class FileMenuCommands
 {

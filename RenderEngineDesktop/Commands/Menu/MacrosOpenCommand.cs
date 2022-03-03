@@ -2,10 +2,10 @@
 
 namespace RenderEngineDesktop.Commands.Menu;
 
-public class FileExitCommand : CanExecuteCommand
+public class MacrosOpenCommand : CanExecuteCommand
 {
     public override void Execute()
     {
-        Application.Current.MainWindow?.Close();
+        MessageBox.Show("Macros.Open");
     }
 }

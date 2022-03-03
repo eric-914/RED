@@ -1,8 +1,8 @@
-﻿using RenderEngineDesktop.Support;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
+using RenderEngineDesktop.Support;
 
-namespace RenderEngineDesktop.Main
+namespace RenderEngineDesktop.Main.Tabs
 {
     public partial class MainTabs 
     {

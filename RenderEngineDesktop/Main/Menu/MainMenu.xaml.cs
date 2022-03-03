@@ -1,7 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Input;
-
-namespace RenderEngineDesktop.Main
+﻿namespace RenderEngineDesktop.Main.Menu
 {
     public partial class MainMenu
     {

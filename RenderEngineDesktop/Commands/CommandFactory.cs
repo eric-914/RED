@@ -6,6 +6,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using RenderEngineDesktop.Commands.Logging;
 using RenderEngineDesktop.Commands.Menu;
+using RenderEngineDesktop.Commands.SavedState;
 
 namespace RenderEngineDesktop.Commands
 {
@@ -36,6 +37,8 @@ namespace RenderEngineDesktop.Commands
         ICommand MacrosRecord();
         ICommand MacrosOpen();
         ICommand MacrosSave();
+        ICommand ConfigurationLoadState();
+        ICommand MacroLoadState();
     }
 
     /// <summary>
@@ -105,6 +108,9 @@ namespace RenderEngineDesktop.Commands
         public ICommand ConfigurationSave()
             => _factory.Get<ConfigurationSaveCommand>();
 
+        public ICommand ConfigurationLoadState()
+            => _factory.Get<ConfigurationLoadStateCommand>();
+
         public ICommand MacrosRun()
             => _factory.Get<MacrosRunCommand>();
 
@@ -116,5 +122,8 @@ namespace RenderEngineDesktop.Commands
 
         public ICommand MacrosSave()
             => _factory.Get<MacrosSaveCommand>();
+
+        public ICommand MacroLoadState()
+            => _factory.Get<MacroLoadStateCommand>();
     }
 }

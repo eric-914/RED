@@ -9,8 +9,8 @@ namespace RenderEngineDesktop.Configuration
     /// </summary>
     internal interface IConfigurationManager
     {
-        ConfigurationModel Load();
-        void Save(ConfigurationModel model);
+        ConfigurationModel Load(string? filepath = null);
+        void Save(ConfigurationModel model, string? filepath = null);
     }
 
     internal class ConfigurationManager : IConfigurationManager
@@ -26,14 +26,14 @@ namespace RenderEngineDesktop.Configuration
             _persistence = persistence;
         }
 
-        public ConfigurationModel Load()
+        public ConfigurationModel Load(string? filepath = null)
         {
-            return _persistence.Load(FilePath);
+            return _persistence.Load(filepath ?? FilePath);
         }
 
-        public void Save(ConfigurationModel model)
+        public void Save(ConfigurationModel model, string? filepath = null)
         {
-            _persistence.Save(FilePath, model);
+            _persistence.Save(filepath ?? FilePath, model);
         }
 
         private string FilePath => Path.Join(_information.ApplicationFolder(), FileName);

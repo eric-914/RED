@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:main="clr-namespace:RenderEngineDesktop.Main"
         xmlns:logging="clr-namespace:RenderEngineDesktop.Views.Logging"
+        xmlns:menu="clr-namespace:RenderEngineDesktop.Main.Menu"
+        xmlns:tabs="clr-namespace:RenderEngineDesktop.Main.Tabs"
         mc:Ignorable="d"
         Title="Render Engine Desktop" Height="460" Width="770" 
         Icon="/Resources/RenderEngine.ico">
@@ -22,7 +24,7 @@
     </Window.Resources>
 
     <DockPanel>
-        <main:MainMenu DockPanel.Dock="Top" DataContext="{Binding Menu}"/>
+        <menu:MainMenu DockPanel.Dock="Top" DataContext="{Binding Menu}"/>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -31,7 +33,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <main:MainTabs Grid.Row="0" DataContext="{Binding}"/>
+            <tabs:MainTabs Grid.Row="0" DataContext="{Binding}"/>
 
             <GridSplitter Grid.Row="1" />
 
