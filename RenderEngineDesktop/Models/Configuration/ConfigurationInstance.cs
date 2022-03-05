@@ -1,4 +1,4 @@
-﻿namespace RenderEngineDesktop.Configuration
+﻿namespace RenderEngineDesktop.Models.Configuration
 {
     /// <summary>
     /// Provides access to the configuration model and it's persistence.

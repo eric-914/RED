@@ -1,6 +1,6 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Configuration;
 using RenderEngineDesktop.Controls;
+using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Models.Process;
 using RenderEngineDesktop.Service.Parameters.Models;
 using System.Windows.Input;

@@ -1,4 +1,4 @@
-﻿using RenderEngineDesktop.Configuration;
+﻿using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service;
 using RenderEngineDesktop.Support;

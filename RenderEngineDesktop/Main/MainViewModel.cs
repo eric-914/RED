@@ -1,6 +1,7 @@
-﻿using RenderEngineDesktop.Configuration;
-using RenderEngineDesktop.IoC;
+﻿using RenderEngineDesktop.IoC;
 using RenderEngineDesktop.Main.Menu;
+using RenderEngineDesktop.Models.Application;
+using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Views.ListEnumeratedFonts;
 using RenderEngineDesktop.Views.Logging;
 using RenderEngineDesktop.Views.Options;
@@ -21,6 +22,7 @@ namespace RenderEngineDesktop.Main
     /// </summary>
     public class MainViewModel
     {
+        public ApplicationModel Settings { get; set; }
         public ConfigurationModel Model { get; set; }
         public MainMenuViewModel Menu { get; }
         public OptionsViewModel Options { get; }
@@ -47,8 +49,9 @@ namespace RenderEngineDesktop.Main
         #endregion
 
         [Ninject.Inject]
-        public MainViewModel(IFactory factory, IConfiguration configuration)
+        public MainViewModel(IFactory factory, IApplication application, IConfiguration configuration)
         {
+            Settings = application.Model;
             Model = configuration.Model;
 
             Menu = factory.Get<MainMenuViewModel>();

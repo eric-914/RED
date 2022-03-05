@@ -1,8 +1,8 @@
-﻿using System;
-using System.IO;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using RenderEngineDesktop.Dialogs;
 using RenderEngineDesktop.IoC;
+using System;
+using System.IO;
 
 namespace RenderEngineDesktop.Support
 {
@@ -12,7 +12,7 @@ namespace RenderEngineDesktop.Support
         public void Save(string path, T model);
     }
 
-    internal abstract class Persistence<T> : IPersistence<T>
+    public abstract class Persistence<T> : IPersistence<T>
     {
         private readonly IFactory _factory;
 

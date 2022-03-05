@@ -1,5 +1,5 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Configuration;
+using RenderEngineDesktop.Models.Configuration;
 using System.Windows.Input;
 
 namespace RenderEngineDesktop.Views.Options

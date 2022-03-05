@@ -1,11 +1,10 @@
-﻿using RenderEngineDesktop.Configuration;
+﻿using RenderEngineDesktop.Models.Configuration;
+using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service;
 using RenderEngineDesktop.Support;
 using System;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Media;
-using RenderEngineDesktop.Models.Logging;
 
 namespace RenderEngineDesktop.Processes
 {

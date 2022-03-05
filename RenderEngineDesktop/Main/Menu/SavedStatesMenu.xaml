@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="RenderEngineDesktop.Main.Menu.SavedStatesMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:savedState="clr-namespace:RenderEngineDesktop.Models.SavedState"
+             mc:Ignorable="d" 
+             d:DesignHeight="120" d:DesignWidth="100">
+    <UserControl.DataContext>
+        <savedState:SavedStateModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./MenuItemStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <MenuItem Grid.Row="0" Header="saved1.cfg" Template="{StaticResource MenuSub}" Command="{Binding Load1}"/>
+        <MenuItem Grid.Row="1" Header="saved2.cfg" Template="{StaticResource MenuSub}" Command="{Binding Load2}"/>
+        <MenuItem Grid.Row="2" Header="saved3.cfg" Template="{StaticResource MenuSub}" Command="{Binding Load3}"/>
+        <MenuItem Grid.Row="3" Header="saved4.cfg" Template="{StaticResource MenuSub}" Command="{Binding Load4}"/>
+    </Grid>
+</UserControl>

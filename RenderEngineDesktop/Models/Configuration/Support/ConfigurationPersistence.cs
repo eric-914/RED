@@ -1,7 +1,7 @@
 ﻿using RenderEngineDesktop.IoC;
 using RenderEngineDesktop.Support;
 
-namespace RenderEngineDesktop.Configuration.Support
+namespace RenderEngineDesktop.Models.Configuration.Support
 {
     public interface IConfigurationPersistence : IPersistence<ConfigurationModel>
     {

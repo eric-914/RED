@@ -1,7 +1,9 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Configuration;
-using RenderEngineDesktop.Configuration.Support;
 using RenderEngineDesktop.Dialogs;
+using RenderEngineDesktop.Models.Application;
+using RenderEngineDesktop.Models.Application.Support;
+using RenderEngineDesktop.Models.Configuration;
+using RenderEngineDesktop.Models.Configuration.Support;
 using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service;
 using RenderEngineDesktop.Support;
@@ -32,6 +34,11 @@ namespace RenderEngineDesktop.IoC
                 .Bind<ISystemInformation, SystemInformation>()
                 .Bind<IBitmapTools, BitmapTools>()
                 .Bind<IDialogManager, DialogManager>()
+
+                //--Application
+                .Bind<IApplicationPersistence, ApplicationPersistence>()
+                .Bind<IApplicationManager, ApplicationManager>()
+                .Singleton<IApplication, ApplicationInstance>()
 
                 //--Configuration
                 .Bind<IConfigurationPersistence, ConfigurationPersistence>()

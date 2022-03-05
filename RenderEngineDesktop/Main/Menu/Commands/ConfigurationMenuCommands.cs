@@ -1,4 +1,5 @@
 ﻿using RenderEngineDesktop.Commands;
+using RenderEngineDesktop.Models.SavedState;
 using System.Windows.Input;
 
 namespace RenderEngineDesktop.Main.Menu.Commands;
@@ -9,10 +10,7 @@ public class ConfigurationMenuCommands
     public ICommand Open { get; }
     public ICommand Save { get; }
 
-    public ICommand Load1 { get; }
-    public ICommand Load2 { get; }
-    public ICommand Load3 { get; }
-    public ICommand Load4 { get; }
+    public SavedStateModel SavedState { get; }
 
     public ConfigurationMenuCommands(ICommands commands)
     {
@@ -20,9 +18,6 @@ public class ConfigurationMenuCommands
         Open = commands.ConfigurationOpen();
         Save = commands.ConfigurationSave();
 
-        Load1 = commands.ConfigurationLoadState();
-        Load2 = commands.ConfigurationLoadState();
-        Load3 = commands.ConfigurationLoadState();
-        Load4 = commands.ConfigurationLoadState();
+        SavedState = new SavedStateModel(commands.ConfigurationLoadState);
     }
 }

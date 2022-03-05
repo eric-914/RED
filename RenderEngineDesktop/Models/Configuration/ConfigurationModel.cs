@@ -1,10 +1,9 @@
-﻿using RenderEngineDesktop.Models;
-using RenderEngineDesktop.Models.Assets;
+﻿using RenderEngineDesktop.Models.Assets;
 using RenderEngineDesktop.Models.Process;
 using RenderEngineDesktop.Service.Parameters.Models;
 using RenderEngineDesktop.Support;
 
-namespace RenderEngineDesktop.Configuration
+namespace RenderEngineDesktop.Models.Configuration
 {
     public class ConfigurationModel
     {

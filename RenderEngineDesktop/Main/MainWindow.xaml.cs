@@ -1,5 +1,5 @@
-﻿using RenderEngineDesktop.Configuration;
-using RenderEngineDesktop.IoC;
+﻿using RenderEngineDesktop.IoC;
+using RenderEngineDesktop.Models.Application;
 using System.Windows;
 
 namespace RenderEngineDesktop.Main
@@ -21,10 +21,11 @@ namespace RenderEngineDesktop.Main
            
             InitializeComponent();
 
-            var configuration = factory.Get<IConfiguration>();
+            var application = factory.Get<IApplication>();
             
-            configuration.Load();
-            Window.Closed += (_, _) => configuration.Save();
+            application.Load();
+
+            Window.Closed += (_, _) => application.Save();
 
             DataContext = factory.Get<MainViewModel>();
         }

@@ -1,5 +1,5 @@
-﻿using RenderEngineDesktop.Configuration;
-using RenderEngineDesktop.IoC;
+﻿using RenderEngineDesktop.IoC;
+using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Models.Logging;
 using System;
 using System.ServiceModel;

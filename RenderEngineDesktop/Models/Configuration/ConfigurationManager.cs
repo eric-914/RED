@@ -1,8 +1,8 @@
-﻿using RenderEngineDesktop.Configuration.Support;
+﻿using System.IO;
+using RenderEngineDesktop.Models.Configuration.Support;
 using RenderEngineDesktop.Support;
-using System.IO;
 
-namespace RenderEngineDesktop.Configuration
+namespace RenderEngineDesktop.Models.Configuration
 {
     /// <summary>
     /// Manages the load/save of the configuration model
@@ -15,11 +15,11 @@ namespace RenderEngineDesktop.Configuration
 
     internal class ConfigurationManager : IConfigurationManager
     {
-        private readonly ISystemInformation _information;
-        private readonly IConfigurationPersistence _persistence;
-
         public const string FileName = "configuration.json";
 
+        private readonly ISystemInformation _information;
+        private readonly IConfigurationPersistence _persistence;
+        
         public ConfigurationManager(ISystemInformation information, IConfigurationPersistence persistence)
         {
             _information = information;
@@ -28,12 +28,14 @@ namespace RenderEngineDesktop.Configuration
 
         public ConfigurationModel Load(string? filepath = null)
         {
-            return _persistence.Load(filepath ?? FilePath);
+            if (string.IsNullOrEmpty(filepath)) filepath = FilePath;
+            return _persistence.Load(filepath);
         }
 
         public void Save(ConfigurationModel model, string? filepath = null)
         {
-            _persistence.Save(filepath ?? FilePath, model);
+            if (string.IsNullOrEmpty(filepath)) filepath = FilePath;
+            _persistence.Save(filepath, model);
         }
 
         private string FilePath => Path.Join(_information.ApplicationFolder(), FileName);

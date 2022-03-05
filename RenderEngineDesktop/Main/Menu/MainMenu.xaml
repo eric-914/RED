@@ -3,7 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:main="clr-namespace:RenderEngineDesktop.Main"
              xmlns:menu="clr-namespace:RenderEngineDesktop.Main.Menu"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="200">
@@ -11,137 +10,39 @@
         <menu:MainMenuViewModel/>
     </UserControl.DataContext>
     <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-        <Style TargetType="StackPanel">
-            <Setter Property="Height" Value="30"/>
-            <Setter Property="Orientation" Value="Horizontal"/>
-        </Style>
-        <Style TargetType="StackPanel" x:Key="VsOnlineStackPanel">
-            <Setter Property="Background" Value="#005A9E"/>
-        </Style>
-        <Style TargetType="Label">
-            <Setter Property="FontSize" Value="12"/>
-        </Style>
-        <Style TargetType="Label" x:Key="TopMenuLabel">
-            <Setter Property="Foreground" Value="White"/>
-        </Style>
-        <Style TargetType="Label" x:Key="SubMenuLabel">
-            <Setter Property="Foreground" Value="Black"/>
-        </Style>
-        <Style TargetType="Label" x:Key="RightArrowLabel">
-            <Setter Property="FontFamily" Value="Wingdings"/>
-            <Setter Property="Foreground" Value="Blue"/>
-        </Style>
-        <Style TargetType="Image" x:Key="IconImage">
-            <Setter Property="Width" Value="20"/>
-        </Style>
-        <Style TargetType="Menu">
-            <Setter Property="Background" Value="#0078D7" />
-        </Style>
-        <Style TargetType="MenuItem">
-            <Setter Property="Visibility" Value="{Binding RelativeSource={RelativeSource Mode=Self}, Path=IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-        </Style>
-        <Style TargetType="Popup">
-            <Setter Property="AllowsTransparency" Value="True" />
-            <Setter Property="Focusable" Value="False" />
-            <Setter Property="Placement" Value="Right" />
-        </Style>
-        <Style TargetType="Border" x:Key="VsOnlinePopupBorder">
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Background" Value="White" />
-            <Setter Property="BorderBrush" Value="#E0E0E0"/>
-        </Style>
-
-        <ControlTemplate x:Key="VsOnline" TargetType="MenuItem">
-            <StackPanel Style="{StaticResource VsOnlineStackPanel}">
-                <Label Content="{TemplateBinding Header}" Style="{StaticResource TopMenuLabel}" />
-
-                <!-- sub items -->
-                <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" >
-                    <Border BorderThickness="1" Background="White" BorderBrush="#E0E0E0">
-                        <StackPanel IsItemsHost="True" />
-                    </Border>
-                </Popup>
-            </StackPanel>
-        </ControlTemplate>
-
-        <ControlTemplate x:Key="VsMenuTop" TargetType="MenuItem">
-            <StackPanel >
-                <!-- label, icons, etc. -->
-                <Label Content="{TemplateBinding Header}" Style="{StaticResource TopMenuLabel}" />
-
-                <!-- sub items -->
-                <Popup IsOpen="{TemplateBinding IsSubmenuOpen}" >
-                    <Border Style="{StaticResource VsOnlinePopupBorder}" >
-                        <StackPanel IsItemsHost="True" />
-                    </Border>
-                </Popup>
-                <StackPanel.Style>
-                    <Style TargetType="StackPanel">
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver"  Value="True">
-                                <Setter Property="Background" Value="#106EBE" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </StackPanel.Style>
-            </StackPanel>
-        </ControlTemplate>
-
-        <!-- style a non-top level menu item -->
-        <ControlTemplate x:Key="VsMenuSub" TargetType="MenuItem">
-            <DockPanel x:Name="panel">
-                <!-- label, icons, etc. -->
-                <Image Source="{Binding Icon, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource IconImage}" />
-                <Label Content="{TemplateBinding Header}" Style="{StaticResource SubMenuLabel}"/>
-
-                <!-- draw the right arrow only if this menu item has sub items -->
-                <Label Style="{StaticResource RightArrowLabel}" Visibility="{Binding HasItems, Converter={StaticResource BooleanToVisibilityConverter}, RelativeSource={RelativeSource TemplatedParent}}">Ø</Label>
-
-                <!-- sub items -->
-                <Popup IsOpen="{TemplateBinding IsSubmenuOpen}">
-                    <Border Style="{StaticResource VsOnlinePopupBorder}">
-                        <StackPanel IsItemsHost="True" />
-                    </Border>
-                </Popup>
-            </DockPanel>
-            <ControlTemplate.Triggers>
-                <Trigger Property="IsHighlighted" Value="True">
-                    <Setter Property="Background" TargetName="panel" Value="#EFF6FC" />
-                </Trigger>
-            </ControlTemplate.Triggers>
-        </ControlTemplate>
-
-        <!-- style the separator -->
-        <ControlTemplate x:Key="VsMenuSep" TargetType="Separator">
-            <Border Height="1" Background="#E0E0E0" />
-        </ControlTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./MenuItemStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </UserControl.Resources>
 
     <Menu DockPanel.Dock="Top">
-        <MenuItem Header="_File" Template="{StaticResource VsOnline}">
-            <MenuItem Header="_Exit" Template="{StaticResource VsMenuSub}" Command="{Binding File.Exit}"/>
+        <MenuItem Header="_File" Template="{StaticResource MenuSystem}">
+            <MenuItem Header="_Exit" Template="{StaticResource MenuSub}" Command="{Binding File.Exit}"/>
         </MenuItem>
-        <MenuItem Header="_Configuration" Template="{StaticResource VsMenuTop}">
-            <MenuItem Header="_New" Template="{StaticResource VsMenuSub}" Command="{Binding Configuration.New}"/>
-            <MenuItem Header="_Open" Template="{StaticResource VsMenuSub}" Command="{Binding Configuration.Open}"/>
-            <MenuItem Header="_Save" Template="{StaticResource VsMenuSub}" Command="{Binding Configuration.Save}"/>
-            <Separator Template="{StaticResource VsMenuSep}" />
-            <MenuItem Header="saved1.cfg" Template="{StaticResource VsMenuSub}" Command="{Binding Configuration.Load1}"/>
-            <MenuItem Header="saved2.cfg" Template="{StaticResource VsMenuSub}" Command="{Binding Configuration.Load2}"/>
-            <MenuItem Header="saved3.cfg" Template="{StaticResource VsMenuSub}" Command="{Binding Configuration.Load3}"/>
-            <MenuItem Header="saved4.cfg" Template="{StaticResource VsMenuSub}" Command="{Binding Configuration.Load4}"/>
+        <MenuItem Header="_Configuration" Template="{StaticResource MenuTop}">
+            <MenuItem Header="_New" Template="{StaticResource MenuSub}" Command="{Binding Configuration.New}"/>
+            <MenuItem Header="_Open" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Open}"/>
+            <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Save}"/>
+            <Separator Template="{StaticResource MenuSeparator}" />
+            <MenuItem Header="Saved" Template="{StaticResource MenuSub}" HorizontalAlignment="Left">
+                <MenuItem.Items>
+                    <menu:SavedStatesMenu DataContext="{Binding Configuration.SavedState}"/>
+                </MenuItem.Items>
+            </MenuItem>
         </MenuItem>
-        <MenuItem Header="_Macros" Template="{StaticResource VsMenuTop}">
-            <MenuItem Header="_Run" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Run}"/>
-            <MenuItem Header="Re_cord" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Record}"/>
-            <MenuItem Header="_Open" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Open}"/>
-            <MenuItem Header="_Save" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Save}"/>
-            <Separator Template="{StaticResource VsMenuSep}" />
-            <MenuItem Header="saved1.macro" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Load1}"/>
-            <MenuItem Header="saved2.macro" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Load2}"/>
-            <MenuItem Header="saved3.macro" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Load3}"/>
-            <MenuItem Header="saved4.macro" Template="{StaticResource VsMenuSub}" Command="{Binding Macros.Load4}"/>
+        <MenuItem Header="_Macros" Template="{StaticResource MenuTop}">
+            <MenuItem Header="_Run" Template="{StaticResource MenuSub}" Command="{Binding Macros.Run}"/>
+            <MenuItem Header="Re_cord" Template="{StaticResource MenuSub}" Command="{Binding Macros.Record}"/>
+            <MenuItem Header="_Open" Template="{StaticResource MenuSub}" Command="{Binding Macros.Open}"/>
+            <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Macros.Save}"/>
+            <Separator Template="{StaticResource MenuSeparator}" />
+            <MenuItem Header="Saved" Template="{StaticResource MenuSub}" HorizontalAlignment="Left">
+                <MenuItem.Items>
+                    <menu:SavedStatesMenu DataContext="{Binding Macros.SavedState}"/>
+                </MenuItem.Items>
+            </MenuItem>
         </MenuItem>
     </Menu>
 </UserControl>
