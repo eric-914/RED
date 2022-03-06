@@ -17,17 +17,18 @@ namespace RenderEngineDesktop.Views.Logging
     public class LogDocumentModel : ILogDocumentModel
     {
         public FlowDocument Document { get; set; } = new();
-        public LogShowState Show { get; } = new();
+        public LogShowState Show { get; }
 
         private readonly ILogger _logger;
         private readonly ILogBlock _block;
 
         private readonly Dictionary<LogType, Action<ILogEvent>> _handlers;
 
-        public LogDocumentModel(ILogger logger, ILogBlock block)
+        public LogDocumentModel(ILogger logger, ILogBlock block, LogShowState show)
         {
             _logger = logger;
             _block = block;
+            Show = show;
 
             _handlers = new Dictionary<LogType, Action<ILogEvent>>
             {

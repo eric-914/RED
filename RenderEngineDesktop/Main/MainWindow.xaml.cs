@@ -18,14 +18,14 @@ namespace RenderEngineDesktop.Main
             var factory = Factory.Instance;
 
             factory.Singleton<IMainWindow>(this);
-           
-            InitializeComponent();
 
             var application = factory.Get<IApplication>();
             
             application.Load();
 
             Window.Closed += (_, _) => application.Save();
+
+            InitializeComponent();
 
             DataContext = factory.Get<MainViewModel>();
         }

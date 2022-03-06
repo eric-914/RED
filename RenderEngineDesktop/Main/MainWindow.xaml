@@ -8,7 +8,11 @@
         xmlns:menu="clr-namespace:RenderEngineDesktop.Main.Menu"
         xmlns:tabs="clr-namespace:RenderEngineDesktop.Main.Tabs"
         mc:Ignorable="d"
-        Title="Render Engine Desktop" Height="460" Width="770" 
+        Title="Render Engine Desktop" 
+        Width="{Binding Settings.Window.Size.Width, Mode=TwoWay}"
+        Height="{Binding Settings.Window.Size.Height, Mode=TwoWay}"
+        Left="{Binding Settings.Window.Position.X, Mode=TwoWay}"
+        Top="{Binding Settings.Window.Position.Y, Mode=TwoWay}"
         Icon="/Resources/RenderEngine.ico">
     <Window.DataContext>
         <main:MainViewModel/>

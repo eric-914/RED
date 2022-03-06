@@ -14,10 +14,11 @@ namespace RenderEngineDesktop.Models.Application
     {
         private readonly IApplicationManager _manager;
         private readonly IConfiguration _configuration;
-        public ApplicationModel Model { get; private set; } = new();
+        public ApplicationModel Model { get; private set; }
 
-        public ApplicationInstance(IApplicationManager manager, IConfiguration configuration)
+        public ApplicationInstance(ApplicationModel model, IApplicationManager manager, IConfiguration configuration)
         {
+            Model = model;
             _manager = manager;
             _configuration = configuration;
         }

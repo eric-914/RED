@@ -12,6 +12,7 @@ namespace RenderEngineDesktop.IoC
         IFactory SelfBind();
         IFactory Bind<TInterface, TClass>() where TClass : class, TInterface;
         IFactory Singleton<TInterface, TClass>() where TClass : class, TInterface;
+        IFactory Singleton<TClass>() where TClass : class;
         IFactory Singleton<TInterface>(TInterface instance) where TInterface : class;
         TInterface Get<TInterface>();
         TInterface Get<TInterface, TPayload>(Action<TPayload> onComplete);
@@ -48,6 +49,14 @@ namespace RenderEngineDesktop.IoC
 
             return this;
         }
+
+        public IFactory Singleton<TClass>() where TClass : class
+        {
+            _kernel.Bind<TClass>().To<TClass>().InSingletonScope();
+
+            return this;
+        }
+
         public IFactory Singleton<TInterface>(TInterface instance) where TInterface : class
         {
             _kernel.Bind<TInterface>().ToConstant(instance).InSingletonScope();

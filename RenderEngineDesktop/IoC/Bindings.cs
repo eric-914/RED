@@ -27,6 +27,7 @@ namespace RenderEngineDesktop.IoC
                 .Bind<ILogBlock, LogBlock>()
                 .Bind<ILogDocumentModel, LogDocumentModel>()
                 .Singleton<ILogger, Logger>()
+                .Singleton<LogShowState>()
 
                 .Bind<IRenderEngineService, RenderEngineService>()
                 .Bind<IRenderEngine, RenderEngine>()

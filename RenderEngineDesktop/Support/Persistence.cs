@@ -27,9 +27,17 @@ namespace RenderEngineDesktop.Support
         {
             try
             {
-                return (File.Exists(path)
-                    ? JsonConvert.DeserializeAnonymousType(File.ReadAllText(path), instance)
-                    : instance) ?? throw new InvalidOperationException();
+                if (instance == null) throw new InvalidOperationException();
+
+                if (File.Exists(path))
+                {
+                    JsonConvert.PopulateObject(File.ReadAllText(path), instance);
+                }
+
+                return instance;
+
+                //return JsonConvert.DeserializeAnonymousType(File.ReadAllText(path), instance)
+                //    ?? throw new InvalidOperationException();
             }
             catch (Exception e)
             {
