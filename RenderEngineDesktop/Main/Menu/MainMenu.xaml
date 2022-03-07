@@ -24,7 +24,7 @@
         <MenuItem Header="_Configuration" Template="{StaticResource MenuTop}">
             <MenuItem Header="_New" Template="{StaticResource MenuSub}" Command="{Binding Configuration.New}"/>
             <MenuItem Header="_Open" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Open}"/>
-            <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Save}"/>
+            <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Save}" Icon="/Resources/Save.png" />
             <Separator Template="{StaticResource MenuSeparator}" />
             <MenuItem Header="Saved" Template="{StaticResource MenuSub}" HorizontalAlignment="Left">
                 <MenuItem.Items>
@@ -33,10 +33,10 @@
             </MenuItem>
         </MenuItem>
         <MenuItem Header="_Macros" Template="{StaticResource MenuTop}">
-            <MenuItem Header="_Run" Template="{StaticResource MenuSub}" Command="{Binding Macros.Run}"/>
-            <MenuItem Header="Re_cord" Template="{StaticResource MenuSub}" Command="{Binding Macros.Record}"/>
+            <MenuItem Header="_Run" Template="{StaticResource MenuSub}" Command="{Binding Macros.Run}" Icon="/Resources/Run.png"/>
+            <MenuItem Header="Re_cord" Template="{StaticResource MenuSub}" Command="{Binding Macros.Record}" Icon="/Resources/Record.png"/>
             <MenuItem Header="_Open" Template="{StaticResource MenuSub}" Command="{Binding Macros.Open}"/>
-            <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Macros.Save}"/>
+            <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Macros.Save}" Icon="/Resources/Save.png"/>
             <Separator Template="{StaticResource MenuSeparator}" />
             <MenuItem Header="Saved" Template="{StaticResource MenuSub}" HorizontalAlignment="Left">
                 <MenuItem.Items>
