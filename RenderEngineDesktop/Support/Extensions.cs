@@ -1,5 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using System.IO;
+using System.Windows.Controls;
 using System.Windows.Input;
+using Microsoft.Win32;
 
 namespace RenderEngineDesktop.Support
 {
@@ -12,6 +14,13 @@ namespace RenderEngineDesktop.Support
         {
             sender.ScrollToVerticalOffset(sender.VerticalOffset - e.Delta);
             e.Handled = true;
+        }
+
+        public static void Configure(this FileDialog source, string path, FileExtension extension)
+        {
+            source.FileName = Path.GetFileName(path);
+            source.InitialDirectory = Path.GetDirectoryName(path);
+            source.Filter = extension.Filter;
         }
     }
 }

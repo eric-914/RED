@@ -57,7 +57,7 @@ namespace RenderEngineDesktop.Processes
 
         public string DocumentPath(string file)
         {
-            var root = _application.Model.AssetPath.Root.Path;
+            var root = _application.Model.Paths.Asset.Root.Path;
             var folder = _configuration.Model.RenderPreviewHtml5.Source.ClientId.ToString();
 
             return Path.Combine(root, folder, file);

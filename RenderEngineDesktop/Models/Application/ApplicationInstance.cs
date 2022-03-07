@@ -27,13 +27,13 @@ namespace RenderEngineDesktop.Models.Application
         public void Load()
         {
             Model = _manager.Load();
-            _configuration.Load(Model.CurrentPath.Configuration);
+            _configuration.Load(Model.Paths.Configuration.Path);
         }
 
         public void Save()
         {
             _manager.Save(Model);
-            _configuration.Save(Model.CurrentPath.Configuration);
+            _configuration.Save(Model.Paths.Configuration.Path);
         }
     }
 }

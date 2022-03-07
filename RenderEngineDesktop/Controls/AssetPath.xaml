@@ -45,7 +45,7 @@
             </StackPanel>
         </Border>
         <Border>
-            <local:BrowsablePath Context="{Binding Root}" Height="20"/>
+            <local:BrowsePath Context="{Binding Root}" Height="20"/>
         </Border>
     </StackPanel>
 </UserControl>

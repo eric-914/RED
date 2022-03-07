@@ -1,8 +1,20 @@
-﻿namespace RenderEngineDesktop.Models.Application
+﻿using RenderEngineDesktop.Models.Assets;
+using RenderEngineDesktop.Service.Parameters.Models;
+using RenderEngineDesktop.Support;
+
+namespace RenderEngineDesktop.Models.Application
 {
     public class ApplicationPathModel
     {
-        public string Configuration { get; set; } = string.Empty;
-        public string Macro { get; set; } = string.Empty;
+        // ReSharper disable once InconsistentNaming
+        private static readonly string _applicationFolder = ApplicationInformation.ApplicationFolder();
+
+        public PathModel ApplicationFolder { get; } = new(_applicationFolder, true);
+
+        public AssetPathModel Asset { get; } = new();
+
+        public PathModel Configuration { get; } = new(_applicationFolder, "configuration.json");
+
+        public PathModel Macros { get; } = new(_applicationFolder, "macro.json");
     }
 }

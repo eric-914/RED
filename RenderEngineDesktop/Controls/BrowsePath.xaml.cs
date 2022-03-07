@@ -3,9 +3,9 @@ using System.Windows;
 
 namespace RenderEngineDesktop.Controls
 {
-    public partial class BrowsablePath 
+    public partial class BrowsePath 
     {
-        public BrowsablePath()
+        public BrowsePath()
         {
             InitializeComponent();
         }

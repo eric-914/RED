@@ -23,7 +23,7 @@ namespace RenderEngineDesktop.Models.Assets
 
         private void UpdateRoot()
         {
-            Root = new PathModel(ToString());
+            Root = new PathModel(ToString(), true);
             OnPropertyChanged(nameof(Root));
         }
 

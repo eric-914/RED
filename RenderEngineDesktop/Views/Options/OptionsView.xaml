@@ -21,7 +21,7 @@
         <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left">
             <Label>Application Data Folder</Label>
             <Border BorderThickness="1" BorderBrush="Black">
-                <controls:BrowsablePath Context="{Binding Settings.ApplicationFolder}"/>
+                <controls:BrowsePath Context="{Binding Settings.Paths.ApplicationFolder}"/>
             </Border>
 
             <Separator Height="16"/>
@@ -30,7 +30,7 @@
 
             <Separator Height="6"/>
             
-            <controls:AssetPath DataContext="{Binding Settings.AssetPath}"/>
+            <controls:AssetPath DataContext="{Binding Settings.Paths.Asset}"/>
 
             <Separator Height="16"/>
 

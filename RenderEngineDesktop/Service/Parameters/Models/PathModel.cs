@@ -5,17 +5,20 @@ namespace RenderEngineDesktop.Service.Parameters.Models
     /// <summary>
     /// Common definition for a SINGLE file path.
     /// </summary>
-    public class PathModel
+    public class PathModel : NotifyModel
     {
         private readonly bool _isReadOnly;
 
         public PathModel() { }
 
-        public PathModel(string path)
+        public PathModel(string path, bool isReadOnly = false)
         {
             Path = path;
-            _isReadOnly = true;
+            _isReadOnly = isReadOnly;
         }
+
+        public PathModel(string path, string file, bool isReadOnly = false) 
+            : this(System.IO.Path.Combine(path, file), isReadOnly) { }
 
         private string _path = string.Empty;
         public string Path
@@ -25,7 +28,7 @@ namespace RenderEngineDesktop.Service.Parameters.Models
             {
                 if (!_isReadOnly)
                 {
-                    _path = value;
+                    Set(_path == value, () => _path = value);
                 }
             }
         }
