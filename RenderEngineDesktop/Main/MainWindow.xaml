@@ -7,12 +7,13 @@
         xmlns:logging="clr-namespace:RenderEngineDesktop.Views.Logging"
         xmlns:menu="clr-namespace:RenderEngineDesktop.Main.Menu"
         xmlns:tabs="clr-namespace:RenderEngineDesktop.Main.Tabs"
+        xmlns:status="clr-namespace:RenderEngineDesktop.Main.Status"
         mc:Ignorable="d"
         Title="Render Engine Desktop" 
-        Width="{Binding Settings.Window.Size.Width, Mode=TwoWay}"
-        Height="{Binding Settings.Window.Size.Height, Mode=TwoWay}"
-        Left="{Binding Settings.Window.Position.X, Mode=TwoWay}"
-        Top="{Binding Settings.Window.Position.Y, Mode=TwoWay}"
+        Width="{Binding Settings.Window.Width, Mode=TwoWay}"
+        Height="{Binding Settings.Window.Height, Mode=TwoWay}"
+        Left="{Binding Settings.Window.Left, Mode=TwoWay}"
+        Top="{Binding Settings.Window.Top, Mode=TwoWay}"
         Icon="/Resources/RenderEngine.ico">
     <Window.DataContext>
         <main:MainViewModel/>
@@ -27,21 +28,24 @@
         </Style>
     </Window.Resources>
 
-    <DockPanel>
-        <menu:MainMenu DockPanel.Dock="Top" DataContext="{Binding Menu}"/>
+    <Border Style="{StaticResource WindowBorder}">
+        <DockPanel>
+            <menu:MainMenu DockPanel.Dock="Top" DataContext="{Binding Menu}"/>
+            <status:MainStatus DockPanel.Dock="Bottom" DataContext="{Binding Status}" Height="20"/>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*" />
-                <RowDefinition Height="5" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <tabs:MainTabs Grid.Row="0" DataContext="{Binding}"/>
+                <tabs:MainTabs Grid.Row="0" DataContext="{Binding}"/>
 
-            <GridSplitter Grid.Row="1" />
+                <GridSplitter Grid.Row="1" />
 
-            <logging:LogView Grid.Row="2" DataContext="{Binding Log}"/>
-        </Grid>
-    </DockPanel>
+                <logging:LogView Grid.Row="2" DataContext="{Binding Log}"/>
+            </Grid>
+        </DockPanel>
+    </Border>
 </Window>

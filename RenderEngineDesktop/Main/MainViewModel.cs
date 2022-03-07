@@ -1,5 +1,6 @@
 ﻿using RenderEngineDesktop.IoC;
 using RenderEngineDesktop.Main.Menu;
+using RenderEngineDesktop.Main.Status;
 using RenderEngineDesktop.Models.Application;
 using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Views.ListEnumeratedFonts;
@@ -25,6 +26,8 @@ namespace RenderEngineDesktop.Main
         public ApplicationModel Settings { get; set; }
         public ConfigurationModel Model { get; set; }
         public MainMenuViewModel Menu { get; }
+        public MainStatusViewModel Status { get; }
+
         public OptionsViewModel Options { get; }
         public LogViewModel Log { get; }
 
@@ -55,6 +58,7 @@ namespace RenderEngineDesktop.Main
             Model = configuration.Model;
 
             Menu = factory.Get<MainMenuViewModel>();
+            Status = factory.Get<MainStatusViewModel>();
             Options = factory.Get<OptionsViewModel>();
             Log = factory.Get<LogViewModel>();
 

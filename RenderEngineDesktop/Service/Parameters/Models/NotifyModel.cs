@@ -1,7 +1,7 @@
-﻿using System;
+﻿using RenderEngineDesktop.Annotations;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using RenderEngineDesktop.Annotations;
 
 namespace RenderEngineDesktop.Service.Parameters.Models
 {

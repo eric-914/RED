@@ -53,5 +53,9 @@
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="BorderThickness" Value="2"/>
         </Style>
+        <Style TargetType="Border" x:Key="WindowBorder">
+            <Setter Property="BorderBrush" Value="#F0F8FF"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
     </Application.Resources>
 </Application>
