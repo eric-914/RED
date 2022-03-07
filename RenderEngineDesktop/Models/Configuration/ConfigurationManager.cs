@@ -15,29 +15,33 @@ namespace RenderEngineDesktop.Models.Configuration
 
     internal class ConfigurationManager : IConfigurationManager
     {
-        public const string FileName = "configuration.json";
+        public string FilePath { get; set; }
 
-        private readonly ISystemInformation _information;
         private readonly IConfigurationPersistence _persistence;
-        
-        public ConfigurationManager(ISystemInformation information, IConfigurationPersistence persistence)
+
+        public ConfigurationManager(IConfigurationPersistence persistence, ISystemInformation information)
         {
-            _information = information;
             _persistence = persistence;
+
+            //--Define default file path
+            FilePath = Path.Join(information.ApplicationFolder(), "configuration.json");
         }
 
         public ConfigurationModel Load(string? filepath = null)
         {
             if (string.IsNullOrEmpty(filepath)) filepath = FilePath;
+            if (File.Exists(filepath)) FilePath = filepath;
+
             return _persistence.Load(filepath);
         }
 
         public void Save(ConfigurationModel model, string? filepath = null)
         {
             if (string.IsNullOrEmpty(filepath)) filepath = FilePath;
-            _persistence.Save(filepath, model);
-        }
 
-        private string FilePath => Path.Join(_information.ApplicationFolder(), FileName);
+            _persistence.Save(filepath, model);
+
+            if (File.Exists(filepath)) FilePath = filepath;
+        }
     }
 }

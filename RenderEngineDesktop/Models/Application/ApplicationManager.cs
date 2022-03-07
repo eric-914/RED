@@ -6,36 +6,32 @@ namespace RenderEngineDesktop.Models.Application
 {
     public interface IApplicationManager
     {
-        ApplicationModel Load(string? filepath = null);
-        void Save(ApplicationModel model, string? filepath = null);
+        ApplicationModel Load();
+        void Save(ApplicationModel model);
     }
 
     public class ApplicationManager : IApplicationManager
     {
-        public const string FileName = "RED.json";
+        public string FilePath { get; }
 
-        private readonly ISystemInformation _information;
         private readonly IApplicationPersistence _persistence;
 
-        public ApplicationManager(ISystemInformation information, IApplicationPersistence persistence)
+        public ApplicationManager(IApplicationPersistence persistence, ISystemInformation information)
         {
-            _information = information;
             _persistence = persistence;
+
+            //--Define the application configuration file path (fixed location)
+            FilePath = Path.Join(information.ApplicationFolder(), "RED.json");
         }
 
-        public ApplicationModel Load(string? filepath = null)
+        public ApplicationModel Load()
         {
-            if (string.IsNullOrEmpty(filepath)) filepath = FilePath;
-            return _persistence.Load(filepath);
+            return _persistence.Load(FilePath);
         }
 
-        public void Save(ApplicationModel model, string? filepath = null)
+        public void Save(ApplicationModel model)
         {
-            if (string.IsNullOrEmpty(filepath)) filepath = FilePath;
-            _persistence.Save(filepath, model);
+            _persistence.Save(FilePath, model);
         }
-
-        private string FilePath => Path.Join(_information.ApplicationFolder(), FileName);
-
     }
 }

@@ -1,5 +1,5 @@
 ﻿using RenderEngineDesktop.IoC;
-using RenderEngineDesktop.Models.Configuration;
+using RenderEngineDesktop.Models.Application;
 using RenderEngineDesktop.Models.Logging;
 using System;
 using System.ServiceModel;
@@ -10,11 +10,11 @@ namespace RenderEngineDesktop.Service
 {
     internal class RenderEngineService : IRenderEngineService
     {
-        private readonly IConfiguration _configuration;
+        private readonly IApplication _application;
 
-        public RenderEngineService(IConfiguration configuration)
+        public RenderEngineService(IApplication application)
         {
-            _configuration = configuration;
+            _application = application;
         }
 
         public Task RenderLeadsAsync(
@@ -259,7 +259,7 @@ namespace RenderEngineDesktop.Service
         }
 
         private static Binding Binding() => new NetTcpBinding();
-        private EndpointAddress EndpointAddress() => new(_configuration.Model.Uri);
+        private EndpointAddress EndpointAddress() => new(_application.Model.Uri);
 
         #endregion
 

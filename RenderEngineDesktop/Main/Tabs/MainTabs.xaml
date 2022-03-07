@@ -31,7 +31,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <TabControl SelectedIndex="{Binding Model.ActiveTab}">
+    <TabControl SelectedIndex="{Binding Settings.ActiveTab}">
         <TabItem Header="Options">
             <options:OptionsView DataContext="{Binding Options}"/>
         </TabItem>

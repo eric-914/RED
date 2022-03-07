@@ -1,12 +1,12 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Models.Configuration;
+using RenderEngineDesktop.Models.Application;
 using System.Windows.Input;
 
 namespace RenderEngineDesktop.Views.Options
 {
     public class OptionsViewModel
     {
-        public ConfigurationModel Model { get; } = new();
+        public ApplicationModel Settings { get; } 
 
         public ICommand TestCommand { get; }
 
@@ -20,9 +20,9 @@ namespace RenderEngineDesktop.Views.Options
         #endregion
 
         [Ninject.Inject]
-        public OptionsViewModel(ICommands commands, IConfiguration configuration)
+        public OptionsViewModel(ICommands commands, IApplication application)
         {
-            Model = configuration.Model;
+            Settings = application.Model;
             TestCommand = commands.Test;
         }
     }

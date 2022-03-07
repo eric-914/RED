@@ -4,12 +4,14 @@ using RenderEngineDesktop.Service;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using RenderEngineDesktop.Models.Application;
 
 namespace RenderEngineDesktop.Processes
 {
     public class RenderPreviewHtml5Process : IAsyncFunction<string, string>
     {
         private readonly ILogger _logger;
+        private readonly IApplication _application;
         private readonly IConfiguration _configuration;
         private readonly IRenderEngine _re;
 
@@ -18,9 +20,10 @@ namespace RenderEngineDesktop.Processes
         /// </summary>
         public Action<string> OnComplete { get; set; } = _ => { };
 
-        public RenderPreviewHtml5Process(ILogger logger, IConfiguration configuration, IRenderEngine re)
+        public RenderPreviewHtml5Process(ILogger logger, IApplication application, IConfiguration configuration, IRenderEngine re)
         {
             _logger = logger;
+            _application = application;
             _configuration = configuration;
             _re = re;
         }
@@ -54,7 +57,7 @@ namespace RenderEngineDesktop.Processes
 
         public string DocumentPath(string file)
         {
-            var root = _configuration.Model.AssetPath.Root.Path;
+            var root = _application.Model.AssetPath.Root.Path;
             var folder = _configuration.Model.RenderPreviewHtml5.Source.ClientId.ToString();
 
             return Path.Combine(root, folder, file);

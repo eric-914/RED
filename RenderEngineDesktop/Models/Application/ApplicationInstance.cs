@@ -6,14 +6,15 @@ namespace RenderEngineDesktop.Models.Application
     {
         ApplicationModel Model { get; }
 
-        void Load(string? filepath = null);
-        void Save(string? filepath = null);
+        void Load();
+        void Save();
     }
 
     public class ApplicationInstance : IApplication
     {
         private readonly IApplicationManager _manager;
         private readonly IConfiguration _configuration;
+
         public ApplicationModel Model { get; private set; }
 
         public ApplicationInstance(ApplicationModel model, IApplicationManager manager, IConfiguration configuration)
@@ -23,15 +24,15 @@ namespace RenderEngineDesktop.Models.Application
             _configuration = configuration;
         }
 
-        public void Load(string? filepath = null)
+        public void Load()
         {
-            Model = _manager.Load(filepath);
+            Model = _manager.Load();
             _configuration.Load(Model.CurrentPath.Configuration);
         }
 
-        public void Save(string? filepath = null)
+        public void Save()
         {
-            _manager.Save(Model, filepath);
+            _manager.Save(Model);
             _configuration.Save(Model.CurrentPath.Configuration);
         }
     }

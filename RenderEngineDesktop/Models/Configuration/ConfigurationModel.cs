@@ -1,18 +1,12 @@
-﻿using RenderEngineDesktop.Models.Assets;
-using RenderEngineDesktop.Models.Process;
-using RenderEngineDesktop.Service.Parameters.Models;
-using RenderEngineDesktop.Support;
+﻿using RenderEngineDesktop.Models.Process;
 
 namespace RenderEngineDesktop.Models.Configuration
 {
+    /// <summary>
+    /// Central repository for all tabs and its configuration models.
+    /// </summary>
     public class ConfigurationModel
     {
-        public string Uri { get; set; } = "net.tcp://localhost:1411/";
-        public int ActiveTab { get; set; } = 0;
-        public PathModel ApplicationFolder { get; } = new(ApplicationInformation.ApplicationFolder());
-
-        public AssetPathModel AssetPath { get; } = new();
-
         public PrepZipDirectoryForParseModel PrepZipDirectoryForParse { get; } = new();
         public RenderLeadsModel RenderLeads { get; } = new();
         public RenderLowResPreviewModel RenderLowResPreview { get; } = new();

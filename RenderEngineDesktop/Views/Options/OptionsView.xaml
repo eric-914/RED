@@ -21,16 +21,16 @@
         <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left">
             <Label>Application Data Folder</Label>
             <Border BorderThickness="1" BorderBrush="Black">
-                <controls:BrowsablePath Context="{Binding Model.ApplicationFolder}"/>
+                <controls:BrowsablePath Context="{Binding Settings.ApplicationFolder}"/>
             </Border>
 
             <Separator Height="16"/>
 
-            <controls:InputField Text="{Binding Model.Uri}" Label="Render Engine Service Uri:" LabelWidth="150" TextWidth="150"/>
+            <controls:InputField Text="{Binding Settings.Uri}" Label="Render Engine Service Uri:" LabelWidth="150" TextWidth="150"/>
 
             <Separator Height="6"/>
             
-            <controls:AssetPath DataContext="{Binding Model.AssetPath}"/>
+            <controls:AssetPath DataContext="{Binding Settings.AssetPath}"/>
 
             <Separator Height="16"/>
 

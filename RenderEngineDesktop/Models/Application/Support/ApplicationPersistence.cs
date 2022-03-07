@@ -1,5 +1,4 @@
-﻿using RenderEngineDesktop.Annotations;
-using RenderEngineDesktop.IoC;
+﻿using RenderEngineDesktop.IoC;
 using RenderEngineDesktop.Support;
 
 namespace RenderEngineDesktop.Models.Application.Support
