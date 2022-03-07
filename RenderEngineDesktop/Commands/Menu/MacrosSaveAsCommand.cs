@@ -2,10 +2,10 @@
 
 namespace RenderEngineDesktop.Commands.Menu;
 
-public class MacrosSaveCommand : CanExecuteCommand
+public class MacrosSaveAsCommand : CanExecuteCommand
 {
     public override void Execute()
     {
-        MessageBox.Show("Macros.Save");
+        MessageBox.Show("Macros.SaveAs");
     }
 }

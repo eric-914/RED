@@ -9,6 +9,7 @@ public class ConfigurationMenuCommands
     public ICommand New { get; }
     public ICommand Open { get; }
     public ICommand Save { get; }
+    public ICommand SaveAs { get; }
 
     public SavedStateModel SavedState { get; }
 
@@ -17,6 +18,7 @@ public class ConfigurationMenuCommands
         New = commands.ConfigurationNew();
         Open = commands.ConfigurationOpen();
         Save = commands.ConfigurationSave();
+        SaveAs = commands.ConfigurationSaveAs();
 
         SavedState = new SavedStateModel(commands.ConfigurationLoadState);
     }

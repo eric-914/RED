@@ -10,6 +10,7 @@ public class MacrosMenuCommands
     public ICommand Record { get; }
     public ICommand Open { get; }
     public ICommand Save { get; }
+    public ICommand SaveAs { get; }
 
     public SavedStateModel SavedState { get; }
 
@@ -19,6 +20,7 @@ public class MacrosMenuCommands
         Record = commands.MacrosRecord();
         Open = commands.MacrosOpen();
         Save = commands.MacrosSave();
+        SaveAs = commands.MacrosSaveAs();
 
         SavedState = new SavedStateModel(commands.MacroLoadState);
     }

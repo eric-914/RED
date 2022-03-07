@@ -25,6 +25,7 @@
             <MenuItem Header="_New" Template="{StaticResource MenuSub}" Command="{Binding Configuration.New}"/>
             <MenuItem Header="_Open" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Open}"/>
             <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Save}" Icon="/Resources/Save.png" />
+            <MenuItem Header="Save _As..." Template="{StaticResource MenuSub}" Command="{Binding Configuration.SaveAs}" />
             <Separator Template="{StaticResource MenuSeparator}" />
             <MenuItem Header="Saved" Template="{StaticResource MenuSub}" HorizontalAlignment="Left">
                 <MenuItem.Items>
@@ -37,6 +38,7 @@
             <MenuItem Header="Re_cord" Template="{StaticResource MenuSub}" Command="{Binding Macros.Record}" Icon="/Resources/Record.png"/>
             <MenuItem Header="_Open" Template="{StaticResource MenuSub}" Command="{Binding Macros.Open}"/>
             <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Macros.Save}" Icon="/Resources/Save.png"/>
+            <MenuItem Header="Save _As..." Template="{StaticResource MenuSub}" Command="{Binding Macros.SaveAs}"/>
             <Separator Template="{StaticResource MenuSeparator}" />
             <MenuItem Header="Saved" Template="{StaticResource MenuSub}" HorizontalAlignment="Left">
                 <MenuItem.Items>
