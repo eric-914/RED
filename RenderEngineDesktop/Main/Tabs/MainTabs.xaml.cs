@@ -1,6 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using RenderEngineDesktop.Support;
+using System.Windows.Controls;
 using System.Windows.Input;
-using RenderEngineDesktop.Support;
 
 namespace RenderEngineDesktop.Main.Tabs
 {

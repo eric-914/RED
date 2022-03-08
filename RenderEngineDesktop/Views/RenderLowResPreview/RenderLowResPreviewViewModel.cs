@@ -1,5 +1,4 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Models.Process;
 
 namespace RenderEngineDesktop.Views.RenderLowResPreview
@@ -9,8 +8,8 @@ namespace RenderEngineDesktop.Views.RenderLowResPreview
         public RenderLowResPreviewViewModel() { }
 
         [Ninject.Inject]
-        public RenderLowResPreviewViewModel(ICommands commands, IConfiguration configuration)
-        : base(configuration.Model.RenderLowResPreview)
+        public RenderLowResPreviewViewModel(ICommands commands)
+            : base(x => x.RenderLowResPreview)
         {
             SetInvoke(commands.RenderLowResPreviewCommand());
         }

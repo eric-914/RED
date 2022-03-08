@@ -1,5 +1,4 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Models.Process;
 
 namespace RenderEngineDesktop.Views.PrepZipDirectoryForParse
@@ -9,8 +8,8 @@ namespace RenderEngineDesktop.Views.PrepZipDirectoryForParse
         public PrepZipDirectoryForParseViewModel() { }
 
         [Ninject.Inject]
-        public PrepZipDirectoryForParseViewModel(ICommands commands, IConfiguration configuration)
-        : base(configuration.Model.PrepZipDirectoryForParse)
+        public PrepZipDirectoryForParseViewModel(ICommands commands)
+            : base(x => x.PrepZipDirectoryForParse)
         {
             SetInvoke(commands.PrepZipDirectoryForParseCommand());
         }

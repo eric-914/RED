@@ -1,5 +1,4 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Models.Process;
 
 namespace RenderEngineDesktop.Views.RenderLeads
@@ -9,8 +8,8 @@ namespace RenderEngineDesktop.Views.RenderLeads
         public RenderLeadsViewModel() { }
 
         [Ninject.Inject]
-        public RenderLeadsViewModel(ICommands commands, IConfiguration configuration)
-        : base(configuration.Model.RenderLeads)
+        public RenderLeadsViewModel(ICommands commands) 
+            : base(x => x.RenderLeads)
         {
             SetInvoke(commands.RenderLeadsCommand());
         }

@@ -1,5 +1,4 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Models.Process;
 using RenderEngineDesktop.Support;
 using System.Windows.Media;
@@ -12,8 +11,8 @@ namespace RenderEngineDesktop.Views.RenderPreview
         public RenderPreviewViewModel() { }
 
         [Ninject.Inject]
-        public RenderPreviewViewModel(ICommands commands, IConfiguration configuration, IBitmapTools tools)
-        : base(configuration.Model.RenderPreview)
+        public RenderPreviewViewModel(ICommands commands, IBitmapTools tools)
+            : base(x => x.RenderPreview)
         {
             SetInvoke(commands.RenderPreviewCommand(image => Image = image));
             _image = tools.NoImage();

@@ -7,13 +7,13 @@ namespace RenderEngineDesktop.Models.Configuration
     /// <summary>
     /// Manages the load/save of the configuration model
     /// </summary>
-    internal interface IConfigurationManager
+    public interface IConfigurationManager
     {
         ConfigurationModel Load(string? filepath = null);
         void Save(ConfigurationModel model, string? filepath = null);
     }
 
-    internal class ConfigurationManager : IConfigurationManager
+    public class ConfigurationManager : IConfigurationManager
     {
         public string FilePath { get; set; }
 

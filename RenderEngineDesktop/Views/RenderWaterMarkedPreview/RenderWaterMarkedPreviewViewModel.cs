@@ -1,5 +1,4 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Models.Process;
 using RenderEngineDesktop.Support;
 using System.Windows.Media;
@@ -12,8 +11,8 @@ namespace RenderEngineDesktop.Views.RenderWatermarkedPreview
         public RenderWatermarkedPreviewViewModel() { }
 
         [Ninject.Inject]
-        public RenderWatermarkedPreviewViewModel(ICommands commands, IConfiguration configuration, IBitmapTools tools)
-        : base(configuration.Model.RenderWatermarkedPreview)
+        public RenderWatermarkedPreviewViewModel(ICommands commands, IBitmapTools tools)
+            : base(x => x.RenderWatermarkedPreview)
         {
             SetInvoke(commands.RenderWatermarkedPreviewCommand(image => Image = image));
             _image = tools.NoImage();

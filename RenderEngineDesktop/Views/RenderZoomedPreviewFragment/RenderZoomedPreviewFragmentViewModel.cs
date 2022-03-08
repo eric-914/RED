@@ -1,5 +1,4 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Models.Process;
 using RenderEngineDesktop.Support;
 using System.Windows.Media;
@@ -12,8 +11,8 @@ namespace RenderEngineDesktop.Views.RenderZoomedPreviewFragment
         public RenderZoomedPreviewFragmentViewModel() { }
 
         [Ninject.Inject]
-        public RenderZoomedPreviewFragmentViewModel(ICommands commands, IConfiguration configuration, IBitmapTools tools)
-        : base(configuration.Model.RenderZoomedPreviewFragment)
+        public RenderZoomedPreviewFragmentViewModel(ICommands commands, IBitmapTools tools)
+            : base(x => x.RenderZoomedPreviewFragment)
         {
             SetInvoke(commands.RenderZoomedPreviewFragmentCommand(image => Image = image));
             _image = tools.NoImage();

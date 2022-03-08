@@ -1,5 +1,4 @@
 ﻿using RenderEngineDesktop.Commands;
-using RenderEngineDesktop.Models.Configuration;
 using RenderEngineDesktop.Models.Process;
 
 namespace RenderEngineDesktop.Views.RenderOutputFiles
@@ -16,8 +15,8 @@ namespace RenderEngineDesktop.Views.RenderOutputFiles
         #endregion
 
         [Ninject.Inject]
-        public RenderOutputFilesViewModel(ICommands commands, IConfiguration configuration)
-        : base(configuration.Model.RenderOutputFiles)
+        public RenderOutputFilesViewModel(ICommands commands)
+            : base(x => x.RenderOutputFiles)
         {
             SetInvoke(commands.RenderOutputFilesCommand());
         }
