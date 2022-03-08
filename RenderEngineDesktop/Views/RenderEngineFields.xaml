@@ -5,22 +5,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
              xmlns:process="clr-namespace:RenderEngineDesktop.Models.Process"
-             xmlns:models="clr-namespace:RenderEngineDesktop.Service.Parameters.Models"
+             xmlns:fields="clr-namespace:RenderEngineDesktop.Converters.Fields"
              mc:Ignorable="d"
              d:DesignHeight="750" d:DesignWidth="500">
     <UserControl.DataContext>
         <process:GenericProcessModel/>
     </UserControl.DataContext>
     <UserControl.Resources>
-        <models:SourceModel x:Key="DefaultSourceModel"/>
-        <models:TemplateModel x:Key="DefaultTemplateModel"/>
-        <models:PathModel x:Key="DefaultPathModel"/>
-        <models:PathsModel x:Key="DefaultPathsModel"/>
-        <models:SizeModel x:Key="DefaultSizeModel"/>
-        <models:WatermarkModel x:Key="DefaultWatermarkModel"/>
-        <models:CultureModel x:Key="DefaultCultureModel"/>
-        <models:PointModel x:Key="DefaultPointModel"/>
-        <models:RgbModel x:Key="DefaultRgbModel"/>
+        <fields:SourceConverter x:Key="SourceConverter"/>
+        <fields:TemplateConverter x:Key="TemplateConverter"/>
+        <fields:OutputFileConverter x:Key="OutputFileConverter"/>
+        <fields:OutputFilesConverter x:Key="OutputFilesConverter"/>
+        <fields:MaximumInPixelsConverter x:Key="MaximumInPixelsConverter"/>
+        <fields:OutlineColorComponentConverter x:Key="OutlineColorComponentConverter"/>
+        <fields:CultureConverter x:Key="CultureConverter"/>
+        <fields:LeadsConverter x:Key="LeadsConverter"/>
+        <fields:PercentTranslationConverter x:Key="PercentTranslationConverter"/>
+        <fields:PercentageConverter x:Key="PercentageConverter"/>
+        <fields:WatermarkConverter x:Key="WatermarkConverter"/>
+        <fields:ZipFileConverter x:Key="ZipFileConverter"/>
 
         <Style TargetType="StackPanel">
             <Setter Property="Orientation" Value="Vertical"/>
@@ -28,17 +31,17 @@
     </UserControl.Resources>
 
     <StackPanel>
-        <controls:SourceFields x:Name="SourceFields" Context="{Binding Source, FallbackValue={StaticResource DefaultSourceModel}}"/>
-        <controls:TemplateFields x:Name="TemplateFields" Context="{Binding Template, FallbackValue={StaticResource DefaultTemplateModel}}"/>
-        <controls:PathFields x:Name="OutputFileFields" Context="{Binding OutputFile, FallbackValue={StaticResource DefaultPathModel}}" Label="OutputFilePath"/>
-        <controls:PathsFields x:Name="OutputFilesFields" Context="{Binding OutputFiles, FallbackValue={StaticResource DefaultPathsModel}}"/>
-        <controls:PathFields x:Name ="ZipFileFields" Context="{Binding ZipFile, FallbackValue={StaticResource DefaultPathModel}}" Label="ZipFile"/>
-        <controls:SizeFields x:Name="MaximumInPixelsFields" Context="{Binding MaximumInPixels, FallbackValue={StaticResource DefaultSizeModel}}" Label="Maximum (in pixels)"/>
-        <controls:OutlineColorComponentFields x:Name="OutlineColorComponentFields" Context="{Binding OutlineColorComponent, FallbackValue={StaticResource DefaultRgbModel}}"/>
-        <controls:WatermarkFields x:Name="WatermarkFields" Context="{Binding Watermark, FallbackValue={StaticResource DefaultWatermarkModel}}"/>
-        <controls:CultureFields x:Name="CultureFields" Context="{Binding Culture, FallbackValue={StaticResource DefaultCultureModel}}"/>
-        <controls:PointFields x:Name="PercentTranslationFields" Context="{Binding PercentTranslation, FallbackValue={StaticResource DefaultPointModel}}" Label="Percent Translation"/>
-        <controls:SizeFields x:Name="PercentageFields" Context="{Binding Percentage, FallbackValue={StaticResource DefaultSizeModel}}" Label="Percentage"/>
+        <controls:SourceFields x:Name="SourceFields" Context="{Binding Converter={StaticResource SourceConverter}}"/>
+        <controls:TemplateFields x:Name="TemplateFields" Context="{Binding Converter={StaticResource TemplateConverter}}"/>
+        <controls:PathFields x:Name="OutputFileFields" Context="{Binding Converter={StaticResource OutputFileConverter}}"  Label="OutputFilePath"/>
+        <controls:PathsFields x:Name="OutputFilesFields" Context="{Binding Converter={StaticResource OutputFilesConverter}}"/>
+        <controls:PathFields x:Name ="ZipFileFields" Context="{Binding Converter={StaticResource ZipFileConverter}}" Label="ZipFile"/>
+        <controls:SizeFields x:Name="MaximumInPixelsFields" Context="{Binding  Converter={StaticResource MaximumInPixelsConverter}}" Label="Maximum (in pixels)"/>
+        <controls:OutlineColorComponentFields x:Name="OutlineColorComponentFields" Context="{Binding Converter={StaticResource OutlineColorComponentConverter}}"/>
+        <controls:WatermarkFields x:Name="WatermarkFields" Context="{Binding  Converter={StaticResource WatermarkConverter}}"/>
+        <controls:CultureFields x:Name="CultureFields" Context="{Binding Converter={StaticResource CultureConverter}}"/>
+        <controls:PointFields x:Name="PercentTranslationFields" Context="{Binding Converter={StaticResource PercentTranslationConverter}}" Label="Percent Translation"/>
+        <controls:SizeFields x:Name="PercentageFields" Context="{Binding Converter={StaticResource PercentageConverter}}" Label="Percentage"/>
     </StackPanel>
 
 </UserControl>
