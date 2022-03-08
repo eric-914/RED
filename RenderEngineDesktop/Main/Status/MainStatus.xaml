@@ -13,6 +13,7 @@
     <UserControl.Resources>
         <converters:WidthHeightToTextConverter x:Key="WidthHeightToTextConverter"/>
         <converters:MacroStateToIconConverter x:Key="MacroStateToIconConverter"/>
+        <converters:FilePathToFileNameConverter x:Key="FilePathToFileNameConverter"/>
 
         <Style TargetType="StatusBar">
             <Setter Property="Height" Value="30"/>
@@ -37,6 +38,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="75"/>
                     </Grid.ColumnDefinitions>
                 </Grid>
@@ -54,7 +56,11 @@
             </StackPanel>
         </StatusBarItem>
 
-        <StatusBarItem Grid.Column="2" HorizontalContentAlignment="Center">
+        <StatusBarItem Grid.Column="2">
+            <Label Content="{Binding Paths.Configuration.Path, Converter={StaticResource FilePathToFileNameConverter}}"/>
+        </StatusBarItem>
+
+        <StatusBarItem Grid.Column="3" HorizontalContentAlignment="Center">
             <Label>
                 <Label.Content>
                     <MultiBinding Converter="{StaticResource WidthHeightToTextConverter}">

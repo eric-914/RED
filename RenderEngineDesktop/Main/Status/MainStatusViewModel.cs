@@ -12,6 +12,7 @@ namespace RenderEngineDesktop.Main.Status
 
         public ApplicationWindowModel Window { get; } = default!;
 
+        public ApplicationPathModel Paths { get; } = default!;
 
         public MainStatusViewModel() { }
 
@@ -19,6 +20,7 @@ namespace RenderEngineDesktop.Main.Status
         public MainStatusViewModel(IApplication application)
         {
             Window = application.Model.Window;
+            Paths = application.Model.Paths;
         }
     }
 }
