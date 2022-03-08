@@ -42,6 +42,7 @@
         <controls:CultureFields x:Name="CultureFields" Context="{Binding Converter={StaticResource CultureConverter}}"/>
         <controls:PointFields x:Name="PercentTranslationFields" Context="{Binding Converter={StaticResource PercentTranslationConverter}}" Label="Percent Translation"/>
         <controls:SizeFields x:Name="PercentageFields" Context="{Binding Converter={StaticResource PercentageConverter}}" Label="Percentage"/>
+        <controls:LeadsFields x:Name="LeadsFields" Context="{Binding Converter={StaticResource PercentageConverter}}"/>
     </StackPanel>
 
 </UserControl>

@@ -30,6 +30,7 @@ namespace RenderEngineDesktop.Views
                 Bind<ICulture>(CultureFields);
                 Bind<IPercentTranslation>(PercentTranslationFields);
                 Bind<IPercentage>(PercentageFields);
+                Bind<ILeads>(LeadsFields);
             }
         }
     }
