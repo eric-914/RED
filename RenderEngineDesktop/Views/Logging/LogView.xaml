@@ -13,6 +13,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./LoggingStyles.xaml"/>
+                <ResourceDictionary Source="../../Resources/Icons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Control.Resources>
@@ -24,7 +25,7 @@
             <ToggleButton IsChecked="{Binding ShowExceptions}" Background="{StaticResource ExceptionBrush}">Exceptions</ToggleButton>
             <Separator/>
             <Button Command="{Binding ClearAllCommand}">
-                <Image Source="../../Resources/ClearAll.png" Style="{StaticResource ClearAllStyle}" ToolTip="Clear All"/>
+                <ContentControl Content="{StaticResource ClearWindowContent.Icon}" Style="{StaticResource ClearAllStyle}" />
             </Button>
         </StackPanel>
         <ScrollViewer VerticalAlignment="Stretch">

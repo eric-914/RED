@@ -79,7 +79,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="Image" x:Key="ClearAllStyle">
-        <Setter Property="Height" Value="22"/>
+    <Style TargetType="ContentControl" x:Key="ClearAllStyle">
+        <Setter Property="Height" Value="16"/>
     </Style>
 </ResourceDictionary>

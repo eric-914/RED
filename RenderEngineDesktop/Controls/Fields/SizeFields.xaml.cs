@@ -1,8 +1,8 @@
-﻿namespace RenderEngineDesktop.Controls
+﻿namespace RenderEngineDesktop.Controls.Fields
 {
-    public partial class PointFields
+    public partial class SizeFields
     {
-        public PointFields()
+        public SizeFields()
         {
             InitializeComponent();
         }

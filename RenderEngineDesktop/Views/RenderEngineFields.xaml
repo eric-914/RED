@@ -6,6 +6,7 @@
              xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
              xmlns:process="clr-namespace:RenderEngineDesktop.Models.Process"
              xmlns:fields="clr-namespace:RenderEngineDesktop.Converters.Fields"
+             xmlns:fields1="clr-namespace:RenderEngineDesktop.Controls.Fields"
              mc:Ignorable="d"
              d:DesignHeight="750" d:DesignWidth="500">
     <UserControl.DataContext>
@@ -31,18 +32,18 @@
     </UserControl.Resources>
 
     <StackPanel>
-        <controls:SourceFields x:Name="SourceFields" Context="{Binding Converter={StaticResource SourceConverter}}"/>
-        <controls:TemplateFields x:Name="TemplateFields" Context="{Binding Converter={StaticResource TemplateConverter}}"/>
-        <controls:PathFields x:Name="OutputFileFields" Context="{Binding Converter={StaticResource OutputFileConverter}}"  Label="OutputFilePath"/>
-        <controls:PathsFields x:Name="OutputFilesFields" Context="{Binding Converter={StaticResource OutputFilesConverter}}"/>
-        <controls:PathFields x:Name ="ZipFileFields" Context="{Binding Converter={StaticResource ZipFileConverter}}" Label="ZipFile"/>
-        <controls:SizeFields x:Name="MaximumInPixelsFields" Context="{Binding  Converter={StaticResource MaximumInPixelsConverter}}" Label="Maximum (in pixels)"/>
-        <controls:OutlineColorComponentFields x:Name="OutlineColorComponentFields" Context="{Binding Converter={StaticResource OutlineColorComponentConverter}}"/>
-        <controls:WatermarkFields x:Name="WatermarkFields" Context="{Binding  Converter={StaticResource WatermarkConverter}}"/>
-        <controls:CultureFields x:Name="CultureFields" Context="{Binding Converter={StaticResource CultureConverter}}"/>
-        <controls:PointFields x:Name="PercentTranslationFields" Context="{Binding Converter={StaticResource PercentTranslationConverter}}" Label="Percent Translation"/>
-        <controls:SizeFields x:Name="PercentageFields" Context="{Binding Converter={StaticResource PercentageConverter}}" Label="Percentage"/>
-        <controls:LeadsFields x:Name="LeadsFields" Context="{Binding Converter={StaticResource PercentageConverter}}"/>
+        <fields1:SourceFields x:Name="SourceFields" Context="{Binding Converter={StaticResource SourceConverter}}"/>
+        <fields1:TemplateFields x:Name="TemplateFields" Context="{Binding Converter={StaticResource TemplateConverter}}"/>
+        <fields1:PathFields x:Name="OutputFileFields" Context="{Binding Converter={StaticResource OutputFileConverter}}"  Label="OutputFilePath"/>
+        <fields1:PathsFields x:Name="OutputFilesFields" Context="{Binding Converter={StaticResource OutputFilesConverter}}"/>
+        <fields1:PathFields x:Name ="ZipFileFields" Context="{Binding Converter={StaticResource ZipFileConverter}}" Label="ZipFile"/>
+        <fields1:SizeFields x:Name="MaximumInPixelsFields" Context="{Binding  Converter={StaticResource MaximumInPixelsConverter}}" Label="Maximum (in pixels)"/>
+        <fields1:OutlineColorComponentFields x:Name="OutlineColorComponentFields" Context="{Binding Converter={StaticResource OutlineColorComponentConverter}}"/>
+        <fields1:WatermarkFields x:Name="WatermarkFields" Context="{Binding  Converter={StaticResource WatermarkConverter}}"/>
+        <fields1:CultureFields x:Name="CultureFields" Context="{Binding Converter={StaticResource CultureConverter}}"/>
+        <fields1:PointFields x:Name="PercentTranslationFields" Context="{Binding Converter={StaticResource PercentTranslationConverter}}" Label="Percent Translation"/>
+        <fields1:SizeFields x:Name="PercentageFields" Context="{Binding Converter={StaticResource PercentageConverter}}" Label="Percentage"/>
+        <fields1:LeadsFields x:Name="LeadsFields" Context="{Binding Converter={StaticResource PercentageConverter}}"/>
     </StackPanel>
 
 </UserControl>

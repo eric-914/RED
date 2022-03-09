@@ -1,4 +1,4 @@
-﻿namespace RenderEngineDesktop.Controls
+﻿namespace RenderEngineDesktop.Controls.Fields
 {
     public partial class LeadsFields 
     {
