@@ -24,14 +24,14 @@ namespace RenderEngineDesktop.Models.Application
             set => Set(_top, value, () => _top = value);
         }
 
-        private double _width;
+        private double _width = 800;
         public double Width
         {
             get => _width;
             set => Set(_width, value, () => _width = value);
         }
 
-        private double _height;
+        private double _height = 600;
         public double Height
         {
             get => _height;

@@ -11,12 +11,16 @@
     <None Remove="Resources\Blank.png" />
     <None Remove="Resources\ClearAll.png" />
     <None Remove="Resources\FileErrorMessageIcon.ico" />
+    <None Remove="Resources\New.png" />
     <None Remove="Resources\NoImage.png" />
-    <None Remove="Resources\Record.png" />
+    <None Remove="Resources\Open.png" />
     <None Remove="Resources\RenderEngine.ico" />
-    <None Remove="Resources\Run.png" />
     <None Remove="Resources\Save.png" />
     <None Remove="Resources\ServiceErrorMessageIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Resources\AddDocument.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,19 +55,10 @@
     <Content Include="Resources\NoImage.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Record.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Resources\RenderEngine.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Blank.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Run.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Save.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\ServiceErrorMessageIcon.ico">

@@ -13,19 +13,20 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./MenuItemStyles.xaml"/>
+                <ResourceDictionary Source="../../Resources/Icons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
 
     <Menu DockPanel.Dock="Top">
         <MenuItem Header="_File" Template="{StaticResource MenuSystem}">
-            <MenuItem Header="_Exit" Template="{StaticResource MenuSub}" Command="{Binding File.Exit}"/>
+            <MenuItem Header="_Exit" Template="{StaticResource MenuSub}" Command="{Binding File.Exit}" Icon="{StaticResource Close.Icon}"/>
         </MenuItem>
         <MenuItem Header="_Configuration" Template="{StaticResource MenuTop}">
-            <MenuItem Header="_New" Template="{StaticResource MenuSub}" Command="{Binding Configuration.New}"/>
-            <MenuItem Header="_Open" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Open}"/>
-            <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Save}" Icon="/Resources/Save.png" />
-            <MenuItem Header="Save _As..." Template="{StaticResource MenuSub}" Command="{Binding Configuration.SaveAs}" />
+            <MenuItem Header="_New" Template="{StaticResource MenuSub}" Command="{Binding Configuration.New}" Icon="{StaticResource AddDocument.Icon}" />
+            <MenuItem Header="_Open" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Open}" Icon="{StaticResource OpenFile.Icon}" />
+            <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Configuration.Save}" Icon="{StaticResource Save.Icon}" />
+            <MenuItem Header="Save _As..." Template="{StaticResource MenuSub}" Command="{Binding Configuration.SaveAs}" Icon="{StaticResource SaveAs.Icon}" />
             <Separator Template="{StaticResource MenuSeparator}" />
             <MenuItem Header="Saved" Template="{StaticResource MenuSub}" HorizontalAlignment="Left">
                 <MenuItem.Items>
@@ -34,11 +35,9 @@
             </MenuItem>
         </MenuItem>
         <MenuItem Header="_Macros" Template="{StaticResource MenuTop}">
-            <MenuItem Header="_Run" Template="{StaticResource MenuSub}" Command="{Binding Macros.Run}" Icon="/Resources/Run.png"/>
-            <MenuItem Header="Re_cord" Template="{StaticResource MenuSub}" Command="{Binding Macros.Record}" Icon="/Resources/Record.png"/>
-            <MenuItem Header="_Open" Template="{StaticResource MenuSub}" Command="{Binding Macros.Open}"/>
-            <MenuItem Header="_Save" Template="{StaticResource MenuSub}" Command="{Binding Macros.Save}" Icon="/Resources/Save.png"/>
-            <MenuItem Header="Save _As..." Template="{StaticResource MenuSub}" Command="{Binding Macros.SaveAs}"/>
+            <MenuItem Header="_Run" Template="{StaticResource MenuSub}" Command="{Binding Macros.Run}" Icon="{StaticResource TestRun.Icon}"/>
+            <MenuItem Header="Re_cord" Template="{StaticResource MenuSub}" Command="{Binding Macros.Record}" Icon="{StaticResource Record.Icon}"/>
+            <MenuItem Header="_Open" Template="{StaticResource MenuSub}" Command="{Binding Macros.Open}" Icon="{StaticResource OpenQuery.Icon}"/>
             <Separator Template="{StaticResource MenuSeparator}" />
             <MenuItem Header="Saved" Template="{StaticResource MenuSub}" HorizontalAlignment="Left">
                 <MenuItem.Items>

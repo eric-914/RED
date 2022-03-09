@@ -37,8 +37,6 @@ namespace RenderEngineDesktop.Commands
         ICommand MacrosRun();
         ICommand MacrosRecord();
         ICommand MacrosOpen();
-        ICommand MacrosSave();
-        ICommand MacrosSaveAs();
         ICommand ConfigurationLoadState();
         ICommand MacroLoadState();
     }
@@ -124,12 +122,6 @@ namespace RenderEngineDesktop.Commands
 
         public ICommand MacrosOpen()
             => _factory.Get<MacrosOpenCommand>();
-
-        public ICommand MacrosSave()
-            => _factory.Get<MacrosSaveCommand>();
-        
-        public ICommand MacrosSaveAs()
-            => _factory.Get<MacrosSaveAsCommand>();
 
         public ICommand MacroLoadState()
             => _factory.Get<MacroLoadStateCommand>();
