@@ -12,5 +12,6 @@ namespace RenderEngineDesktop.Service.Parameters.Models
         public string Instance { get; set; } = string.Empty;
         public string Environment { get; set; } = string.Empty;
         public string Key { get; set; } = "NsiDb";
+        public string CultureName { get; set; } = "en-US";
     }
 }

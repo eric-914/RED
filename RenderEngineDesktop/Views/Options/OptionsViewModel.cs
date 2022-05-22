@@ -1,29 +1,42 @@
 ﻿using RenderEngineDesktop.Commands;
+using RenderEngineDesktop.Controls;
 using RenderEngineDesktop.Models.Application;
+using RenderEngineDesktop.Service.Parameters.Models;
 using System.Windows.Input;
 
-namespace RenderEngineDesktop.Views.Options
+namespace RenderEngineDesktop.Views.Options;
+
+public class OptionsViewModel : NotifyModel
 {
-    public class OptionsViewModel
-    {
-        public ApplicationModel Settings { get; } 
+    public ApplicationModel Settings { get; } 
 
-        public ICommand TestCommand { get; }
+    public EnvironmentSelectViewModel EnvironmentSelect { get; } = new ();
 
-        #region XAML Design
+    public ICommand TestCommand { get; }
 
-        //--Used by the XAML designer
+    #region XAML Design
+
+    //--Used by the XAML designer
 #pragma warning disable CS8618
-        public OptionsViewModel() { }
+    public OptionsViewModel() { }
 #pragma warning restore CS8618
 
-        #endregion
+    #endregion
 
-        [Ninject.Inject]
-        public OptionsViewModel(ICommands commands, IApplication application)
-        {
-            Settings = application.Model;
-            TestCommand = commands.Test;
-        }
+    [Ninject.Inject]
+    public OptionsViewModel(ICommands commands, IApplication application)
+    {
+        Settings = application.Model;
+        TestCommand = commands.Test;
+
+        EnvironmentSelect.PropertyChanged += (_, _) => SetEnvironment();
+        SetEnvironment();
+    }
+
+    private void SetEnvironment()
+    {
+        Settings.SetEnvironment(EnvironmentSelect.Environments.Selected);
+
+        OnPropertyChanged(nameof(Settings));
     }
 }

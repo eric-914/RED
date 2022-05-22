@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="RenderEngineDesktop.Controls.EnvironmentSelect"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:RenderEngineDesktop.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="300">
+    <UserControl.DataContext>
+        <local:EnvironmentSelectViewModel/>
+    </UserControl.DataContext>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Render Engine Service:</Label>
+            <ComboBox ItemsSource="{Binding Environments}" 
+                      DisplayMemberPath="Text"
+                      SelectedValuePath="Environment"
+                      SelectedValue="{Binding Selected}"
+                      Width="150">
+            </ComboBox>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

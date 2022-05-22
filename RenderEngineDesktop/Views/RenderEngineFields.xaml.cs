@@ -27,7 +27,6 @@ namespace RenderEngineDesktop.Views
                 Bind<IMaximumInPixels>(MaximumInPixelsFields);
                 Bind<IOutlineColorComponent>(OutlineColorComponentFields);
                 Bind<IWatermark>(WatermarkFields);
-                Bind<ICulture>(CultureFields);
                 Bind<IPercentTranslation>(PercentTranslationFields);
                 Bind<IPercentage>(PercentageFields);
                 Bind<ILeads>(LeadsFields);

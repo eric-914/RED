@@ -7,34 +7,36 @@
              xmlns:controls="clr-namespace:RenderEngineDesktop.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <options:OptionsViewModel/>
-    </UserControl.DataContext>
-    <UserControl.Resources>
-        <Style TargetType="Separator">
-            <Setter Property="Background" Value="Transparent"/>
-        </Style>
-    </UserControl.Resources>
+  <UserControl.DataContext>
+    <options:OptionsViewModel/>
+  </UserControl.DataContext>
+  <UserControl.Resources>
+    <Style TargetType="Separator">
+      <Setter Property="Background" Value="Transparent"/>
+    </Style>
+  </UserControl.Resources>
 
-    <DockPanel>
-        <options:LogoView DockPanel.Dock="Right" Width="200"/>
-        <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left">
-            <Label>Application Data Folder</Label>
-            <Border BorderThickness="1" BorderBrush="Black">
-                <controls:BrowsePath Context="{Binding Settings.Paths.ApplicationFolder}"/>
-            </Border>
+  <DockPanel>
+    <options:LogoView DockPanel.Dock="Right" Width="200"/>
+    <StackPanel DockPanel.Dock="Left" HorizontalAlignment="Left">
+      <Label>Application Data Folder</Label>
+      <Border BorderThickness="1" BorderBrush="Black">
+        <controls:BrowsePath Context="{Binding Settings.Paths.ApplicationFolder}"/>
+      </Border>
 
-            <Separator Height="16"/>
+      <Separator Height="16"/>
 
-            <controls:InputField Text="{Binding Settings.Uri}" Label="Render Engine Service Uri:" LabelWidth="150" TextWidth="150"/>
+      <controls:InputField Text="{Binding Settings.Uri}" Label="Render Engine Service Uri:" LabelWidth="150" TextWidth="150"/>
+      <controls:EnvironmentSelect DataContext="{Binding EnvironmentSelect}"/>
+      <controls:ApiVersionSelect DataContext="{Binding}"/>
 
-            <Separator Height="6"/>
-            
-            <controls:AssetPath DataContext="{Binding Settings.Paths.Asset}"/>
+      <Separator Height="6"/>
 
-            <Separator Height="16"/>
+      <controls:AssetPath DataContext="{Binding Settings.Paths.Asset}"/>
 
-            <Button Command="{Binding TestCommand}" Width="180">Run Error Dialog Test</Button>
-        </StackPanel>
-    </DockPanel>
+      <Separator Height="16"/>
+
+      <Button Command="{Binding TestCommand}" Width="180">Run Error Dialog Test</Button>
+    </StackPanel>
+  </DockPanel>
 </UserControl>

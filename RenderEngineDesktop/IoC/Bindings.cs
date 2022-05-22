@@ -8,6 +8,8 @@ using RenderEngineDesktop.Models.Logging;
 using RenderEngineDesktop.Service;
 using RenderEngineDesktop.Support;
 using RenderEngineDesktop.Views.Logging;
+using V1= RenderEngineDesktop.Service.v1;
+using V2= RenderEngineDesktop.Service.v2;
 
 namespace RenderEngineDesktop.IoC
 {
@@ -29,7 +31,8 @@ namespace RenderEngineDesktop.IoC
                 .Singleton<ILogger, Logger>()
                 .Singleton<LogShowState>()
 
-                .Bind<IRenderEngineService, RenderEngineService>()
+                .Bind<RES.V1.IRenderEngineService, V1.RenderEngineService>()
+                .Bind<RES.V2.IRenderEngineService, V2.RenderEngineService>()
                 .Bind<IRenderEngine, RenderEngine>()
 
                 .Bind<ISystemInformation, SystemInformation>()
